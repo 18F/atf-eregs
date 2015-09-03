@@ -1,0 +1,10 @@
+# @todo - move these requirements into regulations-site setup
+django==1.5
+lxml
+requests
+
+-e git+https://github.com/18F/regulations-site.git#egg=regulations
+
+# cloud foundry
+waitress
+whitenoise
