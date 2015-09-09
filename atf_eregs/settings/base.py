@@ -1,3 +1,6 @@
+import json
+import os
+
 from regcore.settings.base import *
 REGCORE_APPS = tuple(INSTALLED_APPS)
 REGCORE_DATABASES = dict(DATABASES)
