@@ -1,4 +1,4 @@
 ---
-command: django-admin.py collectstatic --noinput && waitress-serve --port=$VCAP_APP_PORT atf_eregs.wsgi:application
+command: python manage.py collectstatic --noinput && waitress-serve --port=$VCAP_APP_PORT atf_eregs.wsgi:application
 env:
   DJANGO_SETTINGS_MODULE: atf_eregs.settings.prod
