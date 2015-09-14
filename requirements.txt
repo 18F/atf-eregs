@@ -1,10 +1,18 @@
 # @todo - move these requirements into regulations-site setup
-django==1.5
+anyjson
+django==1.8
+django-haystack
+jsonschema
 lxml
+pyelasticsearch
+pysolr
 requests
 
 -e git+https://github.com/18F/regulations-site.git#egg=regulations
+-e git+https://github.com/18F/regulations-core.git#egg=regcore
 
 # cloud foundry
+dj-database-url
+psycopg2
 waitress
 whitenoise
