@@ -1,0 +1,149 @@
+/*
+LESS Mixins & Variables
+ ==========================================================================
+mixins.less contains any mixins or variables to be used throughout the LESS files
+*/
+
+/*
+ Color Variables
+ ----------------
+ */
+
+@green: #071635; //#2CB34A;
+@green_midtone: #50627a; //#ADDC91;
+@green_light: #bfd5e2; //#DBEDD4; /* hover bg color of panel sections */
+@black: #101820;
+@dark_field: #5C6065;
+@light_field: #D1D3D5;
+@grey: #E6E7E9;
+@white: #FFFFFF;
+@red_orange: #D12124;
+@pacific: #50627a; //#0072CE; /* see more carrots */
+@link_blue: #348dc9; /* blue used for link borders and search results */
+@light_neutral: #D7D2CB;
+@dark_gray: #797D81; /* dark border */
+@bg_gray: #F7F8F9; /* background header */
+@medium_gray: #B8BABD; /* light border */
+@80_gray: #9A9DA1;
+@dark_text: #797D81;
+@mid_text: #43484E;
+@orange: #FBCD92;
+@light_orange: #FFECD1;
+@pacific_hover: #328ED8;
+@pacific_light: #CCE3F5;
+@red_orange_80: #D96A4F;
+@red_orange_50: #E9A193;
+
+@main_head_background: #071635;
+@main_head_text_color: #ffffff;
+@main_head_hover_color: #bfd5e2;
+
+@sub_head_background: #50627a;
+@sub_head_text_color: #ffffff;
+
+@hero_background: #50627a;
+@hero_text_color: #ffffff;
+/*
+ Type Variables/Mixins
+ ----------------------
+*/
+
+@body-font: "Work Sans",Arial,Helvetica,Verdana,Geneva,sans-serif;
+
+// .avenir-next {
+//     font-family: "Avenir Next", Arial, sans-serif;
+//     font-weight: normal;
+//     font-style: normal;
+// }
+
+// .avenir-next-demi {
+//     font-family: "Avenir Next Demi", Arial, sans-serif;
+//     font-weight: 600;
+//     font-style: normal;
+// }
+
+.avenir-next-demi-italic {
+    font-family: "Avenir Next Demi Italic", Arial, sans-serif;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.slabo {
+  font-family: "Slabo 13px",Palatino Linotype,Georgia,Times New Roman,Times,serif;
+}
+
+.avenir-next {
+  font-family: "Work Sans",Arial,Helvetica,Verdana,Geneva,sans-serif;
+  font-weight: 500;
+}
+
+.avenir-next-demi {
+  font-family: "Work Sans",Arial,Helvetica,Verdana,Geneva,sans-serif;
+  font-weight: 500;
+}
+
+/*
+ Border Styles
+ --------------
+*/
+
+.border-bottom-medium (@width: 1px) {
+    border-bottom: @width solid @medium_gray;
+}
+
+.border-bottom-light (@width: 1px) {
+    border-bottom: @width solid @light_field;
+}
+
+.border-bottom-dark (@width: 1px) {
+    border-bottom: @width solid @dark_gray;
+ }
+
+ .border-top-light (@width: 1px) {
+    border-top: @width solid @light_field;
+ }
+
+ .border-top-medium (@width: 1px) {
+    border-top: @width solid @medium_gray;
+}
+
+.border-right-light (@width: 1px){
+    border-right: @width solid @light_field;
+}
+
+/*
+ Animations
+ -----------
+*/
+
+.slide (@direction: left, @speed: 300ms) {
+    transform: translate3d(0,0,0);
+    -webkit-transition: @direction @speed ease;
+       -moz-transition: @direction @speed ease;
+        -ms-transition: @direction @speed ease;
+         -o-transition: @direction @speed ease;
+            transition: @direction @speed ease;
+}
+
+// utility class for spinning loading indicators
+.u_spinner {
+    .cf-icon;
+    .cf-icon__spin;
+    display: block;
+    width: 1em;
+    height: 1em;
+    margin: 0 auto;
+    content: "\e112";
+    color: @pacific;
+    text-align: center;
+    font-size: 1.375em;
+    margin-top: 2em;
+}
+
+ /*
+ Helpers
+ ------------- */
+.reset {
+    margin: 0;
+    padding: 0;
+}
