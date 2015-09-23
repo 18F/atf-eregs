@@ -58,3 +58,7 @@ target/
 
 # App
 eregs.db
+
+# Local frontend build
+frontend_build/
+compiled/
