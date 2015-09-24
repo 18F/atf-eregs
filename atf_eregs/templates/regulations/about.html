@@ -1,0 +1,22 @@
+{% overextends "regulations/about.html" %}
+{% load static from staticfiles %}
+
+{% block about-related-info %}
+<section class="about-section group" id="related-info">
+    <div class="inner-wrap">
+    <h3>Related information</h3>
+
+    <div class="content-primary column-r">
+        <img src="{%static "regulations/img/related-01.png" %}" alt="eRegulations defined terms, linked references, and official interpretation screenshot">
+    </div>
+
+    <div class="content-secondary column-l">
+        <ol class="about-ol">
+            <li><strong>Defined terms</strong> are highlighted in the text and displayed in the right sidebar so you can keep your place.</li>
+            <li>References to other parts of the regulation are <strong>linked</strong>.</li>
+        </ol>
+    </div>
+
+</div>
+</section>
+{% endblock %}
