@@ -37,7 +37,7 @@ $ export VCAP_APP_PORT=1234
 OR
 
 ```bash
-$ echo "API_BASE = 'http://localhost:1234'" >> local_settings.py
+$ echo "API_BASE = 'http://localhost:1234/api/'" >> local_settings.py
 ```
 
 ## TODO
