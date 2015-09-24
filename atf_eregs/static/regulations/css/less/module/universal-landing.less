@@ -19,14 +19,17 @@
  =======
  the hero is the large graphic/information area
  */
-
-.hero {
+.title-hero {
     background-color: @hero_background;
     color: @hero_text_color;
     overflow: hidden;
     .avenir-next;
     .border-bottom-light;
 
+}
+
+.hero {
+    .title-hero;
     .inner-wrap {
         background: url(../img/hero.png) 96% -100% no-repeat;
     }
