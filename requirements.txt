@@ -2,6 +2,7 @@
 anyjson
 django==1.8
 django-haystack
+django-overextends
 jsonschema
 lxml
 pyelasticsearch
