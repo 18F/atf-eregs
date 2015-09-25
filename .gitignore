@@ -58,6 +58,7 @@ target/
 
 # App
 eregs.db
+local_settings.py
 
 # Local frontend build
 frontend_build/

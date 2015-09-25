@@ -15,4 +15,6 @@ ROOT_URLCONF = 'atf_eregs.urls'
 DATABASES = REGCORE_DATABASES
 
 API_BASE = 'http://localhost:{}/api/'.format(
-    os.environ.get('VCAP_APP_PORT', '8080'))
+    os.environ.get('VCAP_APP_PORT', '8000'))
+
+STATICFILES_DIRS = ['compiled']
