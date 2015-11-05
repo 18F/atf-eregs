@@ -40,6 +40,13 @@ OR
 $ echo "API_BASE = 'http://localhost:1234/api/'" >> local_settings.py
 ```
 
+This application can also be configured to run against the live API if you do
+not wish to run the API locally.
+
+```bash
+$ echo "API_BASE = 'https://atf-eregs.18f.gov/api/'" >> local_settings.py
+```
+
 ## TODO
 
 * Database config
