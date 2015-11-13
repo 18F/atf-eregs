@@ -1,0 +1,20 @@
+{% overextends "regulations/generic_landing.html" %}
+{% comment %}
+Generally, we like all of the content in the generic_landing, but we _would_
+like to provide a consistent disclaimer. Overextends tells django to use the
+`regulations-site` provided template
+{% endcomment %}
+
+{% block legal_disclaimer %}
+<h4 tabindex="0" class="important">Trust, but verify</h4>
+
+<p>The ATF’s eRegulations tool is an editorial compilation of material and not
+an official legal edition of the Code of Federal Regulations or the Federal
+Register. We have made every effort to ensure the material presented in this
+tool is accurate, but if you are relying on it for legal research you should
+consult the official editions of those sources to confirm your findings.
+Nothing in this tool binds ATF or creates any rights, benefits, or defenses,
+substantive or procedural, that are enforceable by any party in any
+manner.</p>
+{% endblock %}
+
