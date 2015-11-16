@@ -1,19 +1,20 @@
-# @todo - move these requirements into regulations-site setup
-anyjson
-django==1.8
-django-haystack
-django-overextends
-jsonschema
-lxml
-pyelasticsearch
-pysolr
-requests
-
--e git+https://github.com/18F/regulations-site.git#egg=regulations
+# regulations-core
+anyjson==0.3.3
+django==1.8.6
+django-haystack==2.4.1
+jsonschema==2.5.1
 -e git+https://github.com/18F/regulations-core.git#egg=regcore
 
-# cloud foundry
-dj-database-url
-psycopg2
-waitress
-whitenoise
+# regulations-site
+# django already covered
+lxml==3.5.0
+requests==2.8.1
+-e git+https://github.com/18F/regulations-site.git#egg=regulations
+
+# atf-specific/cloud.gov
+dj-database-url==0.3.0
+django-overextends==0.4.0
+pyelasticsearch==1.4
+psycopg2==2.6.1
+waitress==0.8.10
+whitenoise==2.0.4
