@@ -7,4 +7,4 @@ install:
     - npm install -g grunt-cli bower
 script:
     - python manage.py migrate --fake-initial
-    - python mange.py compile_frontend
+    - python manage.py compile_frontend
