@@ -7,7 +7,16 @@ from .base import *
 
 DEBUG = False
 TEMPLATE_DEBUG = False
-EREGS_GA_SITE_ID = 'UA-48605964-38'
+ANALYTICS = {
+    'GOOGLE': {
+       'GTM_SITE_ID': '',
+       'GA_SITE_ID': 'UA-48605964-38',
+    },
+    'DAP': {
+        'AGENCY': 'DOJ',
+        'SUBAGENCY': 'ATF',
+    },
+}
 
 DATABASES = {
     'default': dj_database_url.config()
