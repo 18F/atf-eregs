@@ -7,6 +7,7 @@ from .base import *
 
 DEBUG = False
 TEMPLATE_DEBUG = False
+EREGS_GA_SITE_ID = 'UA-48605964-38'
 
 DATABASES = {
     'default': dj_database_url.config()
