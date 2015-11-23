@@ -4,16 +4,6 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 # Analytics settings
-ANALYTICS = {
-    'GOOGLE': {
-       'GTM_SITE_ID': '',
-       'GA_SITE_ID': '',
-    },
-    'DAP': {
-        'AGENCY': '',
-        'SUBAGENCY': '',
-    },
-}
 
 CACHES['default']['BACKEND'] = 'django.core.cache.backends.dummy.DummyCache'
 CACHES['eregs_longterm_cache']['BACKEND'] = 'django.core.cache.backends.dummy.DummyCache'
