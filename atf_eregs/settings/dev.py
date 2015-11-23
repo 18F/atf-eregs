@@ -10,8 +10,8 @@ ANALYTICS = {
        'GA_SITE_ID': '',
     },
     'DAP': {
-        'AGENCY': 'DOJ',
-        'SUBAGENCY': 'ATF',
+        'AGENCY': '',
+        'SUBAGENCY': '',
     },
 }
 
