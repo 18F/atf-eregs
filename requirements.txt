@@ -1,6 +1,6 @@
 # regulations-core
 anyjson==0.3.3
-django==1.8.6
+django==1.8.7
 django-haystack==2.4.1
 jsonschema==2.5.1
 -e git+https://github.com/18F/regulations-core.git#egg=regcore
@@ -17,4 +17,4 @@ django-overextends==0.4.0
 pyelasticsearch==1.4
 psycopg2==2.6.1
 waitress==0.8.10
-whitenoise==2.0.4
+whitenoise==2.0.6
