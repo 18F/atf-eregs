@@ -1,0 +1,62 @@
+---
+name: ATF eRegs
+uniqueID: MB18F15ATF01
+version: 0.1.0
+phase: alpha
+information-types:
+- D26 Civilian Operations
+confidentiality: none
+integrity: low
+availability: low
+security-baseline: open data
+system-type: minor
+level-of-identity-assurance: 0
+staff:
+    authorizing-official:
+        name: Aaron Snow
+        title: 18F Executive Director 
+        org: General Services Administration
+        unit: 18F
+        email: 18F@gsa.gov
+    system-owner: 
+        name: Noah Kunin
+        title: 18F Infrastructure Director
+        org: General Services Administration
+        unit: 18F
+        email: devops@gsa.gov
+    system-management:
+        name: Noah Kunin
+        title: 18F Infrastructure Director
+        org: General Services Administration
+        unit: 18F
+        email: devops@gsa.gov
+    system-security-officer:
+        name: Noah Kunin
+        title: 18F Infrastructure Director
+        org: General Services Administration
+        unit: 18F
+        email: devops@gsa.gov
+    technical-lead:
+        name: CM Lubinski
+        title: Technical Lead
+        org: General Services Administration
+        unit: 18F
+        email: christopher.lubinski@gsa.gov
+leveraged-authorizations: 
+- https://www.fedramp.gov/marketplace/compliant-systems/amazon-web-services-aws-eastwest-us-public-cloud/
+purpose: https://github.com/18F/atf-eregs
+components: 
+- https://github.com/18F/regulations-core
+- https://github.com/18F/regulations-site
+diagram: https://github.com/18F/atf-eregs#architecture
+network-architecture: https://github.com/18F/atf-eregs#updating-data
+environments:
+- Cloud Foundry
+- Amazon Web Services East / West
+user-types:
+    developer:
+        functions: 
+        - deployment
+        - engineering
+controls: https://github.com/18F/atf-eregs#updating-data
+---
