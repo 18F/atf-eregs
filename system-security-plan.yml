@@ -58,5 +58,7 @@ user-types:
         functions: 
         - deployment
         - engineering
-controls: https://github.com/18F/atf-eregs#updating-data
+controls: 
+- https://github.com/18F/atf-eregs#updating-data
+- https://github.com/18F/regulations-core#security
 ---
