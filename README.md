@@ -91,7 +91,7 @@ and password (effectively creating an API key). See the `HTTP_AUTH_USER` and
 Currently, sending data looks something like this (from `regulations-parser`)
 
 ```bash
-$ eregs pipeline 27 646 https://{HTTP_AUTH_USER}:{HTTP_AUTH_PASSWORD}/api
+$ eregs pipeline 27 646 https://{HTTP_AUTH_USER}:{HTTP_AUTH_PASSWORD}@{LIVE_OR_DEMO_HOSTNAME}/api
 ```
 
 This updates the data, but does not update the search index and will not clear
