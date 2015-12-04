@@ -5,6 +5,7 @@ Glue project which combines regulations-site, regulations-core and
 styles/templates specific to ATF. Packaged as a cloud.gov app.
 
 ## Local Development
+Like regulations-site and regulations-core, this application requires Python 2.7.
 
 Use pip and npm to download the required libraries:
 
