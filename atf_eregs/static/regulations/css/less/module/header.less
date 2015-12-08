@@ -261,6 +261,8 @@ BIG SCREENS
 tiny screens
 =============================================
 */
+@mobile_nav_bg: @green_midtone;   /* actually a navy */
+@mobile_nav_hl: @green;           /* actually a dark blue */
 
 @media only screen and ( max-width: 879px ) {
     .org-title {
@@ -295,7 +297,7 @@ tiny screens
         position: fixed;
         top: 60px;
         width: 100%;
-        background: @bg_gray;
+        background: @mobile_nav_bg;
         z-index: 999999;
     }
 
@@ -312,7 +314,7 @@ tiny screens
         a:hover,
         a:active,
         a:focus {
-            background: #E6E6E6;
+            background: @mobile_nav_hl;
         }
     }
 
@@ -327,7 +329,7 @@ tiny screens
     .mobile-nav-trigger:active,
     .mobile-nav-trigger:focus,
     .mobile-nav-trigger.open {
-        background-color: @bg_gray;
+        background-color: @mobile_nav_bg;
     }
 
     .title {
