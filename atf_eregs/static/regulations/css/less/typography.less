@@ -590,6 +590,28 @@ thead {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch; // smoother scrolling        
 }
+/*
+    Datatables-specific css
+*/
+.dataTable {
+    table& {
+        margin-top:0;
+        thead {
+            height:0;
+        }
+        tr:first-child td {
+            border-top: none;
+        }
+    }
+}
+
+.dataTables_scrollHeadInner {
+    div& {
+        table {
+            margin-bottom: 0px;
+        }
+    }
+}
 
 /*
   Code Styles
