@@ -587,14 +587,25 @@ thead {
 }
     
 .table-wrap {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch; // smoother scrolling        
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch; // smoother scrolling
 }
+
 /*
     Datatables-specific css
 */
+
+div.dataTables_wrapper {
+    float:left;
+}
+
+div.dataTables_scroll {
+    overflow-x:scroll;
+}
+
 .dataTable {
     table& {
+        font-family: "Avenir Next Demi", Arial, sans-serif;
         margin-top:0;
         thead {
             height:0;
