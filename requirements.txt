@@ -8,12 +8,13 @@ jsonschema==2.5.1
 # regulations-site
 # django already covered
 lxml==3.5.0
-requests==2.8.1
+requests==2.9.1
 -e git+https://github.com/18F/regulations-site.git#egg=regulations
 
 # atf-specific/cloud.gov
 dj-database-url==0.3.0
-django-overextends==0.4.0
+django-overextends==0.4.1
+newrelic==2.60.0.46
 pyelasticsearch==1.4
 psycopg2==2.6.1
 waitress==0.8.10

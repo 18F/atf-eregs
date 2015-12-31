@@ -123,3 +123,12 @@ will pull in the latest from `regulations-site` and `regulations-core`,
 regardless of what you have locally and regardless of what you've built the
 front-end against. Be sure to always update your local libraries (via `pip`)
 before building and pushing.
+
+### Environment
+
+Our cloud.gov stack should have the following env vars set
+
+* `HTTP_AUTH_USER` - at least 32 characters long
+* `HTTP_AUTH_PASSWORD` - at least 32 characters long
+* `NEW_RELIC_LICENSE_KEY`
+* `NEW_RELIC_APP_NAME`
