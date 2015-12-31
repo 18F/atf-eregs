@@ -563,9 +563,9 @@ table {
     margin: 1em 0;
     padding: 0;
     font-size: .75em;
-    .avenir-next;
     table-layout: auto;
     width: 100%;
+    font-family: @body-font;
 }
 
 th,
@@ -576,7 +576,6 @@ td {
 }
 
 th {
-    font-family: "Avenir Next Demi", Arial, sans-serif;
     font-weight: 600;
     font-style: normal;
     text-align: left;
@@ -588,11 +587,17 @@ thead {
     
 .table-wrap {
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch; // smoother scrolling        
+    -webkit-overflow-scrolling: touch; // smoother scrolling
 }
+
 /*
     Datatables-specific css
 */
+
+div.dataTables_wrapper {
+    float:left;
+}
+
 .dataTable {
     table& {
         margin-top:0;
