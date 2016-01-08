@@ -555,7 +555,6 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 }
 
 
-
 /*
   Table Styles
  ========================================================================== */
@@ -591,7 +590,9 @@ thead {
 .table-wrap {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch; // smoother scrolling
+    width:100%;
 }
+
 
 /*
     Datatables-specific css
@@ -599,6 +600,11 @@ thead {
 
 div.dataTables_wrapper {
     float:left;
+}
+
+div.dataTables_scroll {
+    float:left;
+    width:100%;
 }
 
 .dataTable {
@@ -616,11 +622,15 @@ div.dataTables_wrapper {
 .dataTables_scrollHeadInner {
     div& {
         table {
-            margin-bottom: 0px;
+            margin-bottom: 0px; 
         }
     }
 }
-
+table.dataTable, table.dataTable th, table.dataTable td {
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+}
 /*
   Code Styles
  ========================================================================== */
