@@ -1,0 +1,36 @@
+{% comment %}
+    Replaces the tree-with-wrapper.html and tree.html templates, providing
+    some PDF-specific links
+{% endcomment %}
+<li id="{{node.markup_id}}" data-permalink-section>
+  <p>{{ node.marked_up|safe }}</p>
+
+  <div class="poster-pdf">
+    <div class="icon-container">
+      <span class="cf-icon cf-icon-pdf cf-icon__3x"></span>
+    </div>
+    <p class="copy">
+      The standard notification described in this paragraph can be downloaded
+      here:
+      <a href="{{pdf_url}}" class="external">{{pdf_name}}</a>
+    </p>
+  </div>
+
+  <div class="poster extract">
+    {% comment %}
+    Prevent the EXTRACT from adding another depth level to the markup
+    {% endcomment %}
+    {% with node=node.children|first %}
+      {% with first_child=node.children|first %}
+        {% include "regulations/ol-tag.html" %}
+      {% endwith %}
+      {% for c in node.children %}
+        {% with node=c %}
+          {% include node.template_name %}
+        {% endwith %}
+      {% endfor %}
+      </ol>
+    {% endwith %}
+  </div>
+</li>
+
