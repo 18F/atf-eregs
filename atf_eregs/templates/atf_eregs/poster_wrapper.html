@@ -1,6 +1,8 @@
 {% comment %}
     Replaces the tree-with-wrapper.html and tree.html templates, providing
     some PDF-specific links
+
+    Expects `node`, `pdf_url` and `pdf_name` to be defined
 {% endcomment %}
 <li id="{{node.markup_id}}" data-permalink-section>
   <p>{{ node.marked_up|safe }}</p>
