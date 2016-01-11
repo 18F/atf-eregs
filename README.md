@@ -1,11 +1,13 @@
 # ATF's eRegs
 [![Code Issues](https://www.quantifiedcode.com/api/v1/project/e2ee92b5c3db486f89d47371c4d89a2f/badge.svg)](https://www.quantifiedcode.com/app/project/e2ee92b5c3db486f89d47371c4d89a2f)
 
-Glue project which combines regulations-site, regulations-core and
+Glue project which combines [regulations-site](https://github.com/cfpb/regulations-site), [regulations-core](https://github.com/cfpb/regulations-core) and
 styles/templates specific to ATF. Packaged as a cloud.gov app.
 
 ## Local Development
 Like regulations-site and regulations-core, this application requires Python 2.7.
+
+First [install Python 2.7 (if you haven't already)](http://docs.python-guide.org/en/latest/starting/installation/), [set up a virtualenv for this project and activate it](http://docs.python-guide.org/en/latest/dev/virtualenvs/) (using Python 2.7), and then [clone this repository](https://help.github.com/articles/cloning-a-repository/).
 
 Use pip and npm to download the required libraries:
 
@@ -21,6 +23,8 @@ $ python manage.py migrate --fake-initial
 $ python manage.py compile_frontend
 $ python manage.py runserver
 ```
+
+You'll get an error at this point, since you'll need to do one of the following Data steps before the site will start working.
 
 ### Data
 
