@@ -1,9 +1,10 @@
-## Team Processes
+## Team processes
 
 * Use PEP8 as the coding standard for Python.
+* Make changes in a fork rather than in branches on the main repository.
 * Pull requests for all commits, even typos.
 * Don't merge your own pull request. Find a friend to review your code and merge your pull request.
-* Pull requests some contain some tests. Ideally they would contain decent test coverage.
+* Pull requests should contain some tests. Ideally they would contain decent test coverage.
 * If you make changes to the API, please help update the API documentation. 
 
 When creating a new pull request:
