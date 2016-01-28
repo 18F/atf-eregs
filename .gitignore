@@ -63,3 +63,10 @@ local_settings.py
 # Local frontend build
 frontend_build/
 compiled/
+
+# virtualenv
+bin/
+include/
+src/
+pip-selfcheck.json
+
