@@ -66,6 +66,23 @@ OR
 $ echo "API_BASE = 'http://localhost:1234/api/'" >> local_settings.py
 ```
 
+### UI Development
+
+Though this repository (atf-eregs) contains all of the ATF-specific code, you
+will most likely want to extend functionality in the base libraries as well.
+To do this, fork and check out
+[regulations-site](https://github.com/18F/regulations-site) into a separate
+directory, then install it via
+
+```bash
+$ pip install -e /path/to/regulations-site
+```
+
+This will tell Python to use your local version of regulations-site rather
+than upstream. Although the Python and templates will change as soon as you
+modify them in the -site checkout, you will need to run `compile_frontend`
+(see above) to integrate stylesheet and JS changes.
+
 ## Architecture
 
 ![General Architecture (described below)](docs/architecture.png)
