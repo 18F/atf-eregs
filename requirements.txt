@@ -12,6 +12,7 @@ requests==2.9.1
 -e git+https://github.com/18F/regulations-site.git#egg=regulations
 
 # atf-specific/cloud.gov
+cfenv==0.4.0
 dj-database-url==0.3.0
 django-overextends==0.4.1
 newrelic==2.60.0.46
