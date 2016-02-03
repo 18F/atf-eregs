@@ -108,7 +108,7 @@ before it will be visible to users. However, we don't want to allow the
 general public to modify the regulatory data, so we need to authenticate.
 Currently, this is implemented via HTTP Basic Auth and a very long user name
 and password (effectively creating an API key). See the `HTTP_AUTH_USER` and
-`HTTP_AUTH_PASSWORD` environment variables in cloud.gov for more.
+`HTTP_AUTH_PASSWORD` credentials in cloud.gov for more.
 
 Currently, sending data looks something like this (from `regulations-parser`)
 
@@ -117,11 +117,7 @@ $ eregs pipeline 27 646 https://{HTTP_AUTH_USER}:{HTTP_AUTH_PASSWORD}@{LIVE_OR_D
 ```
 
 This updates the data, but does not update the search index and will not clear
-various caches. It's generally best to `cf restage` the application at this
-point, which clears the caches and rebuilds the search index. Note that this
-will also pull down the latest versions of the libraries (see the next
-section); as a result it's generally best to do a full deploy after updating
-data.
+various caches. It's generally best to `cf restage` the application at this point, which clears the caches and rebuilds the search index. Note that this will also pull down the latest versions of the libraries (see the next section); as a result it's generally best to do a full deploy after updating data.
 
 ## Deploying Code
 
@@ -145,11 +141,19 @@ regardless of what you have locally and regardless of what you've built the
 front-end against. Be sure to always update your local libraries (via `pip`)
 before building and pushing.
 
-### Environment
+### Credentials
 
-Our cloud.gov stack should have the following env vars set
+Our cloud.gov stack should have a user-provided service named `atf-eregs-creds` including the following credentials:
 
 * `HTTP_AUTH_USER` - at least 32 characters long
 * `HTTP_AUTH_PASSWORD` - at least 32 characters long
 * `NEW_RELIC_LICENSE_KEY`
 * `NEW_RELIC_APP_NAME`
+
+To create this service:
+
+```
+$ cf cups atf-eregs-creds -p '{"HTTP_AUTH_USER": "...", "HTTP_AUTH_PASSWORD": "...", "NEW_RELIC_LICENSE_KEY": "...", "NEW_RELIC_APP_NAME": "..."}'
+```
+
+To update, substitute `cf uups` for `cf cups`.
