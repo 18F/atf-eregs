@@ -4,6 +4,8 @@
 Glue project which combines [regulations-site](https://github.com/18F/regulations-site), [regulations-core](https://github.com/18F/regulations-core) and
 styles/templates specific to ATF. Packaged as a cloud.gov app.
 
+If you're new here, check out the [eRegulations project overview](http://eregs.github.io/eRegulations/) and [our contributing guidelines](CONTRIBUTING.md).
+
 ## Local Development
 Like regulations-site and regulations-core, this application requires Python 2.7.
 
