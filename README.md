@@ -1,7 +1,7 @@
 # ATF's eRegs
 [![Code Issues](https://www.quantifiedcode.com/api/v1/project/e2ee92b5c3db486f89d47371c4d89a2f/badge.svg)](https://www.quantifiedcode.com/app/project/e2ee92b5c3db486f89d47371c4d89a2f)
 
-Glue project which combines regulations-site, regulations-core and
+Glue project which combines [regulations-site](https://github.com/18F/regulations-site), [regulations-core](https://github.com/18F/regulations-core) and
 styles/templates specific to ATF. Packaged as a [cloud.gov](https://cloud.gov/) app.
 
 If you're new here, check out the [eRegulations project overview](http://eregs.github.io/eRegulations/) and [our contributing guidelines](CONTRIBUTING.md).
