@@ -1,9 +1,10 @@
 ---
-command: python manage.py refresh && python manage.py collectstatic --noinput && run-program waitress-serve --port=$VCAP_APP_PORT atf_eregs.wsgi:application
+command: python manage.py refresh && python manage.py collectstatic --noinput && waitress-serve --port=$VCAP_APP_PORT atf_eregs.wsgi:application
 
 services:
   # Must provide HTTP_AUTH_USER, HTTP_AUTH_PASSWORD, NEW_RELIC_LICENSE_KEY, and NEW_RELIC_APP_NAME
   - atf-eregs-creds
+  - atf-db
 env:
   DJANGO_SETTINGS_MODULE: atf_eregs.settings.prod
   NEW_RELIC_CONFIG_FILE: newrelic.ini

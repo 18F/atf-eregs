@@ -1,0 +1,7 @@
+---
+inherit: manifest_base.yml
+host: atf-eregs
+services:
+  - atf-eregs-search-prod-1.7.1
+applications:
+  - name: atf-eregs

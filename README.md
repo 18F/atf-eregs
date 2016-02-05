@@ -141,6 +141,15 @@ regardless of what you have locally and regardless of what you've built the
 front-end against. Be sure to always update your local libraries (via `pip`)
 before building and pushing.
 
+### Services
+
+This application uses the `rds` and `elasticsearch-swarm` services on cloud.gov. Services are bound to applications in th emanifest files. To create services:
+
+```
+cf create-service rds micro-psql atf-db
+cf create-service elasticsearch-swarm-1.7.1 1x atf-eregs-search-1.7.1
+```
+
 ### Credentials
 
 Our cloud.gov stack should have a user-provided service named `atf-eregs-creds` including the following credentials:
