@@ -20,3 +20,6 @@ pyelasticsearch==1.4
 psycopg2==2.6.1
 waitress==0.8.10
 whitenoise==2.0.6
+
+# extensions
+-e eregs_extensions
