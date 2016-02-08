@@ -4,7 +4,6 @@ ns = "eregs_ns.parser"  # The namespace for regulations-parser extensions.
 fs = "extend_regparser"  # The directory name for the package.
 entry_points = {
     "%s.preprocessors" % ns: [
-        "preprocessor_list = %s.extensions:additional_preprocessors" % fs,
         "USCode = %s.preprocs:USCode" % fs
     ]
 }
