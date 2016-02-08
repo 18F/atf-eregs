@@ -125,12 +125,14 @@ If the code within `atf-eregs`, `regulations-core`, or `regulations-site` has
 been updated, you will want to deploy the updated code to cloud.gov. At the
 moment, we build all of the front-end code locally, shipping the compiled
 CSS/JS when deploying. This means we'll need to update our libraries, build
-the new front end, and push the result.
+the new front end, and push the result. Always specify a manifest file using
+the `-f` option when deploying to cloud.gov.
 
 ```bash
 $ pip install -r requirements.txt   # updates the -core/-site repositories
 $ python manage.py compile_frontend   # builds the frontend
-$ cf push
+$ cf target -o eregs -s dev
+$ cf push -f manifest_dev.yml
 ```
 
 Confusingly, although the front-end compilation step occurs locally, all other
@@ -143,7 +145,7 @@ before building and pushing.
 
 ### Services
 
-This application uses the `rds` and `elasticsearch-swarm` services on cloud.gov. Services are bound to applications in th emanifest files. To create services:
+This application uses the `rds` and `elasticsearch-swarm` services on cloud.gov. Services are bound to applications in the manifest files. To create services:
 
 ```
 cf create-service rds micro-psql atf-db
