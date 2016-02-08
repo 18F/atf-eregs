@@ -130,11 +130,18 @@ CSS/JS when deploying. This means we'll need to update our libraries, build
 the new front end, and push the result. Always specify a manifest file using
 the `-f` option when deploying to cloud.gov.
 
+For zero-downtime updates, deploy applications using `autopilot`. To install:
+
+```bash
+$ go get github.com/concourse/autopilot
+$ cf install-plugin $GOPATH/bin/autopilot
+```
+
 ```bash
 $ pip install -r requirements.txt   # updates the -core/-site repositories
 $ python manage.py compile_frontend   # builds the frontend
 $ cf target -o eregs -s dev
-$ cf push -f manifest_dev.yml
+$ cf zero-downtime-push atf-eregs -f manifest_dev.yml
 ```
 
 Confusingly, although the front-end compilation step occurs locally, all other
@@ -149,9 +156,9 @@ before building and pushing.
 
 This application uses the `rds` and `elasticsearch-swarm` services on cloud.gov. Services are bound to applications in the manifest files. To create services:
 
-```
-cf create-service rds micro-psql atf-db
-cf create-service elasticsearch-swarm-1.7.1 1x atf-eregs-search-1.7.1
+```bash
+$ cf create-service rds micro-psql atf-db
+$ cf create-service elasticsearch-swarm-1.7.1 1x atf-eregs-search-1.7.1
 ```
 
 ### Credentials
@@ -165,7 +172,7 @@ Our cloud.gov stack should have a user-provided service named `atf-eregs-creds` 
 
 To create this service:
 
-```
+```bash
 $ cf cups atf-eregs-creds -p '{"HTTP_AUTH_USER": "...", "HTTP_AUTH_PASSWORD": "...", "NEW_RELIC_LICENSE_KEY": "...", "NEW_RELIC_APP_NAME": "..."}'
 ```
 
