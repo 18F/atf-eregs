@@ -1,6 +1,0 @@
----
-command: python manage.py migrate --fake-initial && python manage.py rebuild_index --noinput --remove && python manage.py collectstatic --noinput && newrelic-admin run-program waitress-serve --port=$VCAP_APP_PORT atf_eregs.wsgi:application
-
-env:
-  DJANGO_SETTINGS_MODULE: atf_eregs.settings.prod
-  NEW_RELIC_CONFIG_FILE: newrelic.ini
