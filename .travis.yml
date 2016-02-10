@@ -1,10 +1,18 @@
 language: python
 sudo: false
 python:
-    - "2.7"
-install: 
-    - pip install -r requirements.txt
-    - npm install -g grunt-cli bower
+  - "2.7"
+env:
+  global:
+    # Set cloud.gov credentials
+    secure: "nCrR9IDVhRWOdRwxFsS847e8sBzcNxg/Pfw5/Zcl423NjEGI5QDQrcA5MbIBjdqrYKbHBMiWM6dS47YWxg9ZHi0joqhOmVJXg0cuvX8pa+loS66fUBDgeqWjTNW9mqiNuHkxRrV7YC6XLMw49gc+SI1wcK2gqC3zcsCOnGA1oviHHvs6ZOPVNkhnJFdFk6VmkUWdHUP2GfV7VVSXJ2T6Dq3NPbfRH34V1wypnf4seVTOjMkZnIa7OO5Uc8CYjNCLAnyT3uCg0k65xIDIxwItN9o08lGuphKZrfHA6zxbFK4McBJO6dO8H4yKG/fNWpr8k7vISE9OMHSJVr8e9RoVbWeDGQtSQkc9XuYQyX2yDYeQjH5qTTrn6FZKj4N+KSZEmcUQ8/HdHHEsFaacdGUGh5aJK76+rjjYsDK+P5saXwdM5eWRuGzHp5Grgn3GMQnz5nBoaXTdyuQFNuBHcfpkePtrYTUP/+7vzyaHsamAtq0RYmBPWARiZyujemaiDUU0vMn2Hrty1FsVJm/NneTeLrpYeTw3J/KWWo3h9VnqHB1OB1ekK9aBadAlXgWQj+Cn/uNzRpZGacWTd+YqbYPjPaV1ASezMMSf1zHzju/tyZWBGPwfMpp3l6Zx82CSO3A1F3UmoKKGyaAGcvGyyAA7IGsPb05Sxl0O+9SA0RgV6IU="
+    secure: "inFBINsXPM1eVZdYxaYnoOZlYkfFAnPNLXIfEz6b7yVy//vMjLN0BZ7yugf0NOswDDTN39MX+F15RgYwXbgfTT28LPuQCnZFcG7zZjU0bx/q6QrHUCeahUufsv8px4RaRmnjGOKL/2MXYl3TC8GwwgRr0hFPlvt2/QeX+Ot5ZZ5sqMEz2LsodtSpVj3F0S76MKLxdQyrhmgGsk5enIjwFjtEd+eDmWKqJyA6qQF1jlUrngyoKelYzHdP8jDORzEfZsLj0wduEYrbif3UUSUzNKPjqbly6f66AXjlRW2swkMgqIskL09Gv41ct/Kfj+aUDFEZWuMrwqDxAmhEtX0iEHPinVBvS62ipVjTfbJo5FgtDc4GgHlrmikRH7BXdVKroFbs7z8B/Y75Gg2eFjaY9j6LC7Q3bcMMbu4fHh7D32MWgWSt3i68wlNMfSN5FMRpdcLlKVBC6jal6nSpbysEM6rVvb1EJej1WBGsADQGlD5zCJ/UFsnKTNe0ksBND+SbiUHJzzMf7QoIIer5kmB8KbleKTFqe3Iba4WQaJ4UsZ2ggRc+b538tf/r/NyUsF+8gQvc7I41c4wlLJoaoWTtwLeKMEIH0L8un6KMjA4bYM96iT50XJe/AglCoD4RR9UcWenE3O2111lT1uEW+vrvbB4YiVKcE+yGeEpIbQpUSmo="
+install:
+  - pip install -r requirements.txt
+  - npm install -g grunt-cli bower
 script:
-    - python manage.py migrate --fake-initial
-    - python manage.py compile_frontend
+  - python manage.py migrate --fake-initial
+  - python manage.py compile_frontend
+deploy:
+  provider: script
+  script: deploy-travis.sh
