@@ -14,5 +14,5 @@ script:
   - python manage.py migrate --fake-initial
   - python manage.py compile_frontend
 deploy:
-  provider: script
+  provider: ./script
   script: deploy-travis.sh
