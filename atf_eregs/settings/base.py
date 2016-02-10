@@ -22,6 +22,7 @@ DATA_LAYERS = (
     'regulations.generator.layers.defined.DefinedLayer',
     'regulations.generator.layers.definitions.DefinitionsLayer',
     'regulations.generator.layers.external_citation.ExternalCitationLayer',
+    'regulations.generator.layers.footnotes.FootnotesLayer',
     'regulations.generator.layers.formatting.FormattingLayer',
     'regulations.generator.layers.internal_citation.InternalCitationLayer',
     'regulations.generator.layers.key_terms.KeyTermsLayer',
