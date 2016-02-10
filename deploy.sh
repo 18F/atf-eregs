@@ -1,4 +1,5 @@
 set -e
+set -x
 
 API="https://api.cloud.gov"
 ORG="eregs"

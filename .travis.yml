@@ -2,20 +2,12 @@ language: python
 sudo: false
 python:
   - "2.7"
-before_install:
-  - export PATH=.:$PATH
-  - travis_retry curl -L -o cf.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.15.0"
-  - tar xzvf cf.tgz
-  - mkdir -p ${TRAVIS_BUILD_DIR}/Godeps/_workspace
-  - export GOPATH=${TRAVIS_BUILD_DIR}/Godeps/_workspace
-  - go get github.com/concourse/autopilot
-  - cf install-plugin -f $GOPATH/bin/autopilot
 install:
   - pip install -r requirements.txt
   - npm install -g grunt-cli bower
 script:
   - python manage.py migrate --fake-initial
   - python manage.py compile_frontend
-after_success:
-  - cd $TRAVIS_BUILD_DIR
-  - ./deploy.sh dev
+deploy:
+  provider: script
+  script: deploy-travis.sh
