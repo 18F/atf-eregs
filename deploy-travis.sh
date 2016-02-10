@@ -5,7 +5,7 @@ cd $TRAVIS_BUILD_DIR
 
 # Install cf cli
 export PATH=.:$PATH
-travis_retry curl -L -o cf.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.15.0"
+curl -L -o cf.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.15.0"
 tar xzvf cf.tgz
 
 # Install autopilot
