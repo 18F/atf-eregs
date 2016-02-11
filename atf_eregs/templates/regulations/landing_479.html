@@ -9,14 +9,14 @@
 {% block reg_main_content %}
 <h3 class="list-header">Important topics include:</h3>
 <ul class="tag-list">
-  <li><a href="{% url 'chrome_section_view' label_id='479-11' version=current_version.version %}" class="citation internal" data-section-id="479-11">Definitions of terms used in this regulation</a>, including <a href="{% url 'chrome_section_view' label_id='479-11' version=current_version.version %}#479-11-p1909909317" class="citation internal" data-section-id="479-11">the list of NFA firearms</a></li>
-  <li><a href="{% url 'chrome_section_view' label_id='479-31' version=current_version.version %}" class="citation internal" data-section-id="479-31">Special (occupational) taxes for importers, manufacturers, and dealers in NFA firearms</a></li>
-  <li><a href="{% url 'chrome_section_view' label_id='479-52' version=current_version.version %}" class="citation internal" data-section-id="479-52">Relationship with State regulations</a>
+  <li><a href="{% url 'chrome_section_view' label_id='479-11' version=current_version.version %}#479-11-p1909909317" class="citation internal" data-section-id="479-11">Definition of NFA firearms</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='479-11' version=current_version.version %}" class="citation internal" data-section-id="479-11">Definitions of terms used in this regulation</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='479-32' version=current_version.version %}" class="citation internal" data-section-id="479-32">Special (occupational) tax rates</a> and <a href="{% url 'chrome_section_view' label_id='479-34' version=current_version.version %}" class="citation internal" data-section-id="479-34">registration</a></li>
   <li><a href="{% url 'chrome_section_view' label_id='479-61' version=current_version.version %}" class="citation internal" data-section-id="479-61">Tax on making a NFA firearm</a> (and <a href="{% url 'chrome_section_view' label_id='479-62' version=current_version.version %}" class="citation internal" data-section-id="479-62">application to make a NFA firearm</a>)</li>
-  <li><a href="{% url 'chrome_section_view' label_id='479-81' version=current_version.version %}" class="citation internal" data-section-id="479-81">Tax on transferring a NFA firearm</a> (and <a href="{% url 'chrome_section_view' label_id='479-84' version=current_version.version %}" class="citation internal" data-section-id="479-84">application to transfer a NFA firearm</a>)</li>
+  <li><a href="{% url 'chrome_section_view' label_id='479-82' version=current_version.version %}" class="citation internal" data-section-id="479-82">Tax on transferring a NFA firearm</a> (and <a href="{% url 'chrome_section_view' label_id='479-84' version=current_version.version %}" class="citation internal" data-section-id="479-84">application to transfer a NFA firearm</a>)</li>
   <li><a href="{% url 'chrome_section_view' label_id='479-101' version=current_version.version %}" class="citation internal" data-section-id="479-101">Registration and identification of NFA firearms</a></li>
-  <li><a href="{% url 'chrome_section_view' label_id='479-111' version=current_version.version %}" class="citation internal" data-section-id="479-111">Importation and exportation of NFA firearms</a></li>
-  <li><a href="{% url 'chrome_section_view' label_id='479-191' version=current_version.version %}" class="citation internal" data-section-id="479-191">Other laws applicable</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='479-111' version=current_version.version %}" class="citation internal" data-section-id="479-111">Importation</a> and <a href="{% url 'chrome_section_view' label_id='479-114' version=current_version.version %}" class="citation internal" data-section-id="479-114">exportation</a> of NFA firearms</li>
+  <li><a href="{% url 'chrome_section_view' label_id='479-181' version=current_version.version %}" class="citation internal" data-section-id="479-181">Penalties and forfeitures</a></li>
 </ul>
 
 <h3 class="list-header">Search this regulation</h3>
@@ -27,6 +27,8 @@
   <li><a href="{% url 'chrome_search' label_id='479' %}?version={{ current_version.version}}&amp;q=Any+other+weapon" class="internal">Any other weapon</a></li>
   <li><a href="{% url 'chrome_search' label_id='479' %}?version={{ current_version.version}}&amp;q=Collector" class="internal">Collector</a></li>
   <li><a href="{% url 'chrome_search' label_id='479' %}?version={{ current_version.version}}&amp;q=Dealer" class="internal">Dealer</a></li>
+<li><a href="{% url 'chrome_search' label_id='479' %}?version={{ current_version.version}}&amp;q=Destructive+device" class="internal">Destructive device</a></li>
+  <li><a href="{% url 'chrome_search' label_id='479' %}?version={{ current_version.version}}&amp;q=Firearm" class="internal">Firearm</a></li>
   <li><a href="{% url 'chrome_search' label_id='479' %}?version={{ current_version.version}}&amp;q=Importer" class="internal">Importer</a></li>
   <li><a href="{% url 'chrome_search' label_id='479' %}?version={{ current_version.version}}&amp;q=Machine+gun" class="internal">Machine gun</a></li>
   <li><a href="{% url 'chrome_search' label_id='479' %}?version={{ current_version.version}}&amp;q=Silencer" class="internal">Silencer</a></li>
@@ -54,10 +56,10 @@
   
   <h3>Additional resources</h3>
   <ul>
-    <li><a href="https://www.atf.gov/qa-category/national-firearms-act-nfa"
-           class="external" aria-label="Link opens in a new window" target="_blank">NFA Q&amp;A</a></li>
     <li><a href="https://www.atf.gov/rules-and-regulations/national-firearms-act"
            class="external" aria-label="Link opens in a new window" target="_blank">Introduction to the NFA</a></li>
+    <li><a href="https://www.atf.gov/qa-category/national-firearms-act-nfa"
+           class="external" aria-label="Link opens in a new window" target="_blank">NFA Q&amp;A</a></li>
     <li><a href="https://www.atf.gov/firearms/national-firearms-act-handbook"
            class="external" aria-label="Link opens in a new window" target="_blank">NFA Handbook</a></li>
     <li><a href="https://www.atf.gov/firearms/firearms-guide-identification-firearms-within-purview-national-firearms-act"
