@@ -29,7 +29,8 @@ HTTP_AUTH_PASSWORD = env.get_credential('HTTP_AUTH_PASSWORD')
 
 ALLOWED_HOSTS = ['localhost'] + env.uris
 
-elastic_service = env.get_service(name=re.compile('elasticsearch'))
+# Service name may well change in the future. Fuzzy match
+elastic_service = env.get_service(name=re.compile('search'))
 if elastic_service:
     HAYSTACK_CONNECTIONS['default'] = {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
