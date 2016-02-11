@@ -9,7 +9,8 @@ script:
   - python manage.py migrate --fake-initial
   - python manage.py compile_frontend
 before_deploy:
-  - export PATH=.:$PATH
+  - cd $TRAVIS_BUILD_DIR
+  - export PATH=$TRAVIS_BUILD_DIR:$PATH
   - travis_retry curl -L -o cf.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.15.0"
   - tar xzvf cf.tgz
   - mkdir -p ${TRAVIS_BUILD_DIR}/Godeps/_workspace
