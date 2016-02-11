@@ -5,34 +5,141 @@ custom-mixins.less contains additional mixins - and overrides to mixins.less mix
 to be used throughout the LESS files LESS Mixins
 */
 
-
 /*
  Type Mixins
  ----------------------
 */
 
 .font-italic {
-    font-family: "Work Sans", Arial, sans-serif;
-    font-weight: 600;
-    font-style: italic;
+  font-family: 'Lato Italic', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  src: url("../font/Lato-Italic.ttf");
 }
 
-.slabo {
-  font-family: "Slabo 13px",Palatino Linotype,Georgia,Times New Roman,Times,serif;
+.font-light {
+  font-family: 'Lato Light', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  src: url("../font/Lato-Light.ttf");
 }
 
 .font-regular {
-  font-family: "Work Sans",Arial,Helvetica,Verdana,Geneva,sans-serif;
-  font-weight: 100;
+  font-family: 'Lato Regular', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  src: url("../font/Lato-Regular.ttf");
 }
 
 .font-bold {
-  font-family: "Work Sans",Arial,Helvetica,Verdana,Geneva,sans-serif;
-  font-weight: 800;
+  font-family: 'Lato Bold', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  src: url("../font/Lato-Bold.ttf");
+}
+
+.font-body {
+  font-family: 'Merriweather Regular', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  src: url("../font/Merriweather-Regular.ttf");
 }
 
 .footer-font {
-  font-family: "Work Sans",Arial,Helvetica,Verdana,Geneva,sans-serif;
+  font-family: 'Lato Bold', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+/* Drawer font mixins */
+
+.drawer-header-font {
+    &:extend(.font-bold);
+    font-size: .85714286em;
+    color: #43484e;
+    line-height: 40px;
+    text-transform: uppercase;  
+}
+
+/* Regulation nav (drawer) font styles */
+
+.regulation-nav-item-font {
+    &:extend(.font-regular);
+    font-size: 1em;
+    line-height: 20px;
+}
+
+.regulation-nav-section-marker-font {
+    &:extend(.font-bold);
+    font-size: 1.1428571428571428em; /* 16px */
+    line-height: 26px;
+}
+
+.regulation-nav-subpart-heading-font {
+    &:extend(.font-bold);
+    font-size: .8571428571428571em; /* 12px */
+    line-height: 18px;
+    color: #75787b;    
+}
+
+.regulation-nav-interp-heading-font {
+    &:extend(.font-regular);
+    text-transform: uppercase;
+    font-size: .85714286em;
+}
+
+.regulation-nav-interp-title-font {
+    &:extend(.font-bold);
+    font-size: 1em;
+}
+
+/* History (drawer) font styles */
+
+.regulation-history-version-date-font {
+    &:extend(.font-bold);
+    font-size: 1.142853333em;
+}
+
+/* Key Terms */
+
+.key-term-font {
+  font-family: 'Lato Bold', Arial, sans-serif !important; 
+}
+
+.key-term-level-1-font {
+    &:extend(.key-term-font);
+    font-size: 1.4666666666666666em; 
+    line-height: 31px;
+}
+
+.key-term-level-2-font {
+    &:extend(.key-term-font);
+    font-size: 1.0666666666666667em; 
+    line-height: 26px;
+}
+
+.key-term-level-3-font {
+    &:extend(.key-term-font);
+    font-size: 1.0666666666666667em; 
+    line-height: 26px;
+}
+
+/* Navigation links */
+
+.next-prev-link-link-font {
+    &:extend(.font-regular);
+    font-size: 1em;
+    line-height: 22px;
+}
+
+.next-prev-link-title-font { 
+    &:extend(.font-regular);
+    font-size: 1em;
+    line-height: 20px;
+}
+
+.footer-font {
+  font-family: 'Lato Bold', Arial, sans-serif;
   font-weight: 800;
-  font-size:16px;
+  font-size:1em;
 }
