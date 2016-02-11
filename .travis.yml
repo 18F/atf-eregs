@@ -14,12 +14,11 @@ script:
   - python manage.py migrate --fake-initial
   - python manage.py compile_frontend
 before_deploy:
-  - cd $TRAVIS_BUILD_DIR
-  - export PATH=$TRAVIS_BUILD_DIR:$PATH
-  - travis_retry curl -L -o cf.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.15.0"
-  - tar xzvf cf.tgz
-  - mkdir -p ${TRAVIS_BUILD_DIR}/Godeps/_workspace
-  - export GOPATH=${TRAVIS_BUILD_DIR}/Godeps/_workspace
+  - export PATH=$HOME:$PATH
+  - travis_retry curl -L -o $HOME/cf.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.15.0"
+  - tar xzvf $HOME/cf.tgz -C $HOME
+  - mkdir -p ${HOME}/Godeps/_workspace
+  - export GOPATH=${HOME}/Godeps/_workspace
   - go get github.com/concourse/autopilot
   - cf install-plugin -f $GOPATH/bin/autopilot
 deploy:
