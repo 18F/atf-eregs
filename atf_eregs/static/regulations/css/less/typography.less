@@ -8,11 +8,6 @@ typography.less contains both global and application specific typography */
  Global Typography
  ========================================================================== */
 
-/*  Body Font
-    ------------
-    <p>Georgia, 1em, black</p>
-*/
-
 body {
     color: @black;
     font-family: @body_font;
@@ -38,15 +33,11 @@ strong {
 
 h1,
 h2,
-h3{
-    .slabo;
-    margin-bottom: 0;
-}
-
+h3,
 h4,
 h5,
 h6 {
-    .slabo;
+    .font-bold;
     margin-bottom: 0;
 }
 
@@ -55,11 +46,13 @@ h1 {
 }
 
 h2 {
-    font-size: 1.625em;
+    font-size: 1.75em;  /* 28px  */
+    line-height: 36px;
 }
 
 h3 {
-    font-size: 1.375em;
+    font-size: 1.375em; /* 22px  */
+    line-height: 31px;
 }
 
 h4 {
@@ -87,7 +80,8 @@ h6 {
 }
 
 .small-header {
-    font-size: 1.125em;
+    font-size: 1em;
+    line-height:26px;
 }
 
 .xsmall-header {
@@ -95,7 +89,7 @@ h6 {
 }
 
 .light-header {
-    .slabo;
+    .font-bold;
 }
 
 .upper-header {
@@ -402,7 +396,9 @@ The `<ol>` tag needs to have the appropriate list type applied
 
 .main-content p {
   font-family: @body_font;
+  font-size: .9375em;
   font-weight: 400;
+  line-height: 2em;
 }
 
 .paragraph-marker, .stripped-marker {
@@ -435,6 +431,7 @@ All key-terms are displayed as block elements to force a line-break.
 */
 
 .key-term {
+    .key-term-font;
     display: block;
 }
 
@@ -450,9 +447,8 @@ All key-terms are displayed as block elements to force a line-break.
 ```
 */
 
-.level-1 .key-term {
-    font-size: 1.375em; /* 24px / 16px = 1.5em */
-    line-height: 1.5; /* 30px / 24px = 1.25 */
+.level-1 .key-term {    
+    .key-term-level-1-font;
 }
 
 /*  Level-2 key-terms
@@ -471,9 +467,8 @@ All key-terms are displayed as block elements to force a line-break.
 
 .level-2 .key-term,
 .supplement-section .level-1 .key-term {
+    .key-term-level-2-font;
     text-transform: uppercase;
-    font-size: 1em;
-    .font-bold;
 }
 
 /*  Level-3 key-terms
@@ -491,7 +486,7 @@ All key-terms are displayed as block elements to force a line-break.
 */
 
 .level-3 .key-term {
-    .font-bold;
+    .key-term-level-3-font;
     text-transform: none;
 }
 

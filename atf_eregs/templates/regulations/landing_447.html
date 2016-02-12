@@ -2,30 +2,46 @@
 
 {% block reg_title %}
 <h2 class="banner-text">Importation of Arms, Ammunition and Implements of War</h2>
-<p>Part 447 regulations relate to that portion of section 38 of the Arms
-Export Control Act of 1976, as amended, which is concerned with the
-importation of arms, ammunition and implements of war.</p>
+<p>This regulation lists the defense articles subject to control, explains the importation of arms, ammunition and implements of war, and explains the restrictions on importing these items into the U.S.</p>
 {% endblock %}
 
 {% block reg_main_content %}
-<div class="important group">We are still in the process of verifying the content of this regulation.</div>
-<h3 class="list-header">The Regulation covers topics such as:</h3>
+<h3 class="list-header">Important topics include:</h3>
 <ul class="tag-list">
-  <li>Definitions</li>
-  <li>United States Munitions Import List</li>
-  <li>Registration and permit requirements</li>
-  <li>Restrictions and exemptions</li>
-  <li>Penalties, seizures and forfeitures</li>
+  <li><a href="{% url 'chrome_section_view' label_id='447-11' version=current_version.version %}" class="citation internal" data-section-id="447-11">Definitions of terms used in this regulation</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='447-21' version=current_version.version %}" class="citation internal" data-section-id="447-21">The United States Munitions Import List</a> (items that are subject to controls)</li>
+  <li><a href="{% url 'chrome_section_view' label_id='447-31' version=current_version.version %}" class="citation internal" data-section-id="447-31">Registration</a> and <a href="{% url 'chrome_section_view' label_id='447-41' version=current_version.version %}" class="citation internal" data-section-id="447-41">permit</a> requirements for importing them</li>
+  <li><a href="{% url 'chrome_section_view' label_id='447-52' version=current_version.version %}" class="citation internal" data-section-id="447-52">Import restrictions that apply to specific countries</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='447-53' version=current_version.version %}" class="citation internal" data-section-id="447-53">Exemptions to import requirements</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='447-61' version=current_version.version %}" class="citation internal" data-section-id="447-61">Penalties, seizures and forfeitures</a></li>
 </ul>
 {% endblock %}
 
 {% block reg_sidebar %}
 <div class="content-wrap">
-  <h3>Additional Resources</h3>
+  <h3>Related law</h3>
   <ul>
-    <li><a href="https://www.gpo.gov/fdsys/pkg/USCODE-2011-title22/pdf/USCODE-2011-title22-chap39-subchapIII-sec2778.pdf" class="external" aria-label="Link opens in a new window" target="_blank">Section 38 of the Arms Export Control Act (U.S.C. 22)</a></li>
-    <li><a href="https://www.atf.gov/qa-category/imports-exports"
-           class="external" aria-label="Link opens in a new window" target="_blank">Imports &amp; Exports Q&amp;A</a></li>
+    <li><a href="https://www.gpo.gov/fdsys/pkg/USCODE-2011-title22/pdf/USCODE-2011-title22-chap39-subchapIII-sec2778.pdf" class="external" aria-label="Link opens in a new window" target="_blank">Arms Export Control Act of 1976 (22 U.S.C. 2778)</a></li>
+  </ul>
+  
+  <h3>Ask questions</h3>
+  <ul>
+    <li><a href="https://www.atf.gov/contact/licensing-and-other-services" class="external" aria-label="Link opens in a new window" target="_blank">Call the Firearms &amp; Explosives Imports Branch</a></li>
+    <li><a href="https://www.atf.gov/contact" class="external" aria-label="Link opens in a new window" target="_blank">Submit a Firearms and Explosives Import Question or Concern</a></li>
+  </ul>
+  
+  <h3>Additional resources</h3>
+  <ul>
+    <li><a href="https://www.atf.gov/qa-category/imports-exports" class="external" aria-label="Link opens in a new window" target="_blank">Imports &amp; Exports Q&amp;A</a></li>
+    <li><a href="https://www.atf.gov/firearms/import-firearms-ammunition-and-implements-war" class="external" aria-label="Link opens in a new window" target="_blank">Permit application forms</a></li>
+    <li>Guidebook: <a href="https://www.atf.gov/firearms/importation-verification-firearms-ammunition-and-implements-war-table-contents" class="external" aria-label="Link opens in a new window" target="_blank">Importation &amp; Verification of Firearms, Ammunition and Implements of War</a></li>
+  </ul>
+
+  <h3>Related tools</h3>
+  <ul>
+    <li>View this regulation on <a href="http://www.ecfr.gov/cgi-bin/text-idx?SID=70394195a3edf623eba7ce77a1bddff1&amp;node=27:3.0.1.2.2&amp;rgn=div5" class="external" aria-label="Link opens in a new window" target="_blank">e-CFR (Electronic Code of Federal Regulations)</a></li>
+    <li>Related rules, proposed rules, and notices in the <a href="https://www.federalregister.gov/articles/search?conditions%5Bagency_ids%5D=19&amp;conditions%5Bterm%5D=Importation+of+Arms%2C+Ammunition+and+Implements+of+War&amp;order=newest&amp;quiet=true" class="external" aria-label="Link opens in a new window" target="_blank">Federal Register</a></li>
+    <li>Related open and closed comment periods on <a href="http://www.regulations.gov/#!searchResults;rpp=25;so=DESC;sb=commentDueDate;po=0;s=Importation%252Bof%252BArms%252C%252BAmmunition%252Band%252BImplements%252Bof%252BWar;dct=FR%252BPR%252BN%252BO;cat=LES" class="external" aria-label="Link opens in a new window" target="_blank">Regulations.gov</a></li>
   </ul>
 </div>
 {% endblock %}
