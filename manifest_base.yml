@@ -1,6 +1,8 @@
 ---
 command: python manage.py refresh && python manage.py collectstatic --noinput && waitress-serve --port=$VCAP_APP_PORT atf_eregs.wsgi:application
-
+domains:
+  - apps.cloud.gov
+  - 18f.gov
 services:
   # Must provide HTTP_AUTH_USER, HTTP_AUTH_PASSWORD, NEW_RELIC_LICENSE_KEY, and NEW_RELIC_APP_NAME
   - atf-eregs-creds
