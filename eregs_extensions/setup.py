@@ -5,6 +5,9 @@ fs = "extend_regparser"  # The directory name for the package.
 entry_points = {
     "%s.preprocessors" % ns: [
         "USCode = %s.preprocs:USCode" % fs
+    ],
+    "%s.test_suite" % ns: [
+        "testsuite = %s.tests" % fs
     ]
 }
 
