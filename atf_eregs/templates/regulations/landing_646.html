@@ -1,4 +1,5 @@
 {% extends "regulations/generic_landing.html" %}
+{% load macros %}
 
 {% block reg_title %}
 <h2 class="banner-text">Contraband Cigarettes</h2>
@@ -21,12 +22,8 @@ the Virgin Islands.</p>
 <div class="content-wrap">
   <h3>Additional Resources</h3>
   <ul>
-    <li><a href="https://www.atf.gov/questions-and-answers/alcohol-and-tobacco-qas"
-           class="external" aria-label="Link opens in a new window" target="_blank">Alcohol &amp; Tobacco
-           Q&amp;As</a></li>
-    <li><a href="http://www.gpo.gov/fdsys/pkg/USCODE-2011-title18/pdf/USCODE-2011-title18-partI-chap114.pdf"
-           class="external" aria-label="Link opens in a new window" target="_blank">Contraband Cigarettes Trafficking
-           Act (CCTA)</a></li>
+    <li>{% external_link url="https://www.atf.gov/questions-and-answers/alcohol-and-tobacco-qas" text="Alcohol & Tobacco Q&As" %}</li>
+    <li>{% external_link url="http://www.gpo.gov/fdsys/pkg/USCODE-2011-title18/pdf/USCODE-2011-title18-partI-chap114.pdf" text="Contraband Cigarettes Trafficking Act (CCTA)" %}</li>
   </ul>
 </div>
 {% endblock %}

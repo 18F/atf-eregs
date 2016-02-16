@@ -1,4 +1,5 @@
 {% overextends "regulations/generic_landing.html" %}
+{% load macros %}
 {% comment %}
 Generally, we like all of the content in the generic_landing, but we _would_
 like to provide a consistent disclaimer. Overextends tells django to use the
@@ -9,18 +10,16 @@ like to provide a consistent disclaimer. Overextends tells django to use the
 <h4 tabindex="0" class="important">Legal limitations of this tool</h4>
 
 <p>The ATF’s eRegulations tool is an editorial compilation of material and not
-an official legal edition of the <a
-href="https://www.archives.gov/federal-register/cfr/" class="external"
-aria-label="Link opens in a new window" target="_blank">Code of Federal Regulations</a> or the <a
-href="https://www.federalregister.gov/" class="external"
-aria-label="Link opens in a new window" target="_blank">Federal Register</a>. We have made every effort to ensure the
-material presented in this tool is accurate, but if you are relying on it for
-legal research you should <a
-href="http://www.ecfr.gov/cgi-bin/ECFR?page=userinfo" class="external"
-aria-label="Link opens in a new window" target="_blank">consult the official editions of those sources</a> to confirm
-your findings. Nothing in this tool binds ATF or creates any rights, benefits,
-or defenses, substantive or procedural, that are enforceable by any party in
-any manner.</p>
+an official legal edition of the
+{% external_link url="https://www.archives.gov/federal-register/cfr/" text="Code of Federal Regulations" %}
+or the
+{% external_link url="https://www.federalregister.gov/" text="Federal Register" %}.
+We have made every effort to ensure the material presented in this tool is
+accurate, but if you are relying on it for legal research you should
+{% external_link url="http://www.ecfr.gov/cgi-bin/ECFR?page=userinfo" text="consult the official editions of those sources" %}
+to confirm your findings. Nothing in this tool binds ATF or creates any
+rights, benefits, or defenses, substantive or procedural, that are enforceable
+by any party in any manner.</p>
 
 {% endblock %}
 

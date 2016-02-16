@@ -1,4 +1,5 @@
 {% extends "regulations/generic_landing.html" %}
+{% load macros %}
 
 {% block reg_title %}
 <h2 class="banner-text">Machine Guns, Destructive Devices, and Certain Other
@@ -24,15 +25,15 @@
 <p>Some example topic searches:</p>
 
 <ul class="tag-list">
-  <li><a href="{% url 'chrome_search' label_id='479' %}?version={{ current_version.version}}&amp;q=Any+other+weapon" class="internal">Any other weapon</a></li>
-  <li><a href="{% url 'chrome_search' label_id='479' %}?version={{ current_version.version}}&amp;q=Collector" class="internal">Collector</a></li>
-  <li><a href="{% url 'chrome_search' label_id='479' %}?version={{ current_version.version}}&amp;q=Dealer" class="internal">Dealer</a></li>
-  <li><a href="{% url 'chrome_search' label_id='479' %}?version={{ current_version.version}}&amp;q=Destructive+device" class="internal">Destructive device</a></li>
-  <li><a href="{% url 'chrome_search' label_id='479' %}?version={{ current_version.version}}&amp;q=Firearm" class="internal">Firearm</a></li>
-  <li><a href="{% url 'chrome_search' label_id='479' %}?version={{ current_version.version}}&amp;q=Importer" class="internal">Importer</a></li>
-  <li><a href="{% url 'chrome_search' label_id='479' %}?version={{ current_version.version}}&amp;q=Machine+gun" class="internal">Machine gun</a></li>
-  <li><a href="{% url 'chrome_search' label_id='479' %}?version={{ current_version.version}}&amp;q=Silencer" class="internal">Silencer</a></li>
-  <li><a href="{% url 'chrome_search' label_id='479' %}?version={{ current_version.version}}&amp;q=Transfer" class="internal">Transfer</a></li>
+  <li>{% search_for reg="479" version=current_version.version terms="Any other weapon" %}</li>
+  <li>{% search_for reg="479" version=current_version.version terms="Collector" %}</li>
+  <li>{% search_for reg="479" version=current_version.version terms="Dealer" %}</li>
+  <li>{% search_for reg="479" version=current_version.version terms="Destructive device" %}</li>
+  <li>{% search_for reg="479" version=current_version.version terms="Firearm" %}</li>
+  <li>{% search_for reg="479" version=current_version.version terms="Importer" %}</li>
+  <li>{% search_for reg="479" version=current_version.version terms="Machine gun" %}</li>
+  <li>{% search_for reg="479" version=current_version.version terms="Silencer" %}</li>
+  <li>{% search_for reg="479" version=current_version.version terms="Transfer" %}</li>
 </ul>
 
 {% endblock %}
@@ -41,39 +42,35 @@
 <div class="content-wrap">
   <h3>Related law</h3>
   <ul>
-    <li><a href="http://www.gpo.gov/fdsys/pkg/USCODE-2011-title26/pdf/USCODE-2011-title26-subtitleE-chap53.pdf"
-           class="external" aria-label="Link opens in a new window" target="_blank">National Firearms Act (26 U.S.C.
-           Chapter 53)</a></li>
+    <li>{% external_link url="http://www.gpo.gov/fdsys/pkg/USCODE-2011-title26/pdf/USCODE-2011-title26-subtitleE-chap53.pdf" text="National Firearms Act (26 U.S.C.  Chapter 53)" %}</li>
   </ul>
   
   <h3>Ask questions</h3>
   <ul>
-    <li><a href="https://www.atf.gov/contact/licensing-and-other-services" 
-           class="external" aria-label="Link opens in a new window" target="_blank">Call the NFA Branch</a></li>
-    <li><a href="https://www.atf.gov/contact" 
-           class="external" aria-label="Link opens in a new window" target="_blank">Submit a NFA Question</a></li>
+    <li>{% external_link url="https://www.atf.gov/contact/licensing-and-other-services" text="Call the NFA Branch" %}</li>
+    <li>{% external_link url="https://www.atf.gov/contact" text="Submit a NFA Question" %}</li>
   </ul>
   
   <h3>Additional resources</h3>
   <ul>
-    <li><a href="https://www.atf.gov/rules-and-regulations/national-firearms-act"
-           class="external" aria-label="Link opens in a new window" target="_blank">Introduction to the NFA</a></li>
-    <li><a href="https://www.atf.gov/qa-category/national-firearms-act-nfa"
-           class="external" aria-label="Link opens in a new window" target="_blank">NFA Q&amp;A</a></li>
-    <li><a href="https://www.atf.gov/firearms/national-firearms-act-handbook"
-           class="external" aria-label="Link opens in a new window" target="_blank">NFA Handbook</a></li>
-    <li><a href="https://www.atf.gov/firearms/firearms-guide-identification-firearms-within-purview-national-firearms-act"
-           class="external" aria-label="Link opens in a new window" target="_blank">Identification of NFA
-           Firearms</a></li>
-    <li><a href="https://www.atf.gov/resource-center/forms-library"
-           class="external" aria-label="Link opens in a new window" target="_blank">NFA Forms</a></li>
+    <li>{% external_link url="https://www.atf.gov/rules-and-regulations/national-firearms-act" text="Introduction to the NFA" %}</li>
+    <li>{% external_link url="https://www.atf.gov/qa-category/national-firearms-act-nfa" text="NFA Q&A" %}</li>
+    <li>{% external_link url="https://www.atf.gov/firearms/national-firearms-act-handbook" text="NFA Handbook" %}</li>
+    <li>{% external_link url="https://www.atf.gov/firearms/firearms-guide-identification-firearms-within-purview-national-firearms-act" text="Identification of NFA Firearms" %}</li>
+    <li>{% external_link url="https://www.atf.gov/resource-center/forms-library" text="NFA Forms" %}</li>
   </ul>
   
   <h3>Related tools</h3>
   <ul>
-    <li>View this regulation on <a href="http://www.ecfr.gov/cgi-bin/text-idx?SID=3348fa35fa821aaaff8cd8d898a5dedd&amp;mc=true&amp;node=pt27.3.479&amp;rgn=div5" class="external" aria-label="Link opens in a new window" target="_blank">e-CFR (Electronic Code of Federal Regulations)</a></li>
-    <li>Related rules, proposed rules, and notices in the <a href="https://www.federalregister.gov/articles/search?conditions%5Bagency_ids%5D%5B%5D=19&amp;conditions%5Bterm%5D=Machine+Guns%2C+Destructive+Devices%2C+and+Certain+Other+Firearms&amp;order=newest&amp;quiet=true" class="external" aria-label="Link opens in a new window" target="_blank">Federal Register</a></li>
-    <li>Related open and closed comment periods on <a href="http://www.regulations.gov/#!searchResults;rpp=25;so=DESC;sb=commentDueDate;po=0;s=Machine%252BGuns%252C%252BDestructive%252BDevices%252C%252Band%252BCertain%252BOther%252BFirearms;fp=true;dct=FR%252BPR%252BN%252BO;a=ATF" class="external" aria-label="Link opens in a new window" target="_blank">Regulations.gov</a></li>
+    <li>View this regulation on
+      {% external_link url="http://www.ecfr.gov/cgi-bin/text-idx?mc=true&node=pt27.3.479" text="e-CFR (Electronic Code of Federal Regulations)" %}
+    </li>
+    <li>Related rules, proposed rules, and notices in the
+      {% external_link url="https://www.federalregister.gov/articles/search?conditions%5Bagency_ids%5D%5B%5D=19&conditions%5Bterm%5D=Machine+Guns%2C+Destructive+Devices%2C+and+Certain+Other+Firearms&order=newest&amp;quiet=true" text="Federal Register" %}
+    </li>
+    <li>Related open and closed comment periods on
+      {% external_link url="http://www.regulations.gov/#!searchResults;rpp=25;so=DESC;sb=commentDueDate;po=0;s=Machine%252BGuns%252C%252BDestructive%252BDevices%252C%252Band%252BCertain%252BOther%252BFirearms;fp=true;dct=FR%252BPR%252BN%252BO;a=ATF" text="Regulations.gov" %}
+    </li>
   </ul>
   
 </div>

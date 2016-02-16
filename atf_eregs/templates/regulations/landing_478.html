@@ -1,4 +1,5 @@
 {% extends "regulations/generic_landing.html" %}
+{% load macros %}
 
 {% block reg_title %}
 <h2 class="banner-text">Commerce in Firearms and Ammunition</h2>
@@ -28,24 +29,25 @@
 <p>Some example topic searches:</p>
 
 <ul class="tag-list">
-  <li><a href="{% url 'chrome_search' label_id='478' %}?version={{ current_version.version}}&amp;q=Antique+firearm" class="internal">Antique firearm</a></li>
-  <li><a href="{% url 'chrome_search' label_id='478' %}?version={{ current_version.version}}&amp;q=Armor+piercing+ammunition" class="internal">Armor piercing ammunition</a></li>
-  <li><a href="{% url 'chrome_search' label_id='478' %}?version={{ current_version.version}}&amp;q=Business+premises" class="internal">Business premises</a></li>
-  <li><a href="{% url 'chrome_search' label_id='478' %}?version={{ current_version.version}}&amp;q=Collector" class="internal">Collector</a></li>
-  <li><a href="{% url 'chrome_search' label_id='478' %}?version={{ current_version.version}}&amp;q=Curio" class="internal">Curio or relic firearm</a></li>
-  <li><a href="{% url 'chrome_search' label_id='478' %}?version={{ current_version.version}}&amp;q=Dealer" class="internal">Dealer</a></li>
-  <li><a href="{% url 'chrome_search' label_id='478' %}?version={{ current_version.version}}&amp;q=Destructive+device" class="internal">Destructive device</a></li>
-  <li><a href="{% url 'chrome_search' label_id='478' %}?version={{ current_version.version}}&amp;q=Firearm+frame+or+receiver" class="internal">Firearm frame or receiver</a></li>
-  <li><a href="{% url 'chrome_search' label_id='478' %}?version={{ current_version.version}}&amp;q=Handgun" class="internal">Handgun</a></li>
-  <li><a href="{% url 'chrome_search' label_id='478' %}?version={{ current_version.version}}&amp;q=Importer" class="internal">Importer</a></li>
-  <li><a href="{% url 'chrome_search' label_id='478' %}?version={{ current_version.version}}&amp;q=Large+capacity+ammunition+feeding+device" class="internal">Large capacity ammunition feeding device</a></li>
-  <li><a href="{% url 'chrome_search' label_id='478' %}?version={{ current_version.version}}&amp;q=Machine+gun" class="internal">Machine gun</a></li>
-  <li><a href="{% url 'chrome_search' label_id='478' %}?version={{ current_version.version}}&amp;q=Manufacturer" class="internal">Manufacturer</a></li>
-  <li><a href="{% url 'chrome_search' label_id='478' %}?version={{ current_version.version}}&amp;q=Pistol" class="internal">Pistol</a></li>
-  <li><a href="{% url 'chrome_search' label_id='478' %}?version={{ current_version.version}}&amp;q=Prohibited+person" class="internal">Prohibited person</a></li>
-  <li><a href="{% url 'chrome_search' label_id='478' %}?version={{ current_version.version}}&amp;q=Revolver" class="internal">Revolver</a></li>
-  <li><a href="{% url 'chrome_search' label_id='478' %}?version={{ current_version.version}}&amp;q=Rifle" class="internal">Rifle</a></li>
-  <li><a href="{% url 'chrome_search' label_id='478' %}?version={{ current_version.version}}&amp;q=Unserviceable+firearm" class="internal">Unserviceable firearm</a></li>
+  <li>{% search_for reg='478' version=current_version.version terms='Antique firearm' %}</li>
+  <li>{% search_for reg='478' version=current_version.version terms='Armor piercing ammunition' %}</li>
+  <li>{% search_for reg='478' version=current_version.version terms='Business premises' %}</li>
+  <li>{% search_for reg='478' version=current_version.version terms='Collector' %}</li>
+  <li>{% search_for reg='478' version=current_version.version terms='Curio or relic firearm' %}</li>
+  <li>{% search_for reg='478' version=current_version.version terms='Dealer' %}</li>
+  <li>{% search_for reg='478' version=current_version.version terms='Destructive device' %}</li>
+  <li>{% search_for reg='478' version=current_version.version terms='Firearm frame or receiver' %}</li>
+  <li>{% search_for reg='478' version=current_version.version terms='Collector' %}</li>
+  <li>{% search_for reg='478' version=current_version.version terms='Handgun' %}</li>
+  <li>{% search_for reg='478' version=current_version.version terms='Importer' %}</li>
+  <li>{% search_for reg='478' version=current_version.version terms='Large capacity ammunition feeding device' %}</li>
+  <li>{% search_for reg='478' version=current_version.version terms='Machine gun' %}</li>
+  <li>{% search_for reg='478' version=current_version.version terms='Manufacturer' %}</li>
+  <li>{% search_for reg='478' version=current_version.version terms='Pistol' %}</li>
+  <li>{% search_for reg='478' version=current_version.version terms='Prohibited person' %}</li>
+  <li>{% search_for reg='478' version=current_version.version terms='Revolver' %}</li>
+  <li>{% search_for reg='478' version=current_version.version terms='Rifle' %}</li>
+  <li>{% search_for reg='478' version=current_version.version terms='Unserviceable firearm' %}</li>
 </ul>
 {% endblock %}
 
@@ -53,42 +55,38 @@
 <div class="content-wrap">
   <h3>Related law</h3>
   <ul>
-    <li><a href="http://www.gpo.gov/fdsys/pkg/USCODE-2011-title18/pdf/USCODE-2011-title18-partI-chap44.pdf"
-           class="external" aria-label="Link opens in a new window" target="_blank">Gun Control Act of 1968 (18 U.S.C. 921 et. seq.)</a></li>
+    <li>{% external_link url="http://www.gpo.gov/fdsys/pkg/USCODE-2011-title18/pdf/USCODE-2011-title18-partI-chap44.pdf" text="Gun Control Act of 1968 (18 U.S.C. 921 et. seq.)" %}</li>
   </ul>
   
   <h3>Ask questions</h3>
   <ul>
-    <li><a href="https://www.atf.gov/contact/licensing-and-other-services" class="external" aria-label="Link opens in a new window" target="_blank">Call ATF</a></li>
-    <li><a href="https://www.atf.gov/contact" class="external" aria-label="Link opens in a new window" target="_blank">Submit a Question or Concern</a></li>
+    <li>{% external_link url="https://www.atf.gov/contact/licensing-and-other-services" text="Call ATF" %}</li>
+    <li>{% external_link url="https://www.atf.gov/contact" text="Submit a Question or Concern" %}</li>
   </ul>
   
   <h3>Additional resources</h3>
   <ul>
-    <li><a href="https://www.atf.gov/questions-and-answers/firearms-qas"
-           class="external" aria-label="Link opens in a new window" target="_blank">Firearms Q&amp;A</a></li>
-    <li><a href="https://www.atf.gov/firearms/firearms-forms"
-           class="external" aria-label="Link opens in a new window" target="_blank">Firearms Forms</a></li>
-    <li><a href="https://www.atf.gov/resource-center/publications-library?og_group_ref=1"
-           class="external" aria-label="Link opens in a new window" target="_blank">Firearms Publications</a><li>
-	<li><a href="https://www.atf.gov/rules-and-regulations/firearms-rulings"
-           class="external" aria-label="Link opens in a new window" target="_blank">Firearms Rulings</a><li> 
-    <li><a href="https://www.atf.gov/firearms/tools-services-firearms-industry"
-           class="external" aria-label="Link opens in a new window" target="_blank">Tools &amp; Services for Firearms Industry</a></li>
-    <li><a href="https://www.atf.gov/file/101806/download" 
-           class="external" aria-label="Link opens in a new window" target="_blank">Explanation of the firearms license denial/revocation hearing process</a></li>
+    <li>{% external_link url="https://www.atf.gov/questions-and-answers/firearms-qas" text="Firearms Q&A" %}</li>
+    <li>{% external_link url="https://www.atf.gov/firearms/firearms-forms" text="Firearms Forms" %}</li>
+    <li>{% external_link url="https://www.atf.gov/resource-center/publications-library?og_group_ref=1" text="Firearms Publications" %}</li>
+    <li>{% external_link url="https://www.atf.gov/rules-and-regulations/firearms-rulings" text="Firearms Rulings" %}</li>
+    <li>{% external_link url="https://www.atf.gov/firearms/tools-services-firearms-industry" text="Tools & Services for Firearms Industry" %}</li>
+    <li>{% external_link url="https://www.atf.gov/file/101806/download" text="Explanation of the firearms license denial/revocation hearing process" %}</li>
   </ul>
   
   <h3>Related tools</h3>
   <ul>
-    <li>View this regulation on <a href="http://www.ecfr.gov/cgi-bin/retrieveECFR?gp=&amp;SID=2717433fd3d41e66975f2fa2a49cf2de&amp;mc=true&amp;r=PART&amp;n=pt27.3.478" class="external" aria-label="Link opens in a new window" target="_blank">e-CFR (Electronic Code of Federal Regulations)</a></li>
-    <li>Related rules, proposed rules, and notices in the <a href="https://www.federalregister.gov/articles/search?conditions%5Bagency_ids%5D%5B%5D=19&amp;conditions%5Bterm%5D=Commerce+in+Firearms+and+Ammunition&amp;order=newest&amp;quiet=true" class="external" aria-label="Link opens in a new window" target="_blank">Federal Register</a></li>
-    <li>Related open and closed comment periods on <a href="http://www.regulations.gov/#!searchResults;rpp=25;po=0;s=Commerce%252Bin%252BFirearms%252Band%252BAmmunition;fp=true;ns=true" class="external" aria-label="Link opens in a new window" target="_blank">Regulations.gov</a></li>
+    <li>View this regulation on
+      {% external_link url="http://www.ecfr.gov/cgi-bin/retrieveECFR?gp=&mc=true&r=PART&n=pt27.3.478" text="e-CFR (Electronic Code of Federal Regulations)" %}
+    </li>
+    <li>Related rules, proposed rules, and notices in the
+      {% external_link url="https://www.federalregister.gov/articles/search?conditions%5Bagency_ids%5D%5B%5D=19&conditions%5Bterm%5D=Commerce+in+Firearms+and+Ammunition&order=newest&quiet=true" text="Federal Register" %}
+    </li>
+    <li>Related open and closed comment periods on
+      {% external_link url="http://www.regulations.gov/#!searchResults;rpp=25;po=0;s=Commerce%252Bin%252BFirearms%252Band%252BAmmunition;fp=true;ns=true" text="Regulations.gov" %}
+    </li>
   </ul>
 </div>
 
 
 {% endblock %}
-
-
-
