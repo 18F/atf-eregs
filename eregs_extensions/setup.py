@@ -1,7 +1,7 @@
 from setuptools import setup
 
 ns = "eregs_ns.parser"  # The namespace for regulations-parser extensions.
-fs = "extend_regparser"  # The directory name for the package.
+fs = "atf_regparser"  # The directory name for the package.
 entry_points = {
     "%s.preprocessors" % ns: [
         "USCode = %s.preprocs:USCode" % fs

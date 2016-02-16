@@ -2,7 +2,7 @@
 from unittest import TestCase
 
 from tests.xml_builder import XMLBuilderMixin
-from extend_regparser.preprocs import USCode
+from atf_regparser.preprocs import USCode
 
 
 class USCodeTests(XMLBuilderMixin, TestCase):
