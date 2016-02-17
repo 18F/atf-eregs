@@ -14,6 +14,7 @@ Contents:
    local_setup
    production_setup
    customization
+   new_rule
 
 
 
