@@ -26,7 +26,7 @@ A common setup might look like this::
 The umbrella project, in this case ``atf-eregs``, has a directory in it named ``eregs_extensions``. This is where agency-specific `regulations-parser`_ code lives.
 
 Namespaces and Modules
-
+----------------------
 In ``eregs_extensions`` is a directory named ``atf_regparser``. This directory name determines the name of the Python module that will be pulled in by `regulations-parser`_, and must be renamed to something unique to the agency using the extensions. This name must also match the value of the ``fs`` variable in ``eregs_extensions/setup.py``.
 
 `regulations-parser`_ uses `stevedore`_ to handle bringing in modules, determined by their entry points, which we use as namespaces.
