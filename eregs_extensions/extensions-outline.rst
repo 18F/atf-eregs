@@ -81,3 +81,10 @@ Subtree Processors
     ``eregs_ns.parser.tree_builders``
 ``AppendixProcessors``
     ``eregs_ns.parser.appendix_processors``
+
+
+.. _regulations-core: https://github.com/18F/regulations-core
+.. _regulations-parser: https://github.com/18F/regulations-parser
+.. _regulations-site: https://github.com/18F/regulations-site
+.. _atf-eregs: https://github.com/18F/atf-eregs
+.. _stevedore: http://docs.openstack.org/developer/stevedore/
