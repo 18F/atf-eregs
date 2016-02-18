@@ -70,3 +70,6 @@ include/
 src/
 pip-selfcheck.json
 
+
+# docs
+docs/_build
