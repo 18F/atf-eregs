@@ -36,7 +36,7 @@ The `regulations-parser`_ namespace prefix is ``eregs_ns.parser``, and the parse
 Currently, the only supported namespaces are ``eregs_ns.parser.preprocessors`` and ``eregs_ns.parser.test_suite``. In future, we hope to have all new agency-specific features use the extensions system, and to add new hooks to `regulations-parser`_ to find extensions in the appropriate code paths.
 
 Creating a New Preprocessor
-----------------------
+---------------------------
 Let's say we have a new agency, MIB, who wish to use eRegulations and to make additions to `regulations-parser`_ to handle their regulations. They fork https://github.com/18F/atf-eregs as ``mib-eregs`` and then follow the setup above.
 
 In ``mib-eregs``, the first thing they would do is rename the ``atf_regparser`` directory to ``mib_regparser``, and alter the ``setup.py`` file so that::
@@ -67,6 +67,21 @@ The ``tests.xml_builder`` namespacing is problematic and will probably be change
 
 Note that the test has to reflect the filesystem name ``mib_regparser``—in other words, each test has to change if that name changes.
 
+Current Extension Hooks
+-----------------------
+In `regulations-parser`_, ``settings.py`` creates a list of preprocessors and then looks for extensions to add to that list using `stevedore`_::
+
+    try:
+        stevedore_mgr = extension.ExtensionManager(
+            namespace="eregs_ns.parser.preprocessors", invoke_on_load=False)
+        stevedore_mgr.map(lambda ext: PREPROCESSORS.append(ext.entry_point_target))
+    except NoMatches:
+        pass
+
+Both ``regparser/tree/xml_parser/xml_wrapper.py`` and ``regparser/builder.py`` import ``regparser/tree/xml_parser/extended_preprocessors.py``, which iterates through that list of preprocessors and imports the modules, and returns a list of them to be used.
+
+``regparser/commands/full_tests.py`` looks for extensions in the ``eregs_ns.parser.test_suite`` namespace and runs those in addition to `regulations-parser`_'s own tests.
+
 Future Extension Hooks
 ----------------------
 A non-comprehensive list of other hooks we might add and what their namespaces would be:
@@ -77,7 +92,7 @@ A non-comprehensive list of other hooks we might add and what their namespaces w
     ``eregs_ns.parser.matchers``
 Subtree Processors
     ``eregs_ns.parser.subtree_processors``
-``Tree Builders``
+Tree Builders
     ``eregs_ns.parser.tree_builders``
 ``AppendixProcessors``
     ``eregs_ns.parser.appendix_processors``
