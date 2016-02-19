@@ -1,7 +1,7 @@
 # ATF eRegulations
 This repository contains code necessary to run a Bureau of Alcohol,
 Tobacco, Firearms and Explosives ([ATF](https://www.atf.gov)) instance of
-[eRegulations](https://eregs.github.io), which is a regulation parser, API, and viewer.
+[eRegulations](https://eregs.github.io) (a regulation parser, API, and viewer). Live version: [https://atf-eregs.apps.cloud.gov/](https://atf-eregs.apps.cloud.gov/)
 
 This code glues together general-purpose/non-agency-specific eRegulations libraries (which are not in this repository) with ATF-specific styles, templates, and plugins (which are in this repository).
 
