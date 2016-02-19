@@ -46,7 +46,7 @@ development server locally via
 
 .. code-block:: bash
 
-  python manage runserver
+  python manage.py runserver
 
 .. _data:
 
