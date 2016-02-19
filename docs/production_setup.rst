@@ -116,7 +116,7 @@ To update, substitute ``cf uups`` for ``cf cups``.
 Non-Cloud.gov
 =============
 
-If you'd like to move this application off cloud.gov, you will just need to
+If you'd like to move this application off cloud.gov, you will need to
 create an alternative settings file. Cloud.gov runs the following commands on
 each deploy (also described in the "manifest" files). Note that these commands
 are run within the context of a specific settings file, discussed shortly.

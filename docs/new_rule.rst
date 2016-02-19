@@ -12,5 +12,5 @@ display rules effective `in the future`. After a final rule has been published
 in the Federal Register, the parser should be re-ran and the appropriate XML
 file modified (if needed) to generate a correct set of changes. See the
 parser's more thorough
-`docs <http://eregs-parser.readthedocs.org/en/latest/new_rule.html>`_ on this
+`docs <http://eregs-parser.readthedocs.org/en/latest/new_rules.html>`_ on this
 subject to learn more.

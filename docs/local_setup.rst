@@ -41,7 +41,7 @@ the frontend:
   python manage.py migrate --fake-initial
   python manage.py compile_frontend
 
-Once you've selected a strategy in the :ref:`Data` section, you can run a
+Then select one of the two setup options in the :ref:`Data` section. After that, you can run a
 development server locally via
 
 .. code-block:: bash
@@ -70,7 +70,7 @@ In this scenario, we just need to configure the UI to point to the live API:
 Parsing Regulations
 -------------------
 
-To parse ATF's regulations, you will need to _also_ install the parsing
+To parse ATF's regulations, you will need to *also* install the parsing
 library.
 
 .. code-block:: bash
@@ -96,8 +96,7 @@ Editable Libraries
 
 Though this repository (atf-eregs) contains all of the ATF-specific code, you
 will most likely want to extend functionality in the base libraries as well.
-To do this, fork and check out the appropriate library (
-`regulations-site <https://github.com/18F/regulations-site>`_,
+To do this, fork and check out the appropriate library (`regulations-site <https://github.com/18F/regulations-site>`_,
 `regulations-core <https://github.com/18F/regulations-core>`_,
 `regulations-parser <https://github.com/18F/regulations-parser>`_) into a
 separate directory, then install it via
