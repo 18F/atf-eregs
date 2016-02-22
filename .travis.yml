@@ -13,6 +13,7 @@ env:
 script:
   - python manage.py migrate --fake-initial
   - python manage.py compile_frontend
+  - python manage.py test
 before_deploy:
   - export PATH=$HOME:$PATH
   - travis_retry curl -L -o $HOME/cf.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.15.0"
