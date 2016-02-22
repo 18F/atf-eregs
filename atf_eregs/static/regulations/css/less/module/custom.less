@@ -54,7 +54,7 @@ LESS Mixins
 .drawer-header-font {
     &:extend(.font-bold);
     font-size: .85714286em;
-    color: #43484e;
+    color: @mid_text;
     line-height: 40px;
     text-transform: uppercase;  
 }
@@ -77,7 +77,7 @@ LESS Mixins
     &:extend(.font-bold);
     font-size: .8571428571428571em; /* 12px */
     line-height: 18px;
-    color: #75787b;    
+    color: @dark_gray;
 }
 
 .regulation-nav-interp-heading-font {
@@ -221,6 +221,11 @@ Additional / overridden styles
     text-align: center;
     padding:5px;
     display:block;
-    background-color:#f7f8f9;
+    background-color: @bg_gray;
     border-bottom:2px solid #b8babd !important;
+}
+
+#rulings .ruling-id {
+    .font-bold;
+    display:block;
 }
