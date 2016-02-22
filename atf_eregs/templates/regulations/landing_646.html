@@ -3,27 +3,48 @@
 
 {% block reg_title %}
 <h2 class="banner-text">Contraband Cigarettes</h2>
-<p>Regulations in CFR 27 Part 646 relate to the distribution of contraband
-cigarettes and contraband smokeless tobacco within the several States of the
-United States, the District of Columbia, the Commonwealth of Puerto Rico, and
-the Virgin Islands.</p>
+<p>This regulation explains requirements related to distributing cigarettes in the several States of the United States, the District of Columbia, the Commonwealth of Puerto Rico, and the Virgin Islands.</p>
+
 {% endblock %}
 
 {% block reg_main_content %}
-<h3 class="list-header">The Regulation covers topics such as:</h3>
+<h3 class="list-header">Important topics include:</h3>
 <ul class="tag-list">
-  <li>Definition of "contraband cigarettes"</li>
-  <li>Definition of "contraband smokeless tobacco"</li>
-  <li>Reporting requirements</li>
+  <li><a href="{% url 'chrome_section_view' label_id='646-143' version=current_version.version %}" class="citation internal" data-section-id="646-143">Definitions of terms used in this regulation</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='646-143' version=current_version.version %}#646-143-p2827969139" class="citation internal" data-section-id="646-143">Definition of "contraband cigarettes"</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='646-146' version=current_version.version %}" class="citation internal" data-section-id="646-146">Recordkeeping requirements for cigarette distributors</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='646-154' version=current_version.version %}" class="citation internal" data-section-id="646-154">Penalties and forfeitures for contraband cigarettes</a></li>
 </ul>
 {% endblock %}
 
 {% block reg_sidebar %}
 <div class="content-wrap">
-  <h3>Additional Resources</h3>
+  <h3>Related law</h3>
   <ul>
-    <li>{% external_link url="https://www.atf.gov/questions-and-answers/alcohol-and-tobacco-qas" text="Alcohol & Tobacco Q&As" %}</li>
-    <li>{% external_link url="http://www.gpo.gov/fdsys/pkg/USCODE-2011-title18/pdf/USCODE-2011-title18-partI-chap114.pdf" text="Contraband Cigarettes Trafficking Act (CCTA)" %}</li>
+    <li>{% external_link url="http://www.gpo.gov/fdsys/pkg/USCODE-2011-title18/pdf/USCODE-2011-title18-partI-chap114.pdf" text="Contraband Cigarette Trafficking Act (18 U.S.C. 2341-2346" %}</li>
+  </ul>
+  <h3>Ask questions</h3>
+  <ul>
+    <li>{% external_link url="https://www.atf.gov/contact" text="Call ATF" %}</li>
+    <li>{% external_link url="https://www.atf.gov/alcohol-tobacco" text="Submit an Alcohol and Tobacco Diversion Inquiry" %}</li>
+  </ul>
+  <h3>Additional resources</h3>
+  <ul>
+    <li>{% external_link url="https://www.atf.gov/alcohol-tobacco" text="Alcohol and Tobacco Home" %}</li>
+    <li>{% external_link url="https://www.atf.gov/questions-and-answers/alcohol-and-tobacco-qas" text="Alcohol and Tobacco Q&A" %}</li>
+    <li>{% external_link url="https://www.atf.gov/news/pr/tobacco-enforcement" text="Fact Sheet: Tobacco Enforcement" %}</li>
+  </ul>
+  <h3>Related tools</h3>
+  <ul>
+    <li>View this regulation on
+      {% external_link url="http://www.ecfr.gov/cgi-bin/text-idx?node=27:3.0.1.4.6&rgn=div5" text="e-CFR (Electronic Code of Federal Regulations)" %}
+    </li>
+    <li>Related rules, proposed rules, and notices in the
+      {% external_link url="https://www.federalregister.gov/articles/search?conditions%5Bagency_ids%5D%5B%5D=19&conditions%5Bterm%5D=Contraband+Cigarettes&order=newest&quiet=true" text="Federal Register" %}
+    </li>
+    <li>Related open and closed comment periods on
+      {% external_link url="http://www.regulations.gov/#!searchResults;rpp=25;so=DESC;sb=commentDueDate;po=0;s=Contraband%252BCigarettes;fp=true;dct=FR%252BPR%252BN%252BO;a=ATF" text="Regulations.gov" %}
+    </li>
   </ul>
 </div>
 {% endblock %}
