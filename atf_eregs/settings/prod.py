@@ -37,3 +37,8 @@ if elastic_service:
         'URL': elastic_service.credentials['uri'],
         'INDEX_NAME': 'eregs',
     }
+
+try:
+    from local_settings import *    # noqa
+except ImportError:
+    pass
