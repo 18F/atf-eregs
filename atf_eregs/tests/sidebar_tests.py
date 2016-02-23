@@ -4,6 +4,7 @@ from mock import Mock
 
 from atf_eregs.sidebar import Rulings
 
+
 class RulingsTest(TestCase):
     def test_returns_children(self):
         """We should be catching rulings related to this section _or any

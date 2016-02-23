@@ -1,5 +1,3 @@
-from collections import namedtuple
-
 from regulations.generator.sidebar.base import SidebarBase
 
 
