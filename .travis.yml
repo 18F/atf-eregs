@@ -4,6 +4,7 @@ python:
   - "2.7"
 install:
   - pip install -r requirements.txt
+  - pip install -r requirements_test.txt
   - npm install -g grunt-cli bower
 env:
   global:
@@ -13,6 +14,8 @@ env:
 script:
   - python manage.py migrate --fake-initial
   - python manage.py compile_frontend
+  - python manage.py test
+  - flake8 atf_eregs eregs_extensions
 before_deploy:
   - export PATH=$HOME:$PATH
   - travis_retry curl -L -o $HOME/cf.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.15.0"

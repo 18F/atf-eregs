@@ -1,0 +1,24 @@
+{% load macros %}
+<section id="rulings" class="regs-meta">
+  <header class="expandable group{% if rulings %} has-content open{% endif %}">
+    <h4 tabindex="0">Rulings</h4>
+    <a href="#" tabindex="0"><span class="icon-text">Show/Hide Contents</span></a>
+  </header>
+  {% if rulings %}
+  <div class="chunk expand-drawer">
+    <p class="explanation">These rulings help to interpret this section of the regulation.</p>
+    <ul class="divided-list">
+    {% for ruling in rulings %}
+      <li>
+        <span class="ruling-id">{{ruling.id}}</span>
+        {% external_link url=ruling.url text=ruling.title %}
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+  {% else %}
+  <div class="chunk expand-drawer start-collapsed">
+    No rulings for this section in this tool.
+  </div>
+  {% endif %}
+</section>
