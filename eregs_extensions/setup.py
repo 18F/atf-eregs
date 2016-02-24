@@ -3,6 +3,9 @@ from setuptools import setup, find_packages
 ns = "eregs_ns.parser"  # The namespace for regulations-parser extensions.
 fs = "atf_regparser"  # The directory name for the package.
 entry_points = {
+    "%s.layers" % ns: [
+        "Rulings = %s.layers:Rulings" % fs
+    ],
     "%s.preprocessors" % ns: [
         "USCode = %s.preprocs:USCode" % fs
     ],
@@ -22,5 +25,9 @@ setup(
         'License :: Public Domain',
         'License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication'
     ],
-    entry_points=entry_points
+    entry_points=entry_points,
+    install_requires=['pyyaml'],
+    package_data={
+        fs: ['rulings.yml']
+    }
 )
