@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 ns = "eregs_ns.parser"  # The namespace for regulations-parser extensions.
 fs = "atf_regparser"  # The directory name for the package.
@@ -8,13 +8,16 @@ entry_points = {
     ],
     "%s.test_suite" % ns: [
         "testsuite = %s.tests" % fs
+    ],
+    "%s.term_definitions" % ns: [
+        "atf_terms = %s.term_defs:term_defs" % fs
     ]
 }
 
 setup(
     name=fs,
     version="1.0.0",
-    packages=[fs],
+    packages=find_packages(),
     classifiers=[
         'License :: Public Domain',
         'License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication'
