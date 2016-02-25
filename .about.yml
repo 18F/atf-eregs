@@ -59,9 +59,22 @@ contact:
 #   id: Internal team identifier/user name
 #   role: Team member's role; leads should be designated as 'lead'
 team:
+- github: brittag
+  role: Content Designer
+- github: cmc333333
+  role: Engineer
+- github: jbarnicle
+  role: Engineer
+- github: jehlers
+  role: User Experience Designer
 - github: journerdism
-   id: willsullivan
-   role: Product Lead
+  role: Product Manager
+- github: tadhg-ohiggins
+  role: Engineer
+- github: theresaanna
+  role: Engineer
+- github: vrajmohan
+  role: Engineer
 
 # What kind of content is contained in the project repository?
 # values: app, docs, policy
