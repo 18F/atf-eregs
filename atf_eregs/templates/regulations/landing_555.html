@@ -1,4 +1,5 @@
 {% extends "regulations/generic_landing.html" %}
+{% load macros %}
 
 {% block reg_title %}
 <h2 class="banner-text">Commerce in Explosives</h2>
@@ -21,12 +22,9 @@
 <div class="content-wrap">
   <h3>Additional Resources</h3>
   <ul>
-    <li><a href="https://www.atf.gov/questions-and-answers/explosives-qas"
-           class="external" aria-label="Link opens in a new window" target="_blank">Explosives Q&amp;A</a></li>
-    <li><a href="https://www.atf.gov/explosives/explosives-forms?og_group_ref_target_id=196"
-           class="external" aria-label="Link opens in a new window" target="_blank">Explosives Forms</a></li>
-    <li><a href="https://www.atf.gov/resource-center/publications-library?og_group_ref=2"
-           class="external" aria-label="Link opens in a new window" target="_blank">Explosives Publications</a></li>
+    <li>{% external_link url="https://www.atf.gov/questions-and-answers/explosives-qas" text="Explosives Q&A" %}</li>
+    <li>{% external_link url="https://www.atf.gov/explosives/explosives-forms?og_group_ref_target_id=196" text="Explosives Forms" %}</li>
+    <li>{% external_link url="https://www.atf.gov/resource-center/publications-library?og_group_ref=2" text="Explosives Publications" %}</li>
   </ul>
 </div>
 {% endblock %}
