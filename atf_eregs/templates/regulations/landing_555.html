@@ -1,5 +1,5 @@
 {% extends "regulations/generic_landing.html" %}
-{% load macros %}
+{% load macros to_list %}
 
 {% block reg_title %}
 <div class="banner-image banner-555"></div>
@@ -8,32 +8,68 @@
     <h2 class="banner-text">Commerce in Explosives</h2>
   </div>
 </div>
+<p>This regulation explains requirements for manufacturing, importing, buying, selling, transporting, and storing explosive materials.</p>
 {% endblock %}
 
 {% block reg_main_content %}
-<h3 class="list-header">The Regulation covers topics such as:</h3>
+<h3 class="list-header">Important topics include:</h3>
 <ul class="tag-list">
-  <li>Definitions; including definition of explosive materials</li>
-  <li>Licensing and permit requirements</li>
-  <li>Conduct of business by licensees and operations by permittees</li>
-  <li>Storage of explosive materials</li>
-  <li>Records and reports required of licensees and permittees</li>
-  <li>Relief from disabilities</li>
-  <li>Exemptions, unlawful acts, penalties, seizures, and forfeitures</li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-11' version=current_version.version %}" class="citation internal" data-section-id="555-11">Definitions of terms used in this regulation</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-11' version=current_version.version %}#555-11-p1795587076" class="citation internal" data-section-id="555-11">Definition of "explosive materials"</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-26' version=current_version.version %}" class="citation internal" data-section-id="555-26">Prohibited shipment, transportation, receipt, possession, or distribution</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-41' version=current_version.version %}" class="citation internal" data-section-id="555-41">License and permit requirements for importers, manufacturers, dealers, and users</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-71' version=current_version.version %}" class="citation internal" data-section-id="555-71">License and permit denial or revocation</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-101' version=current_version.version %}" class="citation internal" data-section-id="555-101">Conduct of business by licensees and operations by permittees</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-121' version=current_version.version %}" class="citation internal" data-section-id="555-121">Records and reports required of licensees and permittees</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-141' version=current_version.version %}" class="citation internal" data-section-id="555-141">Exemptions to requirements</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-142' version=current_version.version %}" class="citation internal" data-section-id="555-142">Relief from explosive materials prohibitions</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-161' version=current_version.version %}" class="citation internal" data-section-id="555-161">Unlawful acts, penalties, seizures, and forfeitures</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-180' version=current_version.version %}" class="citation internal" data-section-id="555-180">Marking of plastic explosives</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-201' version=current_version.version %}" class="citation internal" data-section-id="555-201">Storage of explosive materials</a>, including tables of distances</li>
 </ul>
+
 {% with reg='555' version=current_version.version %}
+  {% to_list "Background check" "Barricade" "Black powder" "Blasting agent" "Daily summary" "Dealer" "Discontinuance of business" "Fireworks" "Flash powder" "Hearing" "Importer" "Limited permit" "Magazine" "Manufacturer" "Pyrotechnic compositions" "Reporting theft or loss" "Salute" "Sample" "Storage" as terms %}
   {% include "atf_eregs/landing-search.html" %}
 {% endwith %}
 {% endblock %}
 
 {% block reg_sidebar %}
 <div class="content-wrap">
-  <h3>Additional Resources</h3>
+  <h3>Related law</h3>
   <ul>
+    <li>{% external_link url="https://www.gpo.gov/fdsys/pkg/USCODE-2011-title18/pdf/USCODE-2011-title18-partI-chap40.pdf" text="Organized Crime Control Act of 1970 (18 U.S.C. Chapter 40)" %}</li>
+  </ul>
+  
+  <h3>Ask questions</h3>
+  <ul>
+    <li>{% external_link url="https://www.atf.gov/contact/licensing-and-other-services" text="Call ATF" %}</li>
+    <li>{% external_link url="https://www.atf.gov/contact" text="Submit a Question or Concern" %}</li>
+  </ul>
+  
+  <h3>Additional resources</h3>
+  <ul>
+    <li>{% external_link url="https://www.atf.gov/explosives" text="Explosives Home" %}</li>
     <li>{% external_link url="https://www.atf.gov/questions-and-answers/explosives-qas" text="Explosives Q&A" %}</li>
     <li>{% external_link url="https://www.atf.gov/explosives/explosives-forms?og_group_ref_target_id=196" text="Explosives Forms" %}</li>
     <li>{% external_link url="https://www.atf.gov/resource-center/publications-library?og_group_ref=2" text="Explosives Publications" %}</li>
+    <li>{% external_link url="https://www.atf.gov/explosives/explosive-storage-requirements" text="Explosive Storage Requirements" %}</li>
+    <li>{% external_link url="https://www.atf.gov/explosives/fireworks" text="Fireworks" %}</li>
   </ul>
+
+  <h3>Related tools</h3>
+  <ul>
+    <li>View this regulation on
+      {% external_link url="http://www.ecfr.gov/cgi-bin/text-idx?node=pt27.3.555" text="e-CFR (Electronic Code of Federal Regulations)" %}
+    </li>
+    <li>Related rules, proposed rules, and notices in the 
+      {% external_link url="https://www.federalregister.gov/articles/search?conditions%5Bagency_ids%5D%5B%5D=19&conditions%5Bterm%5D=%22Commerce+in+Explosives%22&order=newest&quiet=true" text="Federal Register" %}
+    </li>
+    <li>Related open and closed comment periods on
+      {% external_link url="http://www.regulations.gov/#!searchResults;rpp=25;so=DESC;sb=commentDueDate;po=0;s=%2522Commerce%252Bin%252BExplosives%2522;fp=true;dct=FR%252BPR%252BN%252BO;a=ATF" text="Regulations.gov" %}
+    </li>
+  </ul>  
+  
 </div>
 {% endblock %}
 

@@ -1,7 +1,7 @@
 set -e
 
 API="https://api.cloud.gov"
-ORG="eregs"
+ORG="atf-eregs"
 SPACE=$1
 
 if [ $# -ne 1 ]; then
