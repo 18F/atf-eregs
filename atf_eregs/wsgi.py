@@ -6,7 +6,7 @@ from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "atf_eregs.settings")
 # important that the whitenoise import is after the line above
-from whitenoise.django import DjangoWhiteNoise
+from whitenoise.django import DjangoWhiteNoise  # noqa
 
 env = AppEnv()
 

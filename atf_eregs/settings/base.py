@@ -33,5 +33,6 @@ DATA_LAYERS = (
 )
 
 SIDEBARS = (
+    'atf_eregs.sidebar.Rulings',
     'regulations.generator.sidebar.help.Help',
 )

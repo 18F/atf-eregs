@@ -33,7 +33,8 @@ ALLOWED_HOSTS = ['localhost'] + env.uris
 elastic_service = env.get_service(name=re.compile('search'))
 if elastic_service:
     HAYSTACK_CONNECTIONS['default'] = {
-        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'ENGINE': ('haystack.backends.elasticsearch_backend.'
+                   'ElasticsearchSearchEngine'),
         'URL': elastic_service.credentials['uri'],
         'INDEX_NAME': 'eregs',
     }
