@@ -14,6 +14,9 @@ entry_points = {
     ],
     "%s.term_definitions" % ns: [
         "atf_terms = %s.term_defs:term_defs" % fs
+    ],
+    "%s.term_definition_exclusions" % ns: [
+        "atf_ignore_terms = %s.term_defs:ignores" % fs
     ]
 }
 
