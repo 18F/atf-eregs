@@ -1,8 +1,13 @@
 {% extends "regulations/generic_landing.html" %}
-{% load macros %}
+{% load macros to_list %}
 
 {% block reg_title %}
-<h2 class="banner-text">Commerce in Firearms and Ammunition</h2>
+<div class="banner-image banner-478"></div>
+<div class="banner-text-spacer">
+  <div class="banner-text-wrapper">
+    <h2 class="banner-text">Commerce in Firearms and Ammunition</h2>
+  </div>
+</div>
 <p>This regulation explains requirements for manufacturing, importing, buying, selling, and transporting firearms and ammunition.</p>
 {% endblock %}
 
@@ -24,31 +29,10 @@
   <li><a href="{% url 'chrome_section_view' label_id='478-142' version=current_version.version %}" class="citation internal" data-section-id="478-142">Relief from firearms prohibitions</a></li>
 </ul>
 
-<h3 class="list-header">Search this regulation</h3>
-
-<p>Some example topic searches:</p>
-
-<ul class="tag-list">
-  <li>{% search_for reg='478' version=current_version.version terms='Antique firearm' %}</li>
-  <li>{% search_for reg='478' version=current_version.version terms='Armor piercing ammunition' %}</li>
-  <li>{% search_for reg='478' version=current_version.version terms='Business premises' %}</li>
-  <li>{% search_for reg='478' version=current_version.version terms='Collector' %}</li>
-  <li>{% search_for reg='478' version=current_version.version terms='Curio or relic firearm' %}</li>
-  <li>{% search_for reg='478' version=current_version.version terms='Dealer' %}</li>
-  <li>{% search_for reg='478' version=current_version.version terms='Destructive device' %}</li>
-  <li>{% search_for reg='478' version=current_version.version terms='Firearm frame or receiver' %}</li>
-  <li>{% search_for reg='478' version=current_version.version terms='Collector' %}</li>
-  <li>{% search_for reg='478' version=current_version.version terms='Handgun' %}</li>
-  <li>{% search_for reg='478' version=current_version.version terms='Importer' %}</li>
-  <li>{% search_for reg='478' version=current_version.version terms='Large capacity ammunition feeding device' %}</li>
-  <li>{% search_for reg='478' version=current_version.version terms='Machine gun' %}</li>
-  <li>{% search_for reg='478' version=current_version.version terms='Manufacturer' %}</li>
-  <li>{% search_for reg='478' version=current_version.version terms='Pistol' %}</li>
-  <li>{% search_for reg='478' version=current_version.version terms='Prohibited person' %}</li>
-  <li>{% search_for reg='478' version=current_version.version terms='Revolver' %}</li>
-  <li>{% search_for reg='478' version=current_version.version terms='Rifle' %}</li>
-  <li>{% search_for reg='478' version=current_version.version terms='Unserviceable firearm' %}</li>
-</ul>
+{% with reg='478' version=current_version.version %}
+  {% to_list 'Antique firearm' 'Armor piercing ammunition' 'Business premises' 'Collector' 'Curio or relic firearm' 'Dealer' 'Destructive device' 'Firearm frame or receiver' 'Handgun' 'Importer' 'Large capacity ammunition feeding device' 'Machine gun' 'Manufacturer' 'Pistol' 'Prohibited person' 'Revolver' 'Rifle' 'Unserviceable firearm' as terms %}
+  {% include "atf_eregs/landing-search.html" %}
+{% endwith %}
 {% endblock %}
 
 {% block reg_sidebar %}

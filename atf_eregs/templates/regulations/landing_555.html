@@ -2,7 +2,12 @@
 {% load macros %}
 
 {% block reg_title %}
-<h2 class="banner-text">Commerce in Explosives</h2>
+<div class="banner-image banner-555"></div>
+<div class="banner-text-spacer">
+  <div class="banner-text-wrapper">
+    <h2 class="banner-text">Commerce in Explosives</h2>
+  </div>
+</div>
 {% endblock %}
 
 {% block reg_main_content %}
@@ -16,6 +21,9 @@
   <li>Relief from disabilities</li>
   <li>Exemptions, unlawful acts, penalties, seizures, and forfeitures</li>
 </ul>
+{% with reg='555' version=current_version.version %}
+  {% include "atf_eregs/landing-search.html" %}
+{% endwith %}
 {% endblock %}
 
 {% block reg_sidebar %}

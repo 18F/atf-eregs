@@ -1,9 +1,13 @@
 {% extends "regulations/generic_landing.html" %}
-{% load macros %}
+{% load macros to_list %}
 
 {% block reg_title %}
-<h2 class="banner-text">Machine Guns, Destructive Devices, and Certain Other
-  Firearms</h2>
+<div class="banner-image banner-479"></div>
+<div class="banner-text-spacer">
+  <div class="banner-text-wrapper">
+    <h2 class="banner-text">Machine Guns, Destructive Devices, and Certain Other Firearms</h2>
+  </div>
+</div>
 <p>This regulation explains requirements (including tax and registration) for manufacturing, making, dealing in, transferring, importing, and exporting firearms covered by the National Firearms Act ("NFA firearms").</p>
 {% endblock %}
 
@@ -20,22 +24,10 @@
   <li><a href="{% url 'chrome_section_view' label_id='479-181' version=current_version.version %}" class="citation internal" data-section-id="479-181">Penalties and forfeitures</a></li>
 </ul>
 
-<h3 class="list-header">Search this regulation</h3>
-
-<p>Some example topic searches:</p>
-
-<ul class="tag-list">
-  <li>{% search_for reg="479" version=current_version.version terms="Any other weapon" %}</li>
-  <li>{% search_for reg="479" version=current_version.version terms="Collector" %}</li>
-  <li>{% search_for reg="479" version=current_version.version terms="Dealer" %}</li>
-  <li>{% search_for reg="479" version=current_version.version terms="Destructive device" %}</li>
-  <li>{% search_for reg="479" version=current_version.version terms="Firearm" %}</li>
-  <li>{% search_for reg="479" version=current_version.version terms="Importer" %}</li>
-  <li>{% search_for reg="479" version=current_version.version terms="Machine gun" %}</li>
-  <li>{% search_for reg="479" version=current_version.version terms="Silencer" %}</li>
-  <li>{% search_for reg="479" version=current_version.version terms="Transfer" %}</li>
-</ul>
-
+{% with reg='479' version=current_version.version %}
+  {% to_list "Any other weapon" "Collector" "Dealer" "Destructive device" "Firearm" "Importer" "Machine gun" "Silencer" "Transfer" as terms %}
+  {% include "atf_eregs/landing-search.html" %}
+{% endwith %}
 {% endblock %}
 
 {% block reg_sidebar %}

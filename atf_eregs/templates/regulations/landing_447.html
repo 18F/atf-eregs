@@ -2,7 +2,12 @@
 {% load macros %}
 
 {% block reg_title %}
-<h2 class="banner-text">Importation of Arms, Ammunition and Implements of War</h2>
+<div class="banner-image banner-447"></div>
+<div class="banner-text-spacer">
+  <div class="banner-text-wrapper">
+    <h2 class="banner-text">Importation of Arms, Ammunition and Implements of War</h2>
+  </div>
+</div>
 <p>This regulation lists the defense articles subject to control, explains the importation of arms, ammunition and implements of war, and explains the restrictions on importing these items into the U.S.</p>
 {% endblock %}
 
@@ -16,6 +21,10 @@
   <li><a href="{% url 'chrome_section_view' label_id='447-53' version=current_version.version %}" class="citation internal" data-section-id="447-53">Exemptions to import requirements</a></li>
   <li><a href="{% url 'chrome_section_view' label_id='447-61' version=current_version.version %}" class="citation internal" data-section-id="447-61">Penalties, seizures and forfeitures</a></li>
 </ul>
+
+{% with reg='447' version=current_version.version %}
+  {% include "atf_eregs/landing-search.html" %}
+{% endwith %}
 {% endblock %}
 
 {% block reg_sidebar %}

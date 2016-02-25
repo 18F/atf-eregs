@@ -2,7 +2,12 @@
 {% load macros %}
 
 {% block reg_title %}
-<h2 class="banner-text">Contraband Cigarettes</h2>
+<div class="banner-image banner-646"></div>
+<div class="banner-text-spacer">
+  <div class="banner-text-wrapper">
+    <h2 class="banner-text">Contraband Cigarettes</h2>
+  </div>
+</div>
 <p>This regulation explains requirements related to distributing cigarettes in the several States of the United States, the District of Columbia, the Commonwealth of Puerto Rico, and the Virgin Islands.</p>
 
 {% endblock %}
@@ -15,6 +20,9 @@
   <li><a href="{% url 'chrome_section_view' label_id='646-146' version=current_version.version %}" class="citation internal" data-section-id="646-146">Recordkeeping requirements for cigarette distributors</a></li>
   <li><a href="{% url 'chrome_section_view' label_id='646-154' version=current_version.version %}" class="citation internal" data-section-id="646-154">Penalties and forfeitures for contraband cigarettes</a></li>
 </ul>
+{% with reg='646' version=current_version.version %}
+  {% include "atf_eregs/landing-search.html" %}
+{% endwith %}
 {% endblock %}
 
 {% block reg_sidebar %}

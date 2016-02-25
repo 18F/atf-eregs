@@ -1,0 +1,29 @@
+{% comment %}
+Shared partial template for search embedded within landing pages. Expects the
+following variables to be defined:
+* reg - CFR part, as a string
+* version - current version of CFR part, as a string
+* terms - list of search terms, list[str]
+{% endcomment %}
+{% load macros %}
+<div class="landing-search-wrapper">
+<h3 class="list-header"><span class="cf-icon cf-icon-search"></span>Search this regulation</h3>
+<form action="{% url 'chrome_search' reg %}" method="GET" role="search">
+  <div class="landing-search-box">
+    <input type="hidden" name="version" value="{{version}}" />
+    <input type="text" name="q" title="Search term" /><button type="submit">Search</button>
+  </div>
+</form>
+
+{% if terms %}
+<p class="examples-intro">Some example topic searches:</p>
+
+<ul class="search-tag-list">
+  {% spaceless %}
+    {% for term in terms %}
+      <li>{% search_for reg=reg version=version terms=term %}</li>
+    {% endfor %}
+  {% endspaceless %}
+</ul>
+{% endif %}
+</div>
