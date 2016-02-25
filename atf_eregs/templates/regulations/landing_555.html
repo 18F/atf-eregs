@@ -2,32 +2,89 @@
 
 {% block reg_title %}
 <h2 class="banner-text">Commerce in Explosives</h2>
+<p>This regulation explains requirements for manufacturing, importing, buying, selling, transporting, and storing explosive materials.</p>
 {% endblock %}
 
 {% block reg_main_content %}
-<h3 class="list-header">The Regulation covers topics such as:</h3>
+<h3 class="list-header">Important topics include:</h3>
 <ul class="tag-list">
-  <li>Definitions; including definition of explosive materials</li>
-  <li>Licensing and permit requirements</li>
-  <li>Conduct of business by licensees and operations by permittees</li>
-  <li>Storage of explosive materials</li>
-  <li>Records and reports required of licensees and permittees</li>
-  <li>Relief from disabilities</li>
-  <li>Exemptions, unlawful acts, penalties, seizures, and forfeitures</li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-11' version=current_version.version %}" class="citation internal" data-section-id="555-11">Definitions of terms used in this regulation</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-11' version=current_version.version %}#555-11-p1795587076" class="citation internal" data-section-id="555-11">Definition of "explosive materials"</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-26' version=current_version.version %}" class="citation internal" data-section-id="555-26">Prohibited shipment, transportation, receipt, possession, or distribution</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-41' version=current_version.version %}" class="citation internal" data-section-id="555-41">License and permit requirements for importers, manufacturers, dealers, and users</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-71' version=current_version.version %}" class="citation internal" data-section-id="555-71">License and permit denial or revocation</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-101' version=current_version.version %}" class="citation internal" data-section-id="555-101">Conduct of business by licensees and operations by permittees</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-121' version=current_version.version %}" class="citation internal" data-section-id="555-121">Records and reports required of licensees and permittees</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-141' version=current_version.version %}" class="citation internal" data-section-id="555-141">Exemptions to requirements</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-142' version=current_version.version %}" class="citation internal" data-section-id="555-142">Relief from explosive materials prohibitions</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-161' version=current_version.version %}" class="citation internal" data-section-id="555-161">Unlawful acts, penalties, seizures, and forfeitures</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-180' version=current_version.version %}" class="citation internal" data-section-id="555-180">Marking of plastic explosives</a></li>
+  <li><a href="{% url 'chrome_section_view' label_id='555-201' version=current_version.version %}" class="citation internal" data-section-id="555-201">Storage of explosive materials</a>, including tables of distances</li>
+</ul>
+
+<h3 class="list-header">Search this regulation</h3>
+
+<p>Some example topic searches:</p>
+
+<ul class="tag-list">
+  <li><a href="{% url 'chrome_search' label_id='555' %}?version={{ current_version.version}}&amp;q=Background+check" class="internal">Background check</a></li>
+  <li><a href="{% url 'chrome_search' label_id='555' %}?version={{ current_version.version}}&amp;q=Barricade" class="internal">Barricade</a></li>
+  <li><a href="{% url 'chrome_search' label_id='555' %}?version={{ current_version.version}}&amp;q=Black+powder" class="internal">Black powder</a></li>
+  <li><a href="{% url 'chrome_search' label_id='555' %}?version={{ current_version.version}}&amp;q=Blasting+agent" class="internal">Blasting agent</a></li>
+  <li><a href="{% url 'chrome_search' label_id='555' %}?version={{ current_version.version}}&amp;q=Daily+summary" class="internal">Daily summary</a></li>
+  <li><a href="{% url 'chrome_search' label_id='555' %}?version={{ current_version.version}}&amp;q=Dealer" class="internal">Dealer</a></li>
+  <li><a href="{% url 'chrome_search' label_id='555' %}?version={{ current_version.version}}&amp;q=Discontinuance+of+business" class="internal">Discontinuance of business</a></li>
+  <li><a href="{% url 'chrome_search' label_id='555' %}?version={{ current_version.version}}&amp;q=Fireworks" class="internal">Fireworks</a></li>
+  <li><a href="{% url 'chrome_search' label_id='555' %}?version={{ current_version.version}}&amp;q=Flash+powder" class="internal">Flash powder</a></li>
+  <li><a href="{% url 'chrome_search' label_id='555' %}?version={{ current_version.version}}&amp;q=Hearing" class="internal">Hearing</a></li>
+  <li><a href="{% url 'chrome_search' label_id='555' %}?version={{ current_version.version}}&amp;q=Importer" class="internal">Importer</a></li>
+  <li><a href="{% url 'chrome_search' label_id='555' %}?version={{ current_version.version}}&amp;q=Limited+permit" class="internal">Limited permit</a></li>
+  <li><a href="{% url 'chrome_search' label_id='555' %}?version={{ current_version.version}}&amp;q=Magazine" class="internal">Magazine</a></li>
+  <li><a href="{% url 'chrome_search' label_id='555' %}?version={{ current_version.version}}&amp;q=Manufacturer" class="internal">Manufacturer</a></li>
+  <li><a href="{% url 'chrome_search' label_id='555' %}?version={{ current_version.version}}&amp;q=Pyrotechnic+compositions" class="internal">Pyrotechnic compositions</a></li>
+  <li><a href="{% url 'chrome_search' label_id='555' %}?version={{ current_version.version}}&amp;q=Reporting+theft+or+loss" class="internal">Reporting theft or loss</a></li>
+  <li><a href="{% url 'chrome_search' label_id='555' %}?version={{ current_version.version}}&amp;q=Salute" class="internal">Salute</a></li>
+  <li><a href="{% url 'chrome_search' label_id='555' %}?version={{ current_version.version}}&amp;q=Sample" class="internal">Sample</a></li>
+  <li><a href="{% url 'chrome_search' label_id='555' %}?version={{ current_version.version}}&amp;q=Storage" class="internal">Storage</a></li>
 </ul>
 {% endblock %}
 
 {% block reg_sidebar %}
 <div class="content-wrap">
-  <h3>Additional Resources</h3>
+  <h3>Related law</h3>
   <ul>
+    <li><a href="https://www.gpo.gov/fdsys/pkg/USCODE-2011-title18/pdf/USCODE-2011-title18-partI-chap40.pdf" class="external" aria-label="Link opens in a new window" target="_blank">Organized Crime Control Act of 1970 (18 U.S.C. Chapter 40)</a></li>
+  </ul>
+  
+  <h3>Ask questions</h3>
+  <ul>
+    <li><a href="https://www.atf.gov/contact/licensing-and-other-services" class="external" aria-label="Link opens in a new window" target="_blank">Call ATF</a></li>
+    <li><a href="https://www.atf.gov/contact" class="external" aria-label="Link opens in a new window" target="_blank">Submit a Question or Concern</a></li>
+  </ul>
+  
+  <h3>Additional resources</h3>
+  <ul>
+    <li><a href="https://www.atf.gov/explosives"
+           class="external" aria-label="Link opens in a new window" target="_blank">Explosives Home</a></li>
     <li><a href="https://www.atf.gov/questions-and-answers/explosives-qas"
            class="external" aria-label="Link opens in a new window" target="_blank">Explosives Q&amp;A</a></li>
     <li><a href="https://www.atf.gov/explosives/explosives-forms?og_group_ref_target_id=196"
            class="external" aria-label="Link opens in a new window" target="_blank">Explosives Forms</a></li>
     <li><a href="https://www.atf.gov/resource-center/publications-library?og_group_ref=2"
            class="external" aria-label="Link opens in a new window" target="_blank">Explosives Publications</a></li>
+    <li><a href="https://www.atf.gov/explosives/explosive-storage-requirements"
+           class="external" aria-label="Link opens in a new window" target="_blank">Explosive Storage Requirements</a></li>
+    <li><a href="https://www.atf.gov/explosives/fireworks"
+           class="external" aria-label="Link opens in a new window" target="_blank">Fireworks</a></li>
   </ul>
+
+  <h3>Related tools</h3>
+  <ul>
+    <li>View this regulation on <a href="http://www.ecfr.gov/cgi-bin/text-idx?SID=d950a60e07250627fce1c651a21246ab&amp;mc=true&amp;node=pt27.3.555&amp;rgn=div5" class="external" aria-label="Link opens in a new window" target="_blank">e-CFR (Electronic Code of Federal Regulations)</a></li>
+    <li>Related rules, proposed rules, and notices in the <a href="https://www.federalregister.gov/articles/search?conditions%5Bagency_ids%5D%5B%5D=19&amp;conditions%5Bterm%5D=%22Commerce+in+Explosives%22&amp;order=newest&amp;quiet=true" class="external" aria-label="Link opens in a new window" target="_blank">Federal Register</a></li>
+    <li>Related open and closed comment periods on <a href="http://www.regulations.gov/#!searchResults;rpp=25;so=DESC;sb=commentDueDate;po=0;s=%2522Commerce%252Bin%252BExplosives%2522;fp=true;dct=FR%252BPR%252BN%252BO;a=ATF" class="external" aria-label="Link opens in a new window" target="_blank">Regulations.gov</a></li>
+  </ul>  
+  
 </div>
 {% endblock %}
 
