@@ -15,6 +15,7 @@
 
     h3 {
         margin: 0 0 30px 0;
+        font-size: 28px;
     }
 
     // offset persistent header
@@ -41,7 +42,7 @@ hero
         font-size: 34px;
         padding: 24px 0;
         margin: 0;
-        .font-regular;
+        .font-light;
     }
 }
 
@@ -126,7 +127,7 @@ snazzy ordered lists
 .about-ol > li:before{
     content: counter(li);
     counter-increment: li;
-    background: @green;
+    background: @pacific;
     color: #fff;
     font-size: 12px;
     position: absolute;
@@ -163,6 +164,10 @@ custom styles
 }
 
 @media only screen and ( min-width: 780px ) {
+    #related-info .content-secondary {
+        /* Overrides value set in layout.less */
+        width: 25%;
+    }
     .about-screenshot {
         margin-bottom: -70px; /*align with border on larger screens */
     }

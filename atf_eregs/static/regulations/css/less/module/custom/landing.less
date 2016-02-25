@@ -1,0 +1,144 @@
+/*
+  ATF has 3 custom elements on their regulation landing pages:
+  1. Banner images
+  2. Search box
+  3. Predefined search terms as tags
+  This file contains the styling for those elements
+  */
+.banner-image {
+    height: 225px;
+    /* To span the full width, we'll use absolute positioning */
+    position: absolute;
+    z-index: -100;
+    left: 0;
+    right: 0;
+
+    /* Don't hide under the minimum left sidebar size */
+    margin-left: 40px;
+    /* Start a bit under the subheader */
+    margin-top: -50px;
+    @media only screen and ( min-width: 781px ) {
+        /* Avoid hiding under the right sidebar */
+        margin-right: 25%;
+    }
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+    /* Feels like these should be defined in the template, but we want access
+       to the hero_background LESS var */
+    &.banner-447 {
+      background-image: linear-gradient(fade(@hero_background, 50%),
+                                        fade(@hero_background, 50%)),
+                        url('../../atf_eregs/447-landing.jpg');
+    }
+    &.banner-478 {
+      background-image: linear-gradient(fade(@hero_background, 50%),
+                                        fade(@hero_background, 50%)),
+                        url('../../atf_eregs/478-landing.jpg');
+    }
+    &.banner-479 {
+      background-image: linear-gradient(fade(@hero_background, 50%),
+                                        fade(@hero_background, 50%)),
+                        url('../../atf_eregs/479-landing.jpg');
+    }
+    &.banner-555 {
+      background-image: linear-gradient(fade(@hero_background, 50%),
+                                        fade(@hero_background, 50%)),
+                        url('../../atf_eregs/555-landing.jpg');
+    }
+    &.banner-646 {
+      background-image: linear-gradient(fade(@hero_background, 50%),
+                                        fade(@hero_background, 50%)),
+                        url('../../atf_eregs/646-landing.jpg');
+    }
+
+}
+
+.banner-text-spacer {
+    height: 175px;
+    margin-bottom: 16px;
+    /* Use display: table/table-cell to easily vertical align. Degrades to
+       aligning top in older browsers */
+    display: table;
+
+    .banner-text-wrapper {
+        display: table-cell;
+        vertical-align: middle;
+
+    }
+}
+
+.banner-text {
+    .font-light;
+    margin: 0;
+    background-color: @main_head_background;
+    padding: 4px 8px;
+    color: @main_head_text_color;
+    opacity: .8;
+}
+
+.list-header {
+    margin-top: 45px;
+    font-size: 1.375em;
+    .cf-icon-search {
+        margin-right: 16px;
+    }
+}
+.landing-search-box {
+    .search-box;
+
+    input {
+        width: 80%;
+    }
+    button {
+        padding: 0 16px;
+    }
+}
+
+.search-tag-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+        display: inline-block;
+        background-color: @main_head_hover_color;
+        padding: 8px 16px;
+        margin: 5px;
+        font-size: small;
+    }
+    /* Reset some link styling */
+    a.internal {
+        border-bottom: none;
+        &:active, &:focus, &:hover {
+            background-color: transparent;
+        }
+    }
+}
+
+.landing-search-wrapper {
+    padding-bottom: 45px;
+    margin-bottom: 45px;
+    border-bottom: 1px solid @light_field;
+
+    form {
+        margin-top: 20px;
+    }
+    .examples-intro {
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+}
+
+.landing {
+    p {
+        font-size: 1em;
+        line-height: 1.7em;
+    }
+    h4 {
+        font-size: 1.375em;
+    }
+}
