@@ -2,19 +2,18 @@
 Customization
 =============
 
-ATF's eRegs instance consists of several shared (across multiple eRegs
-instances) libraries and ATF-specific customizations. Here we will document
+ATF's eRegs instance is made of several non-agency-specific shared libraries (used by multiple eRegs
+instances) and a set of ATF-specific customizations. Here we will document
 these ATF-specific features, deferring to the
-`eRegs docs <https://eregs.github.io/>`_ for more broad descriptions around
+`eRegs docs <https://eregs.github.io/>`_ for broader descriptions of
 agency-specific customizations (such as a full list of eRegs' extension
 points).
 
 Landing Pages
 =============
 Each of ATF's regulations have custom landing page content which is tied to
-that CFR part. This content is defined in Django's templating language, having
-a mix of raw HTML and templating tags. For examples, see five templates
-of the form ``atf_eregs/templates/regulations/landing_???.html``; each contain
+that CFR part. This content is defined in Django's templating language, with a mix of raw HTML and Django templating tags. For examples, see the five templates
+of the form ``atf_eregs/templates/regulations/landing_???.html``; each contains
 ``blocks`` of content which get merged into appropriate locations within a
 larger template. Modifying the content in these files will modify the
 corresponding landing page.
@@ -24,17 +23,17 @@ Each of the landing pages derive content from
 shared legal disclaimer.
 
 See Django's
-`documentation <https://docs.djangoproject.com/en/1.9/topics/templates/#the-django-template-language>`_
-on the subject for an introduction and comprehensive reference guide.
+`documentation for its templating language <https://docs.djangoproject.com/en/1.9/topics/templates/#the-django-template-language>`_
+ for an introduction and comprehensive reference guide.
 
 Tags
 ----
-While raw HTML will always work, we strongly recommend using Django's
-templating tags to limit the number of edits needed. Notably, review the
+While writing raw HTML into these templates will always work, we strongly recommend using Django's
+templating tags to simplify the process of writing content and keeping it up to date. Notably, review the
 existing landing pages for examples of
 
-* ``url`` - dynamically links to another part of eRegs
-* ``external_link`` - includes aria labeling and visual indicators that this
+* ``url`` - dynamically link to another part of eRegs
+* ``external_link`` - include aria labeling and visual indicators that this
   link will open in a new tab
 * ``search_for`` - generate a link to search results
 
@@ -57,12 +56,14 @@ Branded Templates
 =================
 The header and footer of each page have been lightly customized to tie in with
 ATF's branding. This includes linking to other ATF sites and including ATF's
-logo. If the content here needs to be modified for whatever reason,
+logo. If you need to modify the content here,
 investigate ``atf_eregs/templates/regulations/favicon.html``,
 ``full_footer.html``, ``logo.html``, etc. Similarly, ``about.html`` defines
-all of the content present on the "About" page.
+the content present on the "About" page.
 
-eRegs supports customized templates primarily through `overriding`. A base set
+Templates in the atf-eregs repository provide customizations that override the core templates provided by the generic/non-agency-specific eRegulations libraries. For example, the ``about.html`` file in the atf-eregs repository only contains part of the content you see live on the ATF eRegulations "about" page. This is because most of that "about" page content is provided by the ``about.html`` template in the shared/non-agency-specific library.
+
+In other words: eRegs supports customized templates primarily through `overriding`. A base set
 of templates are provided, broken into components we expect agencies would
 need to replace. Creating a file of the same name in the
 ``atf_eregs/templates/regulations/`` folder effectively `replaces` the
