@@ -9,9 +9,10 @@ term_defs = {
 
 ignores = {
     "479": [
-        u"make such return",
-        u"make returns",
-        u"make any such returns"
+        u"make such return",  # exclude "make"
+        u"make returns",  # exclude "make"
+        u"make any such returns",  # exclude "make"
+        u"Tobacco, Firearms, and Explosives"  # exclude "firearm"
     ],
     "447": [
         "include",
