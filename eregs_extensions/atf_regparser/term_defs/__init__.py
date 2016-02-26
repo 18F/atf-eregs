@@ -8,7 +8,11 @@ term_defs = {
 }
 
 ignores = {
-    "479": ["make such return"],
+    "479": [
+        u"make such return",
+        u"make returns",
+        u"make any such returns"
+    ],
     "447": [
         "include",
         "including"
