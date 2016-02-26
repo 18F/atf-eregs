@@ -23,8 +23,7 @@ Each of the landing pages derive content from
 shared legal disclaimer.
 
 See Django's
-`documentation for its templating language <https://docs.djangoproject.com/en/1.9/topics/templates/#the-django-template-language>`_
- for an introduction and comprehensive reference guide.
+`documentation for its templating language <https://docs.djangoproject.com/en/1.9/topics/templates/#the-django-template-language>`_ for an introduction and comprehensive reference guide.
 
 Tags
 ----
@@ -61,7 +60,7 @@ investigate ``atf_eregs/templates/regulations/favicon.html``,
 ``full_footer.html``, ``logo.html``, etc. Similarly, ``about.html`` defines
 the content present on the "About" page.
 
-Templates in the atf-eregs repository provide customizations that override the core templates provided by the generic/non-agency-specific eRegulations libraries. For example, the ``about.html`` file in the atf-eregs repository only contains part of the content you see live on the ATF eRegulations "about" page. This is because most of that "about" page content is provided by the ``about.html`` template in the shared/non-agency-specific library.
+Templates in the atf-eregs repository provide customizations that override the core templates provided by the generic/non-agency-specific eRegulations libraries. For example, the ``about.html`` file in the atf-eregs repository only contains part of the content you see live on the ATF eRegulations "about" page. This is because most of that "about" page content is provided by the ``about.html`` template in the shared/non-agency-specific library (``regulations-site``).
 
 In other words: eRegs supports customized templates primarily through `overriding`. A base set
 of templates are provided, broken into components we expect agencies would

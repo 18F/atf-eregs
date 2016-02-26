@@ -115,11 +115,11 @@ Fixing Errors
 
 If you pulled down the latest code changes, ran the server locally, and something didn't build correctly (you got an error message instead of seeing eRegulations), try running standard updates:
 
-For any component that you're working with (including atf-eregs), first do `pip install -r requirements.txt` to update the requirements.
+For any component that you're working with (including atf-eregs), first do ``pip install -r requirements.txt`` to update the requirements.
 
-If working with the parser, do `eregs clear`.
+If working with the parser, do ``eregs clear``.
 
-Or if working with atf-eregs, do `python manage.py compile_frontend` to compile the frontend.
+Or if working with atf-eregs, do ``python manage.py compile_frontend`` to compile the frontend.
 
 And then try running the server again.
 
