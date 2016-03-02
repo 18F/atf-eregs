@@ -1,5 +1,5 @@
 ---
-command: python manage.py refresh && python manage.py collectstatic --noinput && waitress-serve --port=$VCAP_APP_PORT atf_eregs.wsgi:application
+command: python manage.py refresh && python manage.py collectstatic --noinput && gunicorn atf_eregs.wsgi:application
 domains:
   - apps.cloud.gov
   - 18f.gov

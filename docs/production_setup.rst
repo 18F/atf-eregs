@@ -125,7 +125,7 @@ are run within the context of a specific settings file, discussed shortly.
 
   python manage.py refresh
   python manage.py collectstatic --noinput
-  waitress-serve --port=$VCAP_APP_PORT atf_eregs.wsgi:application
+  gunicorn atf_eregs.wsgi:application
 
 The first, ``refresh``, will migrate the database and populate the search
 index (we'll see how to configure these in a moment). The command explicitly
@@ -140,7 +140,7 @@ JS, images, etc.) into one location, for ease of hosting. See the Django
 on that subject for more. Note that this does `not` build the frontend assets.
 To do that, you'll need to run ``python manage.py compile_frontend`` first.
 
-The final step starts the ``waitress`` server and points it to a WSGI file.
+The final step starts the ``gunicorn`` server and points it to a WSGI file.
 This file sets up a New Relic monitoring agent and wraps the webapp with a
 static file hosting solution (``whitenoise``). Django does not host static
 files, 
