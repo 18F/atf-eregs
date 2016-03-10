@@ -135,8 +135,14 @@ calls to itself. The server therefore needs to know which port it is set up to
 listen on.
 
 We default to 8000, as that's the standard for django's ``runserver``, but if
-you need to run on a different port, either export an environmental variable
-or create a local_settings.py as follows:
+you need to run on a different port, use:
+
+.. code-block:: bash
+
+    python manage.py runserver 1234
+
+You will also have to either export an environmental variable or create a
+``local_settings.py`` file as follows:
 
 .. code-block:: bash
 
