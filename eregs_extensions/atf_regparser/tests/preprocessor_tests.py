@@ -1,21 +1,21 @@
 # vim: set encoding=utf-8
 from unittest import TestCase
 
-from tests.xml_builder import XMLBuilderMixin
 from atf_regparser.preprocs import USCode
+from regparser.test_utils.xml_builder import XMLBuilder
 
 
-class USCodeTests(XMLBuilderMixin, TestCase):
+class USCodeTests(TestCase):
     def test_uscode_transform(self):
         """US Code issues"""
-        with self.tree.builder("PART") as part:
-            with part.REGTEXT(ID="RT1") as regtext:
-                with regtext.SECTION() as section:
-                    section.SECTNO(u"§ 478.103")
-                    section.HD("18 U.S.C. 922(x)", SOURCE="HD3")
-                    section.P("Some Content")
-                    section.HD("Whatever", SOURCE="HED")
-        xml = self.tree.render_xml()
+        with XMLBuilder("PART") as ctx:
+            with ctx.REGTEXT(ID="RT1"):
+                with ctx.SECTION():
+                    ctx.SECTNO(u"§ 478.103")
+                    ctx.HD("18 U.S.C. 922(x)", SOURCE="HD3")
+                    ctx.P("Some Content")
+                    ctx.HD("Whatever", SOURCE="HED")
+        xml = ctx.xml
 
         USCode().transform(xml)
 
