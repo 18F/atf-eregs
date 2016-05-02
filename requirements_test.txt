@@ -1,2 +1,3 @@
 django-nose
 flake8
+lxml

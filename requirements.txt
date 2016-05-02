@@ -1,25 +1,24 @@
 # regulations-core
 anyjson==0.3.3
-django==1.8.11
+django==1.8.13
 django-haystack==2.4.1
 jsonschema==2.5.1
 -e git+https://github.com/18F/regulations-core.git#egg=regcore
 
 # regulations-site
 # django already covered
-lxml==3.5.0
 requests==2.9.1
 -e git+https://github.com/18F/regulations-site.git#egg=regulations
 
 # atf-specific/cloud.gov
 cfenv==0.5.2
-dj-database-url==0.4.0
+dj-database-url==0.4.1
 django-overextends==0.4.1
 gunicorn==19.4.5
-newrelic==2.60.0.46
+newrelic==2.64.0.48
 pyelasticsearch==1.4
 psycopg2==2.6.1
-whitenoise==2.0.6
+whitenoise==3.0
 
 # extensions
 -e eregs_extensions
