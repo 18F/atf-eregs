@@ -3,7 +3,7 @@ from unittest import TestCase
 from mock import patch
 
 from atf_regparser import layers
-from tests.http_mixin import HttpMixin
+from regparser.test_utils.http_mixin import HttpMixin
 
 
 class RulingsTests(HttpMixin, TestCase):
