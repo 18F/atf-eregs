@@ -9,10 +9,13 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "atf_eregs.settings")
 from whitenoise.django import DjangoWhiteNoise  # noqa
 
 env = AppEnv()
+app_name = env.get_credential('NEW_RELIC_APP_NAME')
+license_key = env.get_credential('NEW_RELIC_LICENSE_KEY')
 
-settings = newrelic.agent.global_settings()
-settings.app_name = env.get_credential('NEW_RELIC_APP_NAME')
-settings.license_key = env.get_credential('NEW_RELIC_LICENSE_KEY')
-newrelic.agent.initialize()
+if app_name and license_key:
+    settings = newrelic.agent.global_settings()
+    settings.app_name = app_name
+    settings.license_key = license_key
+    newrelic.agent.initialize()
 
 application = DjangoWhiteNoise(get_wsgi_application())
