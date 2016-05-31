@@ -1,6 +1,7 @@
 from unittest import TestCase
 
 from mock import patch
+import six
 
 from atf_regparser import layers
 from regparser.test_utils.http_mixin import HttpMixin
@@ -47,8 +48,8 @@ class RulingsTests(HttpMixin, TestCase):
 
         rulings = layers.Rulings(None)
         rulings.pre_process()
-        self.assertEqual(['123-47', '123-48-h'],
-                         rulings.label_to_rulings.keys())
+        six.assertCountEqual(self, ['123-47', '123-48-h'],
+                             rulings.label_to_rulings.keys())
         for label_id in ('123-47', '123-48-h'):
             self.assertEqual(rulings.label_to_rulings[label_id], {
                 '1111-22': {'url': 'http://example.com/1111-22',

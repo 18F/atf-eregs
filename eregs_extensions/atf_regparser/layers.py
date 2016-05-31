@@ -62,7 +62,7 @@ class Rulings(Layer):
         config = self.load_config()
         meta = self.doc_metadata()
         matched = [(ruling, label_id)
-                   for ruling, labels in config.iteritems()
+                   for ruling, labels in config.items()
                    for label_id in labels
                    if ruling in meta]
         self.label_to_rulings = defaultdict(dict)    # nested dictionaries
