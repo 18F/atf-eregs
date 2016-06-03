@@ -1,0 +1,29 @@
+.about-content {
+    h3 {
+        margin: 0 0 30px 0;
+        font-size: 28px;
+    }
+}
+
+.title-hero {
+    background-color: @hero_background;
+    color: @hero_text_color;
+
+    h2 {
+        font-size: 34px;
+        padding: 24px 0;
+        margin: 0;
+        .font-light;
+    }
+}
+
+.about-ol > li:before{
+    background: @pacific;
+}
+
+@media only screen and ( min-width: 780px ) {
+    #related-info .content-secondary {
+        /* Overrides value set in layout.less */
+        width: 25%;
+    }
+}
