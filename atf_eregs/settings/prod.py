@@ -4,6 +4,7 @@ import dj_database_url
 from cfenv import AppEnv
 
 from .base import *  # noqa
+from .base import HAYSTACK_CONNECTIONS  # explicitly referenced below
 
 DEBUG = False
 TEMPLATE_DEBUG = False

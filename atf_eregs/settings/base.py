@@ -1,6 +1,8 @@
 import os
 
 from regcore.settings.base import *  # noqa
+from regcore.settings.base import (  # explicitly referenced below
+    INSTALLED_APPS, DATABASES)
 REGCORE_APPS = tuple(INSTALLED_APPS)
 REGCORE_DATABASES = dict(DATABASES)
 
