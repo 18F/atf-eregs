@@ -1,4 +1,5 @@
 from .base import *     # noqa
+from .base import CACHES    # explicitly referenced below
 
 DEBUG = True
 
