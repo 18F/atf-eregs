@@ -7,41 +7,36 @@ LESS Mixins
  Type Mixins
  ----------------------
 */
-
-.font-italic {
-  font-family: 'Lato Italic', Arial, sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  src: url("../font/Lato-Italic.ttf");
-}
-
-.font-light {
-  font-family: 'Lato Light', Arial, sans-serif;
+@font-face {
+  font-family: 'Lato Light';
   font-style: normal;
   font-weight: 400;
   src: url("../font/Lato-Light.ttf");
 }
 
-.font-regular {
-  font-family: 'Lato Regular', Arial, sans-serif;
+@font-face {
+  font-family: 'Lato Regular';
   font-style: normal;
   font-weight: 400;
   src: url("../font/Lato-Regular.ttf");
 }
 
-.font-bold {
-  font-family: 'Lato Bold', Arial, sans-serif;
+@font-face {
+  font-family: 'Lato Bold';
   font-style: normal;
   font-weight: 400;
   src: url("../font/Lato-Bold.ttf");
 }
 
-.font-body {
-  font-family: 'Merriweather Regular', Arial, sans-serif;
+@font-face {
+  font-family: 'Lato Italic';
   font-style: normal;
   font-weight: 400;
-  src: url("../font/Merriweather-Regular.ttf");
+  src: url("../font/Lato-Italic.ttf");
 }
+
+
+
 
 .footer-font {
   font-family: 'Lato Bold', Arial, sans-serif;
@@ -52,9 +47,9 @@ LESS Mixins
 /* Drawer font mixins */
 
 .drawer-header-font {
-    &:extend(.font-bold);
+    @include sans-font-bold;
     font-size: .85714286em;
-    color: @dark_text;
+    color: $atf_dark_text;
     line-height: 40px;
     text-transform: uppercase;  
 }
@@ -62,39 +57,39 @@ LESS Mixins
 /* Regulation nav (drawer) font styles */
 
 .regulation-nav-item-font {
-    &:extend(.font-regular);
+    @include sans-font-regular;
     font-size: 1em;
     line-height: 20px;
 }
 
 .regulation-nav-section-marker-font {
-    &:extend(.font-bold);
+    @include sans-font-bold;
     font-size: 1.1428571428571428em; /* 16px */
     line-height: 26px;
 }
 
 .regulation-nav-subpart-heading-font {
-    &:extend(.font-bold);
+    @include sans-font-bold;
     font-size: .8571428571428571em; /* 12px */
     line-height: 18px;
-    color: @dark_text;    
+    color: $atf_dark_text;    
 }
 
 .regulation-nav-interp-heading-font {
-    &:extend(.font-regular);
+    @include sans-font-regular;
     text-transform: uppercase;
     font-size: .85714286em;
 }
 
 .regulation-nav-interp-title-font {
-    &:extend(.font-bold);
+    @include sans-font-bold;
     font-size: 1em;
 }
 
 /* History (drawer) font styles */
 
 .regulation-history-version-date-font {
-    &:extend(.font-bold);
+    @include sans-font-bold;
     font-size: 1.142853333em;
 }
 
@@ -105,19 +100,19 @@ LESS Mixins
 }
 
 .key-term-level-1-font {
-    &:extend(.key-term-font);
+    @extend .key-term-font;
     font-size: 1.4666666666666666em; 
     line-height: 31px;
 }
 
 .key-term-level-2-font {
-    &:extend(.key-term-font);
+    @extend .key-term-font;
     font-size: 1.0666666666666667em; 
     line-height: 26px;
 }
 
 .key-term-level-3-font {
-    &:extend(.key-term-font);
+    @extend .key-term-font;
     font-size: 1.0666666666666667em; 
     line-height: 26px;
 }
@@ -125,13 +120,13 @@ LESS Mixins
 /* Navigation links */
 
 .next-prev-link-link-font {
-    &:extend(.font-regular);
+    @include sans-font-regular;
     font-size: 1em;
     line-height: 22px;
 }
 
 .next-prev-link-title-font { 
-    &:extend(.font-regular);
+    @include sans-font-regular;
     font-size: 1em;
     line-height: 20px;
 }
@@ -148,7 +143,7 @@ Additional / overridden styles
 */
 
 .poster-pdf {
-  background-color: @bg_gray;
+  background-color: $atf_bg_gray;
   margin-bottom: 1em;
   min-height: 5em;
 
@@ -159,7 +154,7 @@ Additional / overridden styles
   .icon-container {
     display: inline-block;
     width: 5em;
-    background-color: @light_orange;
+    background-color: $orange_light;
     float: left;
     height: 100%;
     text-align: center;
@@ -221,18 +216,22 @@ Additional / overridden styles
     text-align: center;
     padding:5px;
     display:block;
-    background-color: @bg_gray;
+    background-color: $atf_bg_gray;
     border-bottom:2px solid #b8babd !important;
 }
 
 #rulings .ruling-id {
-    .font-bold;
+    @include sans-font-bold;
     display:block;
 }
 
-@import "module/custom/typography.less";
-@import "module/custom/header.less";
-@import "module/custom/full-footer.less";
-@import "module/custom/landing.less";
-@import "module/custom/universal-landing.less";
-@import "module/custom/about.less";
+.reg-section .section-header {
+  text-transform: uppercase;  // sub-headers should be uppercase in ATF
+}
+
+@import 'custom/typography';
+@import 'custom/header';
+@import 'custom/full-footer';
+@import 'custom/landing';
+@import 'custom/universal-landing';
+@import 'custom/about';

@@ -1,0 +1,68 @@
+/*
+==========================================================================
+variables.scss contains all theme variable / variable overrides
+*/
+
+/* Overrides */
+$orange_light: #FFF1D6;
+$blue_light: #00629F;
+$action_color: $blue_light;
+
+/* Custom Vars */
+$atf_dark_text: #666666;
+$atf_bg_gray: #F7F8F9; /* background header */
+$atf_main_head_background: #071635;
+$atf_main_head_text_color: #FFFFFF;
+$atf_main_head_hover_color: #BFD5E2;
+$atf_sub_head_background: #50627A;
+$atf_sub_head_text_color: #FFFFFF;
+$atf_mobile_nav_bg: #50627A;
+$atf_mobile_nav_hl: #071635;
+$atf_hero_background: #50627A;
+$atf_hero_text_color: #FFFFFF;
+$atf_hero_link: #CCE3F5;
+$atf_carrots: #00629F;
+
+/*
+$green: #071635; //#2CB34A;
+$green_light: #BFD5E2;
+$green_midtone: #50627a; //#ADDC91;
+$pacific: #00629F; // see more carrots
+$history_drawer_border_color: #fff;
+$body_font: 'Merriweather Regular', Arial, sans-serif;
+*/
+
+$mainhead_height: 60px;
+@mixin sans-font-light {
+  font-family: "Lato Light", Arial, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+@mixin sans-font-regular {
+  font-family: "Lato Regular", Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin sans-font-bold {
+  font-family: "Lato Bold", Arial, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+@mixin serif-font-italic {
+  font-family: "Merriweather", Georgia, serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+@mixin serif-font-regular {
+  font-family: "Merriweather", Georgia, serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
+

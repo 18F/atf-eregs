@@ -5,6 +5,8 @@
   3. Predefined search terms as tags
   This file contains the styling for those elements
   */
+$_banner_color: transparentize($atf_hero_background, 0.5);
+
 .banner-image {
     height: 225px;
     /* To span the full width, we'll use absolute positioning */
@@ -29,28 +31,23 @@
     /* Feels like these should be defined in the template, but we want access
        to the hero_background LESS var */
     &.banner-447 {
-      background-image: linear-gradient(fade(@hero_background, 50%),
-                                        fade(@hero_background, 50%)),
+      background-image: linear-gradient($_banner_color, $_banner_color),
                         url('../../atf_eregs/447-landing.jpg');
     }
     &.banner-478 {
-      background-image: linear-gradient(fade(@hero_background, 50%),
-                                        fade(@hero_background, 50%)),
+      background-image: linear-gradient($_banner_color, $_banner_color),
                         url('../../atf_eregs/478-landing.jpg');
     }
     &.banner-479 {
-      background-image: linear-gradient(fade(@hero_background, 50%),
-                                        fade(@hero_background, 50%)),
+      background-image: linear-gradient($_banner_color, $_banner_color),
                         url('../../atf_eregs/479-landing.jpg');
     }
     &.banner-555 {
-      background-image: linear-gradient(fade(@hero_background, 50%),
-                                        fade(@hero_background, 50%)),
+      background-image: linear-gradient($_banner_color, $_banner_color),
                         url('../../atf_eregs/555-landing.jpg');
     }
     &.banner-646 {
-      background-image: linear-gradient(fade(@hero_background, 50%),
-                                        fade(@hero_background, 50%)),
+      background-image: linear-gradient($_banner_color, $_banner_color),
                         url('../../atf_eregs/646-landing.jpg');
     }
 
@@ -71,11 +68,11 @@
 }
 
 .banner-text {
-    .font-light;
+    @include sans-font-light;
     margin: 0;
-    background-color: @main_head_background;
+    background-color: $atf_main_head_background;
     padding: 4px 8px;
-    color: @main_head_text_color;
+    color: $atf_main_head_text_color;
     opacity: .8;
 }
 
@@ -87,7 +84,7 @@
     }
 }
 .landing-search-box {
-    .search-box;
+    @extend .search-box;
 
     input {
         width: 80%;
@@ -104,7 +101,7 @@
 
     li {
         display: inline-block;
-        background-color: @main_head_hover_color;
+        background-color: $atf_main_head_hover_color;
         padding: 8px 16px;
         margin: 5px;
         font-size: small;
@@ -121,7 +118,7 @@
 .landing-search-wrapper {
     padding-bottom: 45px;
     margin-bottom: 45px;
-    border-bottom: 1px solid @light_field;
+    border-bottom: 1px solid $history_drawer_border_color;
 
     form {
         margin-top: 20px;
@@ -134,7 +131,7 @@
 
 .landing {
     p {
-        .font-regular;
+        @include sans-font-regular;
         font-size: 1em;
         line-height: 1.7em;
     }
