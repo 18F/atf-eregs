@@ -32,6 +32,8 @@ $history_drawer_border_color: #fff;
 $body_font: 'Merriweather Regular', Arial, sans-serif;
 */
 
+$sans_font_scale_factor: .875;
+
 $mainhead_height: 60px;
 @mixin sans-font-light {
   font-family: "Lato Light", Arial, sans-serif;
