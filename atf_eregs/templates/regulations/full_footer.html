@@ -1,7 +1,15 @@
 {% load macros %}
 <footer class="reg-footer">
   <ul>
-    <li>This is an official site of the U.S. Department of Justice.</li>
+    <li>{% external_link url="https://www.justice.gov" title="U.S. Department of Justice" text="This is an official site of the U.S. Department of Justice." %}
+
+        <div class="footer-small">
+            <ul>
+                <li>{% external_link url="https://www.justice.gov/doj/privacy-policy" title="Privacy Policy" text="Privacy Policy" %}</li>
+                <li>{% external_link url="https://www.justice.gov/legalpolicies" title="Legal Policies and Disclaimers" text="Legal Policies &amp; Disclaimers" %}</li>
+            </ul>
+        </div>
+    </li>
     <li>{% external_link url="https://www.atf.gov" title="ATF Home" text="Looking for ATF.gov?" %}</li>
   </ul>
 </footer>
