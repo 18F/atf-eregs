@@ -25,3 +25,33 @@
 </div>
 </section>
 {% endblock %}
+
+{% block about-timeline %}
+<section class="about-section group" id="timeline">
+    <div class="inner-wrap">
+    <h3>Regulation timeline</h3>
+
+    <div class="content-secondary column-l">
+        <img src="{%static "regulations/img/regtimeline-01.png" %}" class="s-bump" alt="eRegulations timeline navigation screenshot">
+
+        <img src="{%static "regulations/img/regtimeline-03.png" %}" class="s-bump about-stopcompare-img" alt="eRegulations timeline navigation screenshot">
+    </div>
+
+    <div class="content-primary column-r">
+        <p class="about-timeline">The <strong>regulation timeline</strong> shows recent revisions of the regulation organized by latest effective date.</p>
+
+        <ol class="about-ol bump">
+            <li>The <strong>date picker</strong> allows users to find what revision was effective on a specific date.</li>
+            <li><strong>Federal Register notice(s)</strong> associated with a revision are presented and organized by publication date. These links will
+            take you to the notice on the Office of the Federal Register’s website.</li>
+            <li><strong>Compare</strong> any two revisions of the regulation, word for word, by selecting a date in the menu and clicking “Show Differences”.</li>
+        </ol>
+
+        <img src="{%static "regulations/img/regtimeline-02.png" %}" alt="eRegulations revision comparison screenshot">
+
+        <p class="about-stopcompare"><strong>To stop comparing</strong>, return to the regulation timeline tab — <span class="about-timeline-red-icon"> —<span> at the top left side of the screen. Click the “Stop Comparing” button under the second of the two revisions being compared.</p>
+        
+    </div>
+</div>
+</section>
+{% endblock %}
