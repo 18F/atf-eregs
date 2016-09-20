@@ -1,7 +1,7 @@
 .reg-footer {	
-	.footer-font;
+	@extend .footer-font;
 	color:#fff;
-	background: @main_head_background;
+	background: $atf_main_head_background;
 	width: 100%;
 	padding:30px 15px;
 	display:block;

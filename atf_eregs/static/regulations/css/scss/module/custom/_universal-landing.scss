@@ -3,23 +3,23 @@
 }
 
 .hero {
-    background-color: @hero_background;
-    color: @hero_text_color;
+    background-color: $atf_hero_background;
+    color: $atf_hero_text_color;
 
     a:link,
     a:visited {
-      color: @pacific_light;
+      color: $atf_hero_link;
     }
 }
 
 .hero-header {
-    .font-light;
+  @include sans-font-light;
     font-size: 2.75em;
     margin-top: .6em;
+    margin-bottom: 0;
 }
 
 .hero-text {
-    .font-regular;
     font-size: 1.375em;
     line-height: 31px;
     margin-top: 10px;
