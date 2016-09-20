@@ -9,19 +9,19 @@
 }
 
 .title-hero {
-    background-color: @hero_background;
-    color: @hero_text_color;
+    background-color: $atf_hero_background;
+    color: $atf_hero_text_color;
 
     h2 {
         font-size: 34px;
         padding: 24px 0;
         margin: 0;
-        .font-light;
+        @include sans-font-light;
     }
 }
 
 .about-ol > li:before{
-    background: @pacific;
+    background: $atf_carrots;
 }
 
 .about-stopcompare {
@@ -58,7 +58,7 @@ img.about-stopcompare-img {
 
 @media only screen and ( min-width: 780px ) {
     #related-info .content-secondary {
-        /* Overrides value set in layout.less */
+        /* Overrides value set in layout.scss */
         width: 25%;
     }
 }
