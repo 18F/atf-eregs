@@ -18,6 +18,15 @@
 		list-style-type: none;
 		color:#fff;
 		margin:0;
+
+        .footer-small ul li {
+			width: 20%;
+            white-space: nowrap;
+            text-size: 12px;
+        }
+        .footer-small ul li a.external{
+            font-size: 12px;
+        }
 	}
 
 	ul li a {
@@ -33,14 +42,6 @@
 		ul li:not(:first-child) {
 			text-align: right;
 		}
-        .footer-small ul li {
-			width: 20%;
-            white-space: nowrap;
-            text-size: 12px;
-        }
-        .footer-small ul li a.external{
-            font-size: 12px;
-        }
 	}
 
 	@media only screen and (max-device-width: 480px) {
