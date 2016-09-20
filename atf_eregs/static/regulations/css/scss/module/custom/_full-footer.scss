@@ -1,52 +1,52 @@
-.reg-footer {	
-	@extend .footer-font;
-	color:#fff;
-	background: $atf_main_head_background;
-	width: 100%;
-	padding:30px 15px;
-	display:block;
-	float:left;
-	
-	ul {
-		width:100%;
-		padding:0;
-		margin:0;
-		float:left;
-	}
+.reg-footer {    
+    @extend .footer-font;
+    color:#fff;
+    background: $atf_main_head_background;
+    width: 100%;
+    padding:30px 15px;
+    display:block;
+    float:left;
+    
+    ul {
+        width:100%;
+        padding:0;
+        margin:0;
+        float:left;
+    }
 
-	ul li {
-		list-style-type: none;
-		color:#fff;
-		margin:0;
+    ul li {
+        list-style-type: none;
+        color:#fff;
+        margin:0;
 
         .footer-small ul li {
-			width: 20%;
+            width: 20%;
             white-space: nowrap;
             text-size: 12px;
         }
         .footer-small ul li a.external{
             font-size: 12px;
         }
-	}
+    }
 
-	ul li a {
-		color:#fff;
-	}
+    ul li a {
+        color:#fff;
+    }
 
-	@media only screen and ( min-width: 480px) {
-		ul li {
-			width: 50%;
-			display: block;
-			float: left;
-		}
-		ul li:not(:first-child) {
-			text-align: right;
-		}
-	}
+    @media only screen and ( min-width: 480px) {
+        ul li {
+            width: 50%;
+            display: block;
+            float: left;
+        }
+        ul li:not(:first-child) {
+            text-align: right;
+        }
+    }
 
-	@media only screen and (max-device-width: 480px) {
-		ul li:not(:first-child) {
-			text-align: left;
-		}
-	}
+    @media only screen and (max-device-width: 480px) {
+        ul li:not(:first-child) {
+            text-align: left;
+        }
+    }
 }
