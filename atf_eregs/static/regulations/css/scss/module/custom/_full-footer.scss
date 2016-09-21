@@ -20,11 +20,13 @@
         margin:0;
 
         .footer-small ul li {
-            width: 20%;
-            white-space: nowrap;
-            text-size: 12px;
+            white-space: normal;
+            display: inline-block;
+            margin-right: 30px;
+            width: auto;
         }
-        .footer-small ul li a.external{
+        .footer-small ul li a {
+            white-space: nowrap;
             font-size: 12px;
         }
     }
@@ -41,6 +43,10 @@
         }
         ul li:not(:first-child) {
             text-align: right;
+        }
+        .footer-small ul li {
+            width: auto;
+            display: inline-block;
         }
     }
 
