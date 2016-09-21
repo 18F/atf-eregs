@@ -24,6 +24,19 @@
     background: $atf_carrots;
 }
 
+.about-stopcompare {
+    margin-top: 80px;
+    margin-left: 20px;
+}
+
+.icon-red {
+    color: #d14124;
+}
+
+img.about-stopcompare-img {
+    margin-top: 35px;
+}
+
 @media only screen and ( min-width: 780px ) {
     #related-info .content-secondary {
         /* Overrides value set in layout.scss */
