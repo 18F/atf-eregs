@@ -47,33 +47,3 @@ h3 {
     @extend .key-term-level-3-font;
     text-transform: none;
 }
-
-/*  Definition Links
-  --------------
-  <a href="#" class="definition">defined term</a>
-*/
-
-.definition,
-.definition:link,
-.definition:visited {
-  color: $black;
-  text-decoration: none;
-  border-bottom: 1px solid $definition_underline_color;
-}
-
-.definition:hover,
-.definition:active {
-  border-bottom: 1px solid $definition_underline_color;
-  background-color: $gray_lighter;
-}
-
-.definition.active {
-  background-color: $gray_lighter;
-}
-
-.inline-interpretation {
-  .definition:link,
-  .definition:visited {
-     border-bottom: 1px solid $definition_underline_color;
-  }
-}
