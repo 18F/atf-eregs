@@ -1,5 +1,5 @@
 {% extends "regulations/generic_landing.html" %}
-{% load macros %}
+{% load macros to_list %}
 
 {% block reg_title %}
 <div class="banner-image banner-646"></div>
@@ -21,6 +21,7 @@
   <li><a href="{% url 'chrome_section_view' label_id='646-154' version=current_version.version %}" class="citation internal" data-section-id="646-154">Penalties and forfeitures for contraband cigarettes</a></li>
 </ul>
 {% with reg='646' version=current_version.version %}
+  {% to_list 'Contraband' 'Exemptions' 'Premises' 'Record keeping' as terms %}
   {% include "atf_eregs/landing-search.html" %}
 {% endwith %}
 {% endblock %}

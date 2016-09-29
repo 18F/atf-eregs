@@ -1,5 +1,5 @@
 {% extends "regulations/generic_landing.html" %}
-{% load macros %}
+{% load macros to_list %}
 
 {% block reg_title %}
 <div class="banner-image banner-447"></div>
@@ -23,6 +23,7 @@
 </ul>
 
 {% with reg='447' version=current_version.version %}
+  {% to_list 'Country of origin' 'Exemptions' 'Munitions import list' 'Permit' 'USMIL' as terms %}
   {% include "atf_eregs/landing-search.html" %}
 {% endwith %}
 {% endblock %}
