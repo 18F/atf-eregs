@@ -5,3 +5,5 @@ flake8==2.6.2
 lxml
 coverage
 mock
+
+-r parsing.txt

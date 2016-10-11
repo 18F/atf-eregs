@@ -1,0 +1,6 @@
+cfenv==0.5.2
+gunicorn==19.4.5
+newrelic==2.64.0.48
+pyelasticsearch==1.4
+psycopg2==2.6.1
+whitenoise==3.0
