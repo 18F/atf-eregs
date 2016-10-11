@@ -14,6 +14,7 @@ Contents:
    :maxdepth: 2
 
    local_setup
+   docker_setup
    production_setup
    customization
    new_rule

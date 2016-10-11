@@ -2,6 +2,9 @@
 Local Setup
 ===========
 
+Note that for the quickest setup, you may want to consider our
+:doc:`docker_setup` instructions.
+
 This application requires Python 2.7. `Install it (if you haven't already)
 <http://docs.python-guide.org/en/latest/starting/installation/>`_, `set up a
 virtualenv for this project and activate it

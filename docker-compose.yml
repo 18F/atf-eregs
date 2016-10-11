@@ -1,0 +1,20 @@
+version: '2'
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - atf-db:/app/db
+    command: bash -c "manage.py migrate && manage.py runserver 0.0.0.0:8000"
+  parser:
+    image: eregs/parser
+    volumes:
+      - ./eregs_extensions:/app/extensions
+      - cache:/app/cache
+    entrypoint: /app/extensions/docker-start.sh
+    depends_on:
+      - web
+volumes:
+  atf-db:
+  cache:
