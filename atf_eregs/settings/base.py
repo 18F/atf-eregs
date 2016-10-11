@@ -1,5 +1,7 @@
 import os
 
+import dj_database_url
+
 from regcore.settings.base import *  # noqa
 from regcore.settings.base import (  # explicitly referenced below
     INSTALLED_APPS, DATABASES)
@@ -13,7 +15,11 @@ INSTALLED_APPS = ('overextends', 'atf_eregs',) + REGCORE_APPS + REGSITE_APPS
 
 ROOT_URLCONF = 'atf_eregs.urls'
 
-DATABASES = REGCORE_DATABASES
+DATABASES = {
+    'default': dj_database_url.config(
+        default='sqlite:///' + os.path.join('.', 'eregs.db')
+    )
+}
 
 API_BASE = 'http://localhost:{}/api/'.format(
     os.environ.get('VCAP_APP_PORT', '8000'))

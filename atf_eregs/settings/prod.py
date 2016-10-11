@@ -1,6 +1,5 @@
 import re
 
-import dj_database_url
 from cfenv import AppEnv
 
 from .base import *  # noqa
@@ -17,10 +16,6 @@ ANALYTICS = {
         'AGENCY': 'DOJ',
         'SUBAGENCY': 'ATF',
     },
-}
-
-DATABASES = {
-    'default': dj_database_url.config()
 }
 
 env = AppEnv()
