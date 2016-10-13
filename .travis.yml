@@ -17,6 +17,7 @@ script:
   - python manage.py compile_frontend
   - python manage.py test
   - flake8 atf_eregs eregs_extensions
+  - bandit -r .
 before_deploy:
   - export PATH=$HOME:$PATH
   - travis_retry curl -L -o $HOME/cf.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.15.0"

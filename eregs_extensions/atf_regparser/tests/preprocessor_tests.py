@@ -20,4 +20,4 @@ class USCodeTests(TestCase):
         USCode().transform(xml)
 
         uscode = xml.xpath("//USCODE")
-        assert(uscode)
+        self.assertTrue(uscode)
