@@ -78,7 +78,7 @@ library.
 
 .. code-block:: bash
 
-  pip install git+https://github.com/18F/regulations-parser.git
+  pip install git+https://github.com/eregs/regulations-parser.git@4.0.0#egg=regparser
 
 Then, you will want to start your local server and send it the parsed data.
 These steps will take several minutes.
@@ -86,6 +86,8 @@ These steps will take several minutes.
 .. code-block:: bash
 
   python manage.py runserver &    # start the server as a background process
+  # Set up the parser's database
+  python manage.py migrate --settings=regparser.web.settings.dev
   eregs pipeline 27 447 http://localhost:8000/api   # send the data for one reg
   eregs pipeline 27 478 http://localhost:8000/api
   eregs pipeline 27 479 http://localhost:8000/api
