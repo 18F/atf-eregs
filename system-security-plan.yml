@@ -1,8 +1,8 @@
 ---
 name: ATF eRegs
 uniqueID: MB18F15ATF01
-version: 0.1.0
-phase: alpha
+version: 1.0.0
+phase: beta
 information-types:
 - D26 Civilian Operations
 confidentiality: none
@@ -46,10 +46,10 @@ leveraged-authorizations:
 - https://www.fedramp.gov/marketplace/compliant-systems/amazon-web-services-aws-eastwest-us-public-cloud/
 purpose: https://github.com/18F/atf-eregs
 components: 
-- https://github.com/18F/regulations-core
-- https://github.com/18F/regulations-site
-diagram: https://github.com/18F/atf-eregs#architecture
-network-architecture: https://github.com/18F/atf-eregs#updating-data
+- https://github.com/eregs/regulations-core
+- https://github.com/eregs/regulations-site
+diagram: http://atf-eregs.readthedocs.io/en/latest/production_setup.html#architecture
+network-architecture: http://atf-eregs.readthedocs.io/en/latest/production_setup.html#updating-data
 environments:
 - Cloud Foundry
 - Amazon Web Services East / West
@@ -59,6 +59,6 @@ user-types:
         - deployment
         - engineering
 controls: 
-- https://github.com/18F/atf-eregs#updating-data
-- https://github.com/18F/regulations-core#security
+- http://atf-eregs.readthedocs.io/en/latest/production_setup.html#updating-data
+- https://github.com/eregs/regulations-core#security
 ---
