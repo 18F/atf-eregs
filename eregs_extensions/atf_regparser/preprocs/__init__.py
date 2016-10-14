@@ -1,7 +1,7 @@
 # vim: set encoding=utf-8
 """Set of transforms we run on notice XML to account for common inaccuracies
 in the XML"""
-from lxml import etree
+from defusedxml.lxml import etree
 from regparser.tree.xml_parser.preprocessors import PreProcessorBase
 
 

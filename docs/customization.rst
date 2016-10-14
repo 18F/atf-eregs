@@ -91,17 +91,15 @@ Style Sheets
 The core eRegs libraries provide a relatively clean set of stylesheets for
 displaying regulations. To integrate with ATF's branding, however, these
 style sheets are modified to use the appropriate colors, fonts, and the like.
-Similar to the template overriding process, there exist several LESS
+Similar to the template overriding process, there exist several SCSS
 components which can be completely replaced by corresponding files in the
-``atf_eregs/static/regulations/css/less`` directory. Consult the
-``regulations-site`` documentation for full details, but three files are
+``atf_eregs/static/regulations/css/scss`` directory. Consult the
+``regulations-site`` documentation for full details, but two files are
 particularly important.
 
-* ``variables.less`` defines common variables used throughout other less
-  files. These largely consist of color schemes
-* ``custom-mixins.less`` these mixins are used to override font-families, text
-  sizes and the like.
-* ``module/custom.less`` this file exists specifically for ATF-specific
+* ``variables.scss`` defines common variables used throughout other
+  stylesheets. These largely consist of color schemes
+* ``module/_custom.less`` this file exists specifically for ATF-specific
   modules, such as style sheets related to Posters.
 
 After making edits to any of these files, remember to run

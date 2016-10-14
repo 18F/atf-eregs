@@ -8,7 +8,7 @@ jsonschema==2.5.1
 # regulations-site
 # django already covered
 requests==2.9.1
--e git+https://github.com/eregs/regulations-site.git@6.0.3#egg=regulations
+-e git+https://github.com/eregs/regulations-site.git@6.2.0#egg=regulations
 
 dj-database-url==0.4.1
 django-overextends==0.4.1

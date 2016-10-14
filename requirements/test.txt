@@ -1,3 +1,4 @@
+bandit
 django-nose
 pyflakes==1.2.3
 pycodestyle==2.0.0

@@ -31,7 +31,7 @@ class Rulings(Layer):
         package_dir = os.path.dirname(this_file)
         data_path = os.path.join(package_dir, 'rulings.yml')
         with open(data_path, 'r') as f:
-            return yaml.load(f)
+            return yaml.safe_load(f)
 
     @classmethod
     def doc_metadata(cls):

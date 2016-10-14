@@ -56,24 +56,7 @@ If the code within ``atf-eregs``, ``regulations-core``, or
 ``regulations-site`` has been updated, you will want to deploy the updated
 code to cloud.gov. At the moment, we build all of the front-end code locally,
 shipping the compiled CSS/JS when deploying. This means we'll need to update
-our libraries, build the new front end, and push the result. Always specify a
-manifest file using the ``-f`` option when deploying to cloud.gov.
-
-For zero-downtime updates, deploy applications using ``autopilot``. To install:
-
-.. code-block:: bash
-
-  go get github.com/concourse/autopilot
-  cf install-plugin $GOPATH/bin/autopilot
-
-To deploy:
-
-.. code-block:: bash
-
-  pip install -r requirements.txt   # updates the -core/-site repositories
-  python manage.py compile_frontend   # builds the frontend
-  cf target -o eregs -s dev
-  cf zero-downtime-push atf-eregs -f manifest_dev.yml
+our libraries, build the new front end, and push the result.
 
 Confusingly, although the front-end compilation step occurs locally, all other
 library linking (in particular to ``regulations-site`` and
@@ -82,6 +65,29 @@ process for cloud.gov will pull in the latest from ``regulations-site`` and
 ``regulations-core``, regardless of what you have locally and regardless of
 what you've built the front-end against. Be sure to always update your local
 libraries (via ``pip``) before building and pushing.
+
+You'll need a cloud-foundry shell and the zero-downtime deployment script. To
+install:
+
+.. code-block:: bash
+
+  curl -L -o cf.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.15.0"
+  tar xzvf cf.tgz -C .
+  ./cf install-plugin autopilot -f -r CF-Community
+
+To deploy, you can either set up these environmental variables to match your
+cloud.gov info: ``API``, ``CF_USERNAME``, ``CF_PASSWORD``, ``ORG``, ``SPACE``
+or you can use ``cf login`` yourself and comment out the second to last line
+in ``deploy.sh`` in either case, deploy via:
+
+.. code-block:: bash
+
+  ./deploy.sh dev   # staging
+  ./deploy.sh prod  # production
+
+One word of caution here: if you receive an error about exceeding the
+organization's memory limit, try modifying the number of instances in
+``manifest_prod.yml`` to 1, retry deployment, then run ``cf scale atf-eregs -i 3``.
 
 Services
 ========
