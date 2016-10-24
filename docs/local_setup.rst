@@ -151,7 +151,7 @@ You will also have to either export an environmental variable or create a
 
 .. code-block:: bash
 
-  export VCAP_APP_PORT=1234
+  export PORT=1234
 
 OR
 
