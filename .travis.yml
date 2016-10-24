@@ -5,6 +5,7 @@ python:
 install:
   - pip install -r requirements.txt
   - pip install -r requirements/test.txt
+  - pip install git+https://github.com/eregs/regulations-parser.git@4.0.0#egg=regparser
   - npm install -g grunt-cli bower
   - gem install sass
 env:
@@ -15,7 +16,7 @@ env:
 script:
   - python manage.py migrate --fake-initial
   - python manage.py compile_frontend
-  - python manage.py test
+  - py.test
   - flake8 atf_eregs eregs_extensions
   - bandit -r .
 before_deploy:

@@ -1,7 +1,7 @@
-# vim: set encoding=utf-8
+# -*- coding: utf-8 -*-
 """Set of transforms we run on notice XML to account for common inaccuracies
 in the XML"""
-from defusedxml.lxml import etree
+from lxml import etree   # nosec - not based on external input
 from regparser.tree.xml_parser.preprocessors import PreProcessorBase
 
 
