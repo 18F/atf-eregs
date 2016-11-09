@@ -1,6 +1,6 @@
 set -e
 
-API="https://api.cloud.gov"
+API="https://api.fr.cloud.gov"
 ORG="atf-eregs"
 SPACE=$1
 

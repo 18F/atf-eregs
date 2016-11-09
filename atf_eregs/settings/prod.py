@@ -31,7 +31,10 @@ if elastic_service:
     HAYSTACK_CONNECTIONS['default'] = {
         'ENGINE': ('haystack.backends.elasticsearch_backend.'
                    'ElasticsearchSearchEngine'),
-        'URL': elastic_service.credentials['uri'],
+        'URL': 'http://{}:{}@{}:{}'.format(elastic_service.credentials['username'],
+                    elastic_service.credentials['password'],
+                    elastic_service.credentials['hostname'],
+                    elastic_service.credentials['port']),
         'INDEX_NAME': 'eregs',
     }
 

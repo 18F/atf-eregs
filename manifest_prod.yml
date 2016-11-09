@@ -1,9 +1,6 @@
 ---
 inherit: manifest_base.yml
-host: atf-eregs
+routes:
+  # - route: atf-eregs.18f.gov
+  - route: atf-eregs.fr.cloud.gov
 instances: 5
-services:
-  - atf-eregs-search-prod-1.7.1
-  - atf-eregs-db
-applications:
-  - name: atf-eregs

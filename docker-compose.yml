@@ -5,7 +5,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - atf-db:/app/db
+      - atf-eregs-db:/app/db
     command: bash -c "manage.py migrate && manage.py runserver 0.0.0.0:8000"
   parser:
     image: eregs/parser:4.0.0
@@ -16,5 +16,5 @@ services:
     depends_on:
       - web
 volumes:
-  atf-db:
+  atf-eregs-db:
   cache:
