@@ -8,5 +8,6 @@ env:
   DJANGO_SETTINGS_MODULE: atf_eregs.settings.prod
   NEW_RELIC_CONFIG_FILE: newrelic.ini
   DISABLE_COLLECTSTATIC: 1
+  WEB_CONCURRENCY: 4
 applications:
   - name: atf-eregs
