@@ -1,12 +1,13 @@
 ---
-command: python manage.py refresh && python manage.py collectstatic --noinput && gunicorn atf_eregs.wsgi:application
-domains:
-  - apps.cloud.gov
-  - 18f.gov
 services:
   # Must provide HTTP_AUTH_USER, HTTP_AUTH_PASSWORD, NEW_RELIC_LICENSE_KEY, and NEW_RELIC_APP_NAME
   - atf-eregs-creds
+  - atf-eregs-search-1.7.1
+  - atf-eregs-db
 env:
   DJANGO_SETTINGS_MODULE: atf_eregs.settings.prod
   NEW_RELIC_CONFIG_FILE: newrelic.ini
   DISABLE_COLLECTSTATIC: 1
+  WEB_CONCURRENCY: 4
+applications:
+  - name: atf-eregs

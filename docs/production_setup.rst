@@ -92,14 +92,14 @@ organization's memory limit, try modifying the number of instances in
 Services
 ========
 
-This application uses the ``rds`` and ``elasticsearch-swarm`` services on
+This application uses the ``aws-rds`` and ``elasticsearch17`` services on
 cloud.gov. Services are bound to applications in the manifest files. To create
 services:
 
 .. code-block:: bash
 
-  cf create-service rds micro-psql atf-db
-  cf create-service elasticsearch-swarm-1.7.1 1x atf-eregs-search-1.7.1
+  cf create-service aws-rds medium-psql atf-eregs-db
+  cf create-service elasticsearch17 1x atf-eregs-search-1.7.1
 
 Our cloud.gov stack should have a user-provided service named
 ``atf-eregs-creds`` including the following credentials:
@@ -149,7 +149,7 @@ To do that, you'll need to run ``python manage.py compile_frontend`` first.
 The final step starts the ``gunicorn`` server and points it to a WSGI file.
 This file sets up a New Relic monitoring agent and wraps the webapp with a
 static file hosting solution (``whitenoise``). Django does not host static
-files, 
+files,
 `deferring <https://docs.djangoproject.com/en/1.9/howto/static-files/>`_ to a
 variety of other solutions.
 
@@ -169,7 +169,7 @@ committing these changes to a shared repository) or create a
 attributes needed.
 
 
-The ``DATABASES`` attribute uses the 
+The ``DATABASES`` attribute uses the
 `dj_database_url <https://github.com/kennethreitz/dj-database-url>`_ library
 to pull database connection information from the implicitly defined
 ``DATABASE_URL`` environmental variable. If defining such a variable is not
