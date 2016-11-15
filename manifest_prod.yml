@@ -1,6 +1,6 @@
 ---
 inherit: manifest_base.yml
 routes:
-  # - route: atf-eregs.18f.gov
-  - route: atf-eregs.fr.cloud.gov
+  - route: atf-eregs.18f.gov
+  - route: atf-eregs.app.cloud.gov
 instances: 5

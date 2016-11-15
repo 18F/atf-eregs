@@ -1,4 +1,4 @@
 ---
 inherit: manifest_base.yml
 routes:
-  - route: atf-eregs-demo.fr.cloud.gov
+  - route: atf-eregs-demo.app.cloud.gov
