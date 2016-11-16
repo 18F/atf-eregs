@@ -68,7 +68,7 @@ In this scenario, we just need to configure the UI to point to the live API:
 
 .. code-block:: bash
 
-  echo "API_BASE = 'https://atf-eregs.apps.cloud.gov/api/'" >> local_settings.py
+  echo "API_BASE = 'https://atf-eregs.app.cloud.gov/api/'" >> local_settings.py
 
 Parsing Regulations
 -------------------
