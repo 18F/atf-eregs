@@ -9,11 +9,11 @@ if [ $# -ne 1 ]; then
   exit
 fi
 
+NAME="atf-eregs"
+
 if [ $SPACE = 'prod' ]; then
-  NAME="atf-eregs"
   MANIFEST="manifest_prod.yml"
 elif [ $SPACE = 'dev' ]; then
-  NAME="atf-site"
   MANIFEST="manifest_dev.yml"
 else
   echo "Unknown space: $SPACE"

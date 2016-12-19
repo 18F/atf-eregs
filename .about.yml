@@ -95,7 +95,7 @@ type: app
 #   text: Anchor text for the link
 #   category: Type of the link
 links:
-- url: https://atf-eregs.apps.cloud.gov/
+- url: https://atf-eregs.app.cloud.gov/
   text: ATF eRegulations website
 
 # What tags does your organization's blog associate with your project? You can
