@@ -14,7 +14,7 @@ dj-database-url==0.4.1
 django-haystack==2.5.1
 django-mptt==0.8.7        # via regcore
 django-overextends==0.4.2
-django==1.8.16            # via django-haystack, django-overextends, regcore, regulations
+django==1.8.18            # via django-haystack, django-overextends, regcore, regulations
 docutils==0.13.1          # via botocore
 enum34==1.1.6             # via regulations
 functools32==3.2.3.post2  # via jsonschema
