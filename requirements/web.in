@@ -1,0 +1,5 @@
+dj-database-url
+django-haystack
+django-overextends
+regcore
+regulations
