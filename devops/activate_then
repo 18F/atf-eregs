@@ -1,4 +1,6 @@
 #!/bin/bash
+SITE_VERSION=7.0.1
+API_VERSION=3.0.0
 
 if [ ! -d .venv/bin ]; then
   virtualenv .venv
@@ -9,14 +11,45 @@ if ! [ -x "$(command -v pip-sync)" ]; then
   pip install pip-tools==1.9.0
 fi
 
-if [ ! -d requirements/regulations-site ]; then
-  git clone https://github.com/eregs/regulations-site.git requirements/regulations-site
-fi
-
 if [ -n "$DEBUG" ]; then
-  pip-sync requirements/web_dev.txt
+  echo "Syncing python libs; this will take a moment"
+
+  mkdir -p eregs_libs
+
+  if [ ! -d eregs_libs/regulations-site ]; then
+    git clone https://github.com/eregs/regulations-site.git eregs_libs/regulations-site
+    cd eregs_libs/regulations-site
+    git checkout $SITE_VERSION
+    cd ../..
+  fi
+
+  cd eregs_libs/regulations-site
+  git status | grep $SITE_VERSION > /dev/null
+  if [ $? != 0 ]; then
+    echo "Notice: regulations-site is not @ $SITE_VERSION"
+  fi
+  cd ../..
+
+  if [ ! -d eregs_libs/regulations-core ]; then
+    git clone https://github.com/eregs/regulations-core.git eregs_libs/regulations-core
+    cd eregs_libs/regulations-core
+    git checkout $API_VERSION
+    cd ../..
+  fi
+
+  cd eregs_libs/regulations-core
+  git status | grep $API_VERSION > /dev/null
+  if [ $? != 0 ]; then
+    echo "Notice: regulations-core is not @ $API_VERSION"
+  fi
+  cd ../..
+
+  # Unfortunately, due to the editable libraries, pip-sync will always have
+  # quite a bit of output. Hide it!
+  pip-sync requirements_dev.txt > /dev/null
+  echo "Done!"
 else
-  pip-sync requirements/web.txt
+  pip-sync requirements.txt
 fi
 
 

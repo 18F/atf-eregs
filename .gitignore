@@ -60,7 +60,7 @@ target/
 # App
 eregs.db
 local_settings.py
-requirements/regulations-site
+eregs_libs
 
 # Local frontend build
 frontend_build/
