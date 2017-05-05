@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ ! -d .venv/bin ]; then
+  virtualenv .venv
+fi
+source .venv/bin/activate
+
+if ! [ -x "$(command -v pip-sync)" ]; then
+  pip install pip-tools==1.9.0
+fi
+
+if [ ! -d requirements/regulations-site ]; then
+  git clone https://github.com/eregs/regulations-site.git requirements/regulations-site
+fi
+
+if [ -n "$DEBUG" ]; then
+  pip-sync requirements/web_dev.txt
+else
+  pip-sync requirements/web.txt
+fi
+
+
+exec "$@"

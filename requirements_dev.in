@@ -1,0 +1,9 @@
+-r requirements.txt
+-e eregs_libs/regulations-site
+-e eregs_libs/regulations-core
+bandit
+flake8
+httpretty
+mock
+pytest
+pytest-django

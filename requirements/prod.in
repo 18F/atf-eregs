@@ -1,7 +1,0 @@
--r web.txt
-cfenv
-gunicorn
-newrelic
-pyelasticsearch
-psycopg2
-whitenoise
