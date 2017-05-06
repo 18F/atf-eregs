@@ -1,0 +1,2 @@
+-e eregs_extensions
+-e git+https://github.com/eregs/regulations-parser.git@4.0.0#egg=regparser

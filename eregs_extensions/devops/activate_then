@@ -1,0 +1,36 @@
+#!/bin/bash
+PARSER_VERSION=4.0.0
+
+if [ ! -d .venv/bin ]; then
+  virtualenv .venv
+fi
+source .venv/bin/activate
+
+if ! [ -x "$(command -v pip-sync)" ]; then
+  pip install pip-tools==1.9.0
+fi
+
+echo "Syncing python libs; this will take a moment"
+
+mkdir -p eregs_libs
+
+if [ ! -d eregs_libs/regulations-parser ]; then
+  git clone https://github.com/eregs/regulations-parser.git eregs_libs/regulations-parser
+  cd eregs_libs/regulations-parser
+  git checkout $PARSER_VERSION
+  cd ../..
+fi
+
+cd eregs_libs/regulations-parser
+git status | grep $PARSER_VERSION > /dev/null
+if [ $? != 0 ]; then
+  echo "Notice: regulations-parser is not @ $PARSER_VERSION"
+fi
+cd ../..
+
+# Unfortunately, due to the editable libraries, pip-sync will always have
+# quite a bit of output. Hide it!
+pip-sync requirements_dev.txt > /dev/null
+echo "Done!"
+
+exec "$@"
