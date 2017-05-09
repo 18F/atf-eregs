@@ -1,4 +1,9 @@
-.reg-footer {    
+.footer-font {
+  font-family: 'Lato Bold', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.reg-footer {
     @extend .footer-font;
     color:#fff;
     background: $atf_main_head_background;
@@ -6,7 +11,7 @@
     padding:30px 15px;
     display:block;
     float:left;
-    
+
     ul {
         width:100%;
         padding:0;
@@ -55,4 +60,10 @@
             text-align: left;
         }
     }
+}
+
+.footer-font {
+  font-family: 'Lato Bold', Arial, sans-serif;
+  font-weight: 800;
+  font-size:1em;
 }
