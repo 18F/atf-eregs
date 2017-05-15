@@ -1,0 +1,23 @@
+/* Key Terms */
+
+.key-term-font {
+  font-family: 'Lato Bold', Arial, sans-serif !important;
+}
+
+.key-term-level-1-font {
+    @extend .key-term-font;
+    font-size: 1.4666666666666666em;
+    line-height: 31px;
+}
+
+.key-term-level-2-font {
+    @extend .key-term-font;
+    font-size: 1.0666666666666667em;
+    line-height: 26px;
+}
+
+.key-term-level-3-font {
+    @extend .key-term-font;
+    font-size: 1.0666666666666667em;
+    line-height: 26px;
+}

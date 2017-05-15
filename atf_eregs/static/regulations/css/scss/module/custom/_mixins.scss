@@ -1,0 +1,45 @@
+/*
+LESS Mixins
+ ==========================================================================
+*/
+
+/*
+ Type Mixins
+ ----------------------
+*/
+@font-face {
+  font-family: 'Lato Light';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../font/Lato-Light.ttf");
+}
+
+@font-face {
+  font-family: 'Lato Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../font/Lato-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'Lato Bold';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../font/Lato-Bold.ttf");
+}
+
+@font-face {
+  font-family: 'Lato Italic';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../font/Lato-Italic.ttf");
+}
+/* Drawer font mixins */
+
+.drawer-header-font {
+    @include sans-font-bold;
+    font-size: .85714286em;
+    color: $atf_dark_text;
+    line-height: 40px;
+    text-transform: uppercase;
+}
