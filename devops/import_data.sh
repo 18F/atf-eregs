@@ -5,7 +5,7 @@ set -v -e
 docker-compose up -d dev-with-db
 
 # wait for api to startup
-until (curl http://localhost:9001/api/notice &>/dev/null)
+until (curl http://localhost:8001/api/notice &>/dev/null)
 do
   echo "Startup: Waiting for API"
   sleep 1
