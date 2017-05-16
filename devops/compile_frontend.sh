@@ -9,6 +9,7 @@ fi
 
 # We don't want to use --clear as we don't want to delete node_modules
 rm -rf frontend_build/config frontend_build/regulations
+mkdir -p compiled
 docker-compose run --rm manage.py collectstatic --no-default-ignore --noinput > /dev/null
 # Copy config values
 cp frontend_build/config/.babelrc frontend_build/
