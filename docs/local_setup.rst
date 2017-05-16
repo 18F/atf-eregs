@@ -3,7 +3,7 @@ Local (Docker) Setup
 ====================
 
 We develop using `Docker
-<https://www.docker.com/products/overview#install_the_platform>`_, , an open
+<https://www.docker.com/products/overview#install_the_platform>`_, an open
 source container engine. If you haven't already please install Docker and
 `Docker-compose <https://docs.docker.com/compose/install/>`_ (which is
 installed automatically with Docker on Windows and OS X).
