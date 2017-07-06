@@ -1,5 +1,5 @@
 #!/bin/bash
-SITE_VERSION=7.0.1
+SITE_VERSION=7.0.2
 API_VERSION=3.0.0
 
 if [ ! -d .venv/bin ]; then
