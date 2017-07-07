@@ -34,7 +34,7 @@ pyelasticsearch==1.4
 python-dateutil==2.6.0    # via botocore
 pytz==2016.10             # via celery
 regcore==3.0.0
-regulations==7.0.1
+regulations==7.0.2
 requests-toolbelt==0.7.1  # via regulations
 requests==2.11.1          # via regulations, requests-toolbelt
 s3transfer==0.1.10        # via boto3
