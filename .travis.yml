@@ -1,20 +1,16 @@
-language: python
-sudo: false
-python:
-  - "2.7"
-before_install:
-  - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash
-  - source ~/.nvm/nvm.sh
-  - nvm install 6.9.2
-  - nvm use 6.9.2
-install:
-  - pip install -r requirements.txt
-  - pip install -r requirements/test.txt
-  - pip install git+https://github.com/eregs/regulations-parser.git@4.0.0#egg=regparser
-  - npm install -g grunt-cli
+language: generic
+sudo: required
+services:
+- docker
 script:
-  - python manage.py migrate --fake-initial
-  - python manage.py compile_frontend
-  - py.test
-  - flake8 atf_eregs eregs_extensions
-  - bandit -r atf_eregs eregs_extensions -x tests
+# smoke test
+- ./devops/compile_frontend.sh
+# tests of web components
+- docker-compose run --rm py.test
+- docker-compose run --rm flake8
+- docker-compose run --rm bandit -r atf_eregs -x tests
+# tests of parser extensions
+- cd eregs_extensions
+- docker-compose run --rm py.test
+- docker-compose run --rm flake8
+- docker-compose run --rm bandit -r atf_regparser -x tests

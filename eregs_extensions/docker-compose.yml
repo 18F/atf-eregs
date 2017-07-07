@@ -1,0 +1,29 @@
+version: '2'
+services:
+  #---- Commands ----
+  eregs: &EREGS
+    image: python:2.7.13
+    entrypoint: ./devops/activate_then eregs
+    volumes:
+      - $PWD:/usr/src/app
+      - libs:/usr/src/app/.venv/
+    working_dir: /usr/src/app
+    stdin_open: true
+    tty: true
+    external_links:
+      - dev-with-db
+  pip-compile:
+    <<: *EREGS
+    entrypoint: ./devops/activate_then pip-compile
+  py.test:
+    <<: *EREGS
+    entrypoint: ./devops/activate_then py.test
+  flake8:
+    <<: *EREGS
+    entrypoint: ./devops/activate_then flake8
+  bandit:
+    <<: *EREGS
+    entrypoint: ./devops/activate_then bandit
+
+volumes:
+  libs:

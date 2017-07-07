@@ -1,160 +1,83 @@
-===========
-Local Setup
-===========
+====================
+Local (Docker) Setup
+====================
 
-Note that for the quickest setup, you may want to consider our
-:doc:`docker_setup` instructions.
+We develop using `Docker
+<https://www.docker.com/products/overview#install_the_platform>`_, an open
+source container engine. If you haven't already please install Docker and
+`Docker-compose <https://docs.docker.com/compose/install/>`_ (which is
+installed automatically with Docker on Windows and OS X).
 
-This application requires Python 2.7. `Install it (if you haven't already)
-<http://docs.python-guide.org/en/latest/starting/installation/>`_, `set up a
-virtualenv for this project and activate it
-<http://docs.python-guide.org/en/latest/dev/virtualenvs/>`_ (using Python
-2.7), and then `clone this repository
-<https://help.github.com/articles/cloning-a-repository/>`_. Throughout these
-docs, we'll assume you are running in a \*nix environment (Linux, BSD, OS X,
-etc.); Windows instructions would be similar.
-
-Executing
+To get started, you will need to `clone
+<https://help.github.com/articles/cloning-a-repository/>`_ the ATF-eRegs
+repository, build the frontend, and run the app:
 
 .. code-block:: bash
 
-  python --version
+  git clone https://github.com/18F/atf-eregs.git
+  cd atf-eregs
+  ./devops/compile_frontend.sh build-dist   # Must be run after CSS edits
+  docker-compose up prod
 
-should return something like
+Once that's done, visit the app at `http://0.0.0.0:9000/
+<http://0.0.0.0:9000/>`_.
 
-.. code-block:: bash
 
-  Python 2.7.10+
+Dev Mode
+========
 
-Next, we need to install all of the appropriate requirements (including the
-other components of eRegs). We'll assume you have `pip
-<https://pip.pypa.io/en/stable/installing/>`_ and `Node.JS & npm
-<https://nodejs.org/en/download/>`_ installed.
-
-.. code-block:: bash
-
-  npm install -g grunt-cli bower
-  pip install -r requirements.txt
-
-Then initialize the database (SQLite by default; see `Production`) and build
-the frontend:
+We also can run in "dev" mode, which includes the Django ``DEBUG`` flag and
+checks out locally-editable versions of ``regulations-site`` and
+``regulations-core``. Run
 
 .. code-block:: bash
 
-  python manage.py migrate --fake-initial
-  python manage.py compile_frontend
+  docker-compose up dev
 
-Then select one of the two setup options in the :ref:`Data` section. After that, you can run a
-development server locally via
+to see this in action. The locally-editable versions of the eregs libraries
+can be found in the ``eregs_libs`` directory, should you need to work on the
+core code base at the same time as the ATF code base. Note that for the time
+being, ``compile_frontend`` shell script *always* uses the local version of
+-site when building scripts. Remember to make a pull request for those
+upstream changes!
 
-.. code-block:: bash
 
-  python manage.py runserver
-
-.. _data:
-
-Data
-====
-For an instance of ATF-eRegs to display regulations data, it needs to have
-access to said data. There are two basic schemes to set this up -- you can
-either point your checkout to `existing` parsed regulations (ideal for folks
-only working on the front-end or who want to see a UI quickly), or you can
-`populate` your database with parsed regulations.
-
-Point to Existing Data
-----------------------
-
-In this scenario, we just need to configure the UI to point to the live API:
-
-.. code-block:: bash
-
-  echo "API_BASE = 'https://atf-eregs.app.cloud.gov/api/'" >> local_settings.py
-
-Parsing Regulations
--------------------
-
-To parse ATF's regulations, you will need to *also* install the parsing
-library.
-
-.. code-block:: bash
-
-  pip install git+https://github.com/eregs/regulations-parser.git@4.0.0#egg=regparser
-
-Then, you will want to start your local server and send it the parsed data.
-These steps will take several minutes.
-
-.. code-block:: bash
-
-  python manage.py runserver &    # start the server as a background process
-  # Set up the parser's database
-  python manage.py migrate --settings=regparser.web.settings.dev
-  eregs pipeline 27 447 http://localhost:8000/api   # send the data for one reg
-  eregs pipeline 27 478 http://localhost:8000/api
-  eregs pipeline 27 479 http://localhost:8000/api
-  eregs pipeline 27 555 http://localhost:8000/api
-  eregs pipeline 27 646 http://localhost:8000/api
-
-Then navigate to http://localhost:8000
-
-Editable Libraries
-==================
-
-Though this repository (atf-eregs) contains all of the ATF-specific code, you
-will most likely want to extend functionality in the base libraries as well.
-To do this, fork and check out the appropriate library (`regulations-site <https://github.com/18F/regulations-site>`_,
-`regulations-core <https://github.com/18F/regulations-core>`_,
-`regulations-parser <https://github.com/18F/regulations-parser>`_) into a
-separate directory, then install it via
-
-.. code-block:: bash
-
-  pip install -e /path/to/that/checkout
-
-This will tell Python to use your local version of that library rather than
-the upstream version. Although the Python and templates will change as soon
-as you modify them in the -site checkout, you will need to run
-`compile_frontend` (see above) to integrate stylesheet and JS changes.
-
-Fixing Errors
-==================
-
-If you pulled down the latest code changes, ran the server locally, and something didn't build correctly (you got an error message instead of seeing eRegulations), try running standard updates:
-
-For any component that you're working with (including atf-eregs), first do ``pip install -r requirements.txt`` to update the requirements.
-
-If working with the parser, do ``eregs clear``.
-
-Or if working with atf-eregs, do ``python manage.py compile_frontend`` to compile the frontend.
-
-And then try running the server again.
-
-Gotchas
+Parsing
 =======
 
-Ports
------
-For the time being, this application, which cobbles together
-`regulations-core <https://github.com/18F/regulations-core>`_ and
-`regulations-site <https://github.com/18F/regulations-site>`_, makes HTTP
-calls to itself. The server therefore needs to know which port it is set up to
-listen on.
+When using the  ``dev`` and ``prod`` applications, we're pointing to the
+existing, live data. This is helpful to get running quickly, but if we need to
+test parsing, we need a local database.
 
-We default to 8000, as that's the standard for django's ``runserver``, but if
-you need to run on a different port, use:
+To get that set up and kick off parsing, run
 
 .. code-block:: bash
 
-    python manage.py runserver 1234
+  ./devops/import_data.sh   # parses regulations, imports them locally
+  # later, if we just want to see that data
+  docker-compose up dev-with-db
 
-You will also have to either export an environmental variable or create a
-``local_settings.py`` file as follows:
+And then visit `http://0.0.0.0:8001/ <http://0.0.0.0:8001/>`_.
 
-.. code-block:: bash
+The process checks out a copy of ``regulations-parser`` in
+``eregs_extensions/eregs_libs/`` which can be further edited (similar to -site
+and -core).
 
-  export PORT=1234
 
-OR
+Other Tasks
+===========
 
-.. code-block:: bash
+Additionally, you can run containerized versions of several Python and Node
+commands:
 
-  echo "API_BASE = 'http://localhost:1234/api/'" >> local_settings.py
+- ``docker-compose run --rm manage.py`` - the Django management command
+- ``docker-compose run --rm py.test`` - our Python test runner
+- ``docker-compose run --rm flake8`` - a linter for Python
+- ``docker-compose run --rm pip-compile`` - a version-pinning program for
+  Python
+- ``docker-compose run --rm grunt`` - our JavaScript task runner. See
+  `regulations-site <https://github.com/eregs/regulations-site>`_ for more
+  details.
+
+Within the ``eregs_extensions`` directory, we can similarly run
+``pip-compile``, ``py.test``, and ``flake8`` for just the parser extension.

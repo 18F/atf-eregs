@@ -1,0 +1,7 @@
+-r requirements.txt
+-e eregs_libs/regulations-parser
+bandit
+flake8
+httpretty
+mock
+pytest
