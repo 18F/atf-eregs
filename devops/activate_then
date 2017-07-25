@@ -1,7 +1,4 @@
 #!/bin/bash
-SITE_VERSION=7.0.2
-API_VERSION=3.0.0
-
 if [ ! -d .venv/bin ]; then
   virtualenv .venv
 fi
@@ -14,35 +11,19 @@ fi
 if [ -n "$DEBUG" ]; then
   echo "Syncing python libs; this will take a moment"
 
-  mkdir -p eregs_libs
-
-  if [ ! -d eregs_libs/regulations-site ]; then
-    git clone https://github.com/eregs/regulations-site.git eregs_libs/regulations-site
-    cd eregs_libs/regulations-site
-    git checkout $SITE_VERSION
-    cd ../..
+  if git diff --exit-code eregs_libs/regulations-site > /dev/null
+  then
+    git submodule update eregs_libs/regulations-site
+  else
+    echo "Warning: Modified version of regulations-site detected"
   fi
 
-  cd eregs_libs/regulations-site
-  git status | grep $SITE_VERSION > /dev/null
-  if [ $? != 0 ]; then
-    echo "Notice: regulations-site is not @ $SITE_VERSION"
+  if git diff --exit-code eregs_libs/regulations-core > /dev/null
+  then
+    git submodule update eregs_libs/regulations-core
+  else
+    echo "Warning: Modified version of regulations-core detected"
   fi
-  cd ../..
-
-  if [ ! -d eregs_libs/regulations-core ]; then
-    git clone https://github.com/eregs/regulations-core.git eregs_libs/regulations-core
-    cd eregs_libs/regulations-core
-    git checkout $API_VERSION
-    cd ../..
-  fi
-
-  cd eregs_libs/regulations-core
-  git status | grep $API_VERSION > /dev/null
-  if [ $? != 0 ]; then
-    echo "Notice: regulations-core is not @ $API_VERSION"
-  fi
-  cd ../..
 
   # Unfortunately, due to the editable libraries, pip-sync will always have
   # quite a bit of output. Hide it!
