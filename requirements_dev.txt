@@ -35,7 +35,7 @@ jsonschema==2.6.0
 kombu==4.0.2
 mccabe==0.6.1             # via flake8
 mock==2.0.0
-newrelic==2.72.1.53
+newrelic==2.88.1.73
 orderedmultidict==0.7.11
 pbr==3.0.0                # via mock, stevedore
 psycopg2==2.7.1
