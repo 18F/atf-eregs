@@ -20,9 +20,8 @@ django==1.11.3            # via django-haystack, django-overextends, regcore, re
 docutils==0.13.1          # via botocore
 elasticsearch==1.9.0      # via pyelasticsearch
 enum34==1.1.6             # via regulations
-functools32==3.2.3.post2  # via jsonschema
 furl==0.5.7               # via cfenv
-futures==3.0.5            # via regulations, s3transfer
+futures==3.0.5            # via regulations
 gunicorn==19.6.0
 jmespath==0.9.1           # via boto3, botocore
 jsonschema==2.5.1         # via regcore
