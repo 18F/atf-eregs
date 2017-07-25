@@ -28,7 +28,7 @@ jsonschema==2.6.0         # via regcore
 kombu==4.0.2              # via celery
 newrelic==2.88.1.73
 orderedmultidict==0.7.11  # via furl
-psycopg2==2.7.1
+psycopg2==2.7.3
 pyelasticsearch==1.4
 python-dateutil==2.6.0    # via botocore
 pytz==2016.10             # via celery, django
