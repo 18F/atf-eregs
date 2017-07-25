@@ -28,6 +28,20 @@ DATABASES = {
     )
 }
 
+
+def add_overextends(template):
+    """Amend Django template engines to include the `overextends` tag"""
+    if template['BACKEND'] == ('django.template.backends.django.'
+                               'DjangoTemplates'):
+        options = template['OPTIONS'] = template.get('OPTIONS', {})
+        builtins = options['builtins'] = options.get('builtins', [])
+        builtins.append('overextends.templatetags.overextends_tags')
+
+    return template
+
+
+TEMPLATES = [add_overextends(t) for t in TEMPLATES]
+
 STATICFILES_DIRS = ['compiled']
 STATIC_ROOT = os.environ.get('STATIC_ROOT', STATIC_ROOT)
 
