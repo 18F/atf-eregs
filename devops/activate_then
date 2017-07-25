@@ -2,12 +2,8 @@
 SITE_VERSION=7.0.2
 API_VERSION=3.0.0
 
-if [ ! -x "$(which virtualenv)" ]; then
-    pip install virtualenv
-fi
-
 if [ ! -d .venv/bin ]; then
-    virtualenv -p /usr/local/bin/python3 .venv
+    python -m venv .venv
 fi
 source .venv/bin/activate
 
