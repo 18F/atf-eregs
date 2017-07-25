@@ -24,7 +24,7 @@ furl==1.0.0               # via cfenv
 futures==3.1.1            # via regulations
 gunicorn==19.7.1
 jmespath==0.9.1           # via boto3, botocore
-jsonschema==2.5.1         # via regcore
+jsonschema==2.6.0         # via regcore
 kombu==4.0.2              # via celery
 newrelic==2.72.1.53
 orderedmultidict==0.7.11  # via furl
