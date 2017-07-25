@@ -31,7 +31,7 @@ orderedmultidict==0.7.11  # via furl
 psycopg2==2.7.3
 pyelasticsearch==1.4
 python-dateutil==2.6.0    # via botocore
-pytz==2016.10             # via celery, django
+pytz==2017.2              # via celery, django
 regcore==3.1.0
 regulations==7.1.0
 requests-toolbelt==0.7.1  # via regulations
