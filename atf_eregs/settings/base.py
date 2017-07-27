@@ -72,6 +72,30 @@ else:
     API_BASE = 'http://localhost:{}/api/'.format(
         os.environ.get('PORT', '8000'))
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'default': {
+            'format': '%(levelname)s %(asctime)s %(name)-20s %(message)s',
+        }
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'default',
+        }
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        },
+    }
+}
+
+
 if DEBUG:
     CACHES['default']['BACKEND'] = 'django.core.cache.backends.dummy.DummyCache'
     CACHES['eregs_longterm_cache']['BACKEND'] = \
