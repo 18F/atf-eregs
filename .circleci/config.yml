@@ -45,7 +45,8 @@ jobs:
           command: |
             ./devops/activate_then python -m pytest
             flake8
-
+          environment:
+            DEBUG: TRUE
 
       - store_artifacts:
           path: test-reports
