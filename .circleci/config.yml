@@ -43,7 +43,7 @@ jobs:
       - run:
           name: run tests
           command: |
-            ./devops/activate_then py.test
+            ./devops/activate_then python -m pytest
             flake8
 
 
