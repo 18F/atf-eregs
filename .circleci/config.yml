@@ -43,8 +43,9 @@ jobs:
       - run:
           name: run tests
           command: |
-            . venv/bin/activate
-            python manage.py test
+            ./devops/activate_then py.test
+            flake8
+
 
       - store_artifacts:
           path: test-reports
