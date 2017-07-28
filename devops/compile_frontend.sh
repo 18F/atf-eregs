@@ -4,7 +4,7 @@ set -e
 
 if [ -z "$1" ]; then
   echo "Needs a parameter: build-dist or build-dev"
-  exit
+  exit 1
 fi
 
 # We don't want to use --clear as we don't want to delete node_modules

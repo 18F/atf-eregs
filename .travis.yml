@@ -4,7 +4,7 @@ services:
 - docker
 script:
 # smoke test
-- ./devops/compile_frontend.sh
+- ./devops/compile_frontend.sh build-dist
 # tests of web components
 - docker-compose run --rm py.test
 - docker-compose run --rm flake8
