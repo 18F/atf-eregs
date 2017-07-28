@@ -6,6 +6,7 @@ gunicorn
 newrelic
 psycopg2
 pyelasticsearch
+pyyaml
 regcore
 regulations
 whitenoise

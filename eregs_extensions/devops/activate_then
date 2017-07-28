@@ -2,7 +2,7 @@
 PARSER_VERSION=4.3.1
 
 if [ ! -d .venv/bin ]; then
-  virtualenv .venv
+  python -m venv .venv
 fi
 source .venv/bin/activate
 
