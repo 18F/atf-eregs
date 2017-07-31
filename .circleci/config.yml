@@ -37,8 +37,7 @@ jobs:
       - run:
           name: run tests
           command: |
-            pwd
-            ls
+            docker-compose build
             docker-compose run orient
             docker-compose run py.test
             docker-compose run flake8
