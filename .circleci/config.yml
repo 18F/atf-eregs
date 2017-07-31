@@ -38,6 +38,7 @@ jobs:
           name: run tests
           command: |
             pwd
+            ls
             docker-compose run py.test
             docker-compose run flake8
           environment:
