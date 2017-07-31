@@ -19,6 +19,7 @@ jobs:
 
     steps:
       - checkout
+      - setup_remote_docker
 
       # Download and cache dependencies
       - restore_cache:
@@ -26,13 +27,6 @@ jobs:
           - v1-dependencies-{{ checksum "requirements.txt" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
-
-      - run:
-          name: install dependencies
-          command: |
-            python3 -m venv venv
-            . venv/bin/activate
-            pip install -r requirements.txt
 
       - save_cache:
           paths:
@@ -43,8 +37,8 @@ jobs:
       - run:
           name: run tests
           command: |
-            ./devops/activate_then python -m pytest
-            flake8
+            docker-compose run py.test
+            docker-compose run flake8
           environment:
             DEBUG: TRUE
 
