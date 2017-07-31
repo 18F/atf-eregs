@@ -57,7 +57,7 @@ services:
 
   orient:
     <<: *DEV
-    entrypoint: pwd && ls
+    entrypoint: ls
     command: ''
     ports: []
 
