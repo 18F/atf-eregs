@@ -11,3 +11,9 @@ env:
   WEB_CONCURRENCY: 4
 applications:
   - name: atf-eregs
+  - name: atf-resources-worker
+    no-route: true
+    memory: 256M
+    instances: 1
+    health-check-type: process
+    command: python manage.py fetch_atf_resources --period 3600  # 1 hour
