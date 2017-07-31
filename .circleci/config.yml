@@ -5,8 +5,7 @@
 version: 2
 jobs:
   build:
-    machine: true
-    docker:
+      machine: true
       # specify the version you desire here
       # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
       - image: circleci/python:3.6.2
@@ -14,7 +13,7 @@ jobs:
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
+      - image: circleci/postgres:9.4
 
     working_directory: ~/repo
 
@@ -34,6 +33,18 @@ jobs:
             - ./venv
           key: v1-dependencies-{{ checksum "requirements.txt" }}
         
+      # run tests!
+      - run:
+          name: run tests
+          command: |
+            docker-compose build
+            docker-compose run orient
+            docker-compose run py.test
+            docker-compose run flake8
+            docker volume ls
+          environment:
+            DEBUG: TRUE
+
       # run tests!
       - run:
           name: run tests
