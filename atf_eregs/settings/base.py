@@ -65,7 +65,7 @@ SIDEBARS = (
 )
 
 
-USE_LIVE_DATA = 'DATABASE_URL' not in os.environ
+USE_LIVE_DATA = os.environ.get('USE_LIVE_DATA', 'FALSE').upper() == 'TRUE'
 if USE_LIVE_DATA:
     API_BASE = 'https://regulations.atf.gov/api/'
 else:
