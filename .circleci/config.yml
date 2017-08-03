@@ -6,7 +6,7 @@ version: 2
 jobs:
   build:
     docker:
-        - image: circleci/ubuntu-server
+        - image: circleci/python:3.6.2
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
