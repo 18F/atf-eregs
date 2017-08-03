@@ -5,7 +5,7 @@ services:
     volumes_from:
         - container:holder
   prod: &PROD
-    image: python:3.6.2
+    image: circleci/python:3.6.2
     command: ./devops/activate_then ./devops/run_webserver.sh
     ports:
       - 9000:9000
