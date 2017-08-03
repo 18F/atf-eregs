@@ -5,7 +5,7 @@
 version: 2
 jobs:
   build:
-      docker:
+    docker:
         - image: circleci/python:3.6.2
       
       # Specify service dependencies here if necessary
