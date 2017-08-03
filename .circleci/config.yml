@@ -43,8 +43,8 @@ jobs:
           name: run tests
           command: |
             ls eregs_libs
-            docker-compose -f docker-compose-circle.yml run flake8
-            docker-compose -f docker-compose-circle.yml run py.test
+            docker-compose -f docker-compose-circle.yml run flake8 atf_eregs
+            docker-compose -f docker-compose-circle.yml run py.test atf_eregs/tests
           environment:
             DEBUG: TRUE
 
