@@ -53,13 +53,13 @@ services:
 
   py.test:
     <<: *DEV
-    entrypoint: ./devops/activate_then python -m pytest
+    entrypoint: ./devops/activate_then py.test
     command: ''
     ports: []
 
   flake8:
     <<: *DEV
-    entrypoint: ./devops/activate_then python -m flake8
+    entrypoint: ./devops/activate_then flake8
     command: ''
     ports: []
 
