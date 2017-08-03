@@ -13,14 +13,14 @@ if [ -n "$DEBUG" ]; then
 
   if git diff --exit-code eregs_libs/regulations-site > /dev/null
   then
-    git submodule update eregs_libs/regulations-site
+    git submodule update --init eregs_libs/regulations-site
   else
     echo "Warning: Modified version of regulations-site detected"
   fi
 
   if git diff --exit-code eregs_libs/regulations-core > /dev/null
   then
-    git submodule update eregs_libs/regulations-core
+    git submodule update --init eregs_libs/regulations-core
   else
     echo "Warning: Modified version of regulations-core detected"
   fi
