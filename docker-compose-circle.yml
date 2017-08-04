@@ -1,16 +1,9 @@
 version: '2'
 services:
-  prod: &PROD
-    extends:
-        file: docker-compose.yml
-        service: prod
-    volumes: []
-    volumes_from:
-      - container:holder
   dev: &DEV
     extends:
         file: docker-compose.yml
-        service: dev
+        service: prod
     volumes: []
     volumes_from:
       - container:holder
@@ -45,17 +38,3 @@ services:
     entrypoint: ./devops/activate_then bandit
     command: ''
     ports: []
-
-  grunt:
-    image: node:6
-    volumes:
-      - $PWD:/usr/src/app
-      - npm_libs:/usr/src/app/frontend_build/node_modules/
-    working_dir: /usr/src/app/frontend_build/
-    entrypoint: ../devops/deps_ok_then ./node_modules/.bin/grunt
-
-volumes:
-  database_data:
-  prod_libs:
-  dev_libs:
-  npm_libs:
