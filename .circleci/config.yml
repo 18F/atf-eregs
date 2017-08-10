@@ -44,8 +44,6 @@ jobs:
           command: |
             docker-compose -f docker-compose-circle.yml run flake8 atf_eregs
             docker-compose -f docker-compose-circle.yml run py.test atf_eregs/tests
-          environment:
-            DEBUG: TRUE
 
       - store_artifacts:
           path: test-reports
