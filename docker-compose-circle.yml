@@ -1,0 +1,40 @@
+version: '2'
+services:
+  dev: &DEV
+    extends:
+        file: docker-compose.yml
+        service: prod
+    volumes: []
+    volumes_from:
+      - container:holder
+
+  #---- Commands ----
+  manage.py:
+    <<: *DEV
+    entrypoint: ./devops/activate_then ./manage.py
+    command: ''
+    ports: []
+
+  py.test:
+    <<: *DEV
+    entrypoint: ./devops/activate_then py.test
+    command: ''
+    ports: []
+
+  flake8:
+    <<: *DEV
+    entrypoint: ./devops/activate_then flake8
+    command: ''
+    ports: []
+
+  pip-compile:
+    <<: *DEV
+    entrypoint: ./devops/activate_then pip-compile
+    command: ''
+    ports: []
+
+  bandit:
+    <<: *DEV
+    entrypoint: ./devops/activate_then bandit
+    command: ''
+    ports: []

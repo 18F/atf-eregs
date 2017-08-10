@@ -56,6 +56,12 @@ services:
     command: ''
     ports: []
 
+  orient:
+    <<: *DEV
+    entrypoint: ls
+    command: ''
+    ports: []
+
   py.test:
     <<: *DEV
     entrypoint: ./devops/activate_then py.test
