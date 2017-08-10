@@ -33,5 +33,4 @@ else
   pip-sync requirements.txt
 fi
 
-
 exec "$@"
