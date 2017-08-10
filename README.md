@@ -7,7 +7,6 @@ This code glues together general-purpose/non-agency-specific eRegulations librar
 
 ## Status
 [![Build Status](https://travis-ci.org/18F/atf-eregs.svg?branch=master)](https://travis-ci.org/18F/atf-eregs)
-[![Quantified Code](https://www.quantifiedcode.com/api/v1/project/e2ee92b5c3db486f89d47371c4d89a2f/badge.svg)](https://www.quantifiedcode.com/app/project/e2ee92b5c3db486f89d47371c4d89a2f)
 [![Dependency Status](https://gemnasium.com/18F/atf-eregs.svg)](https://gemnasium.com/18F/atf-eregs)
 
 ## Documentation and contributing
