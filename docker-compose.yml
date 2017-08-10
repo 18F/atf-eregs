@@ -88,6 +88,14 @@ services:
     working_dir: /usr/src/app/frontend_build/
     entrypoint: ../devops/deps_ok_then ./node_modules/.bin/grunt
 
+  npm:
+    image: node:6
+    volumes:
+      - $PWD:/usr/src/app
+      - npm_libs:/usr/src/app/frontend_build/node_modules/
+    working_dir: /usr/src/app/frontend_build/
+    entrypoint: ../devops/deps_ok_then npm
+
 volumes:
   database_data:
   prod_libs:
