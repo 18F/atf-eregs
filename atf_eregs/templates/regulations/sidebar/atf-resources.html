@@ -23,10 +23,10 @@
           <ul>
             {% for entry in group.entries %}
               <li>
-                {% if entry.id %}
-                  <span class="entry-id">{{ entry.id }}</span>
+                {% if entry.identifier %}
+                  <span class="entry-id">{{ entry.identifier }}</span>
                 {% endif %}
-                {% external_link url=entry.url text=entry.title %}
+                {% external_link url=entry.url text=entry.short_title %}
               </li>
             {% endfor %}
           </ul>
