@@ -1,4 +1,20 @@
+from collections import defaultdict
+from typing import List
+
 from regulations.generator.sidebar.base import SidebarBase
+
+
+def filter_to_children(data, root_label: List[str]):
+    """The data that we get back from the API may include more than we desire.
+    Filter only to nodes that are children of the root."""
+    data = data or {}
+    result = {}
+    for label_str, values in data.items():
+        label = label_str.split('-')
+        is_a_child = label[:len(root_label)] == root_label
+        if is_a_child:
+            result[label_str] = values
+    return result
 
 
 class Rulings(SidebarBase):
@@ -11,42 +27,39 @@ class Rulings(SidebarBase):
         template"""
         data = http_client.layer('atf-rulings', 'cfr', self.label_id,
                                  self.version)
-        data = data or {}
         rulings = {}
-        for key, value in data.items():
-            key = key.split('-')
-            is_a_child = key[:len(self.label_parts)] == self.label_parts
-            if is_a_child:
-                rulings.update(value)
+        for key, value in filter_to_children(data, self.label_parts).items():
+            rulings.update(value)
         rulings = sorted(rulings.values(), key=lambda r: r['id'],
                          reverse=True)
         return {'rulings': rulings}
+
+
+def order_groups(groups):
+    """Re-order groups by priority and convert them to dicts."""
+    for name in ('Ruling', 'Form', 'FAQ', 'Open Letter'):
+        if name in groups:
+            entries = groups.pop(name)
+            yield {'name': name, 'count': len(entries), 'entries': entries}
+    for name in sorted(groups):
+        entries = groups[name]
+        yield {'name': name, 'count': len(entries), 'entries': entries}
 
 
 class ATFResources(SidebarBase):
     shorthand = 'atf-resources'
 
     def context(self, http_client, request):
-        return {'count': 0, 'groups': []}
-        rulings = [
-            {'id': '2010-2', 'title': 'Some Example',
-             'url': 'http://example.com'},
-            {'id': '2010-1', 'title': 'Another Example',
-             'url': 'http://example.com'},
-        ]
-        forms = [
-            {'id': 'Form 123', 'title': 'Registering Stuff',
-             'url': 'http://example.com'},
-            {'id': 'Form 345', 'title': 'More Stuff',
-             'url': 'http://example.com'},
-        ]
+        data = http_client.layer('atf-resources', 'cfr', self.label_id,
+                                 self.version)
+        data = filter_to_children(data, self.label_parts)
+        groups = defaultdict(list)
+        for label_id, group_dict in data.items():
+            for group_name, values in group_dict.items():
+                groups[group_name].extend(values)
 
-        # Example data
+        ordered_groups = list(order_groups(groups))
         return {
-            'count': len(rulings) + len(forms),
-            'groups': [{
-                'name': 'Ruling', 'count': len(rulings), 'entries': rulings
-            }, {
-                'name': 'Form', 'count': len(forms), 'entries': forms
-            }],
+            'count': sum(g['count'] for g in ordered_groups),
+            'groups': ordered_groups,
         }
