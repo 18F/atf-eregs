@@ -1,0 +1,80 @@
+#atf-resources {
+  $header_height: 40px;
+  $right_chevron: '\e002';
+  $down_chevron: '\e006';
+  $x_padding: 10px;   // as defined in ".regs-meta h4"
+
+  .group {
+    background-color: $gray_lightest;
+    border-bottom: 1px solid $gray_light;
+
+    &.has-content {
+      background-color: $blue_lightest;
+    }
+  }
+
+  .list-container {
+    padding: 0 $x_padding;
+    border-bottom: 1px solid $gray_light;
+  }
+
+  .list-container header {
+    background: none;           // reset
+    border-bottom: none;        // reset
+    height: $header_height;
+    line-height: $header_height;
+    border-top: 1px solid $gray_light;
+
+    &.first {
+      border-top: none;
+    }
+
+    a {
+      line-height: $header_height;
+    }
+
+    a:before {
+      content: $right_chevron;
+      color: $gray_dark;
+    }
+
+    &.open a:before {
+      content: $down_chevron;
+    }
+  }
+
+  h4, h5 {
+    height: $header_height;
+    font-size: 0.875em;
+    letter-spacing: 1px;
+    text-transform: none;   // reset
+    @include sans-font-regular;   // reset
+  }
+
+  h4 {
+    padding-left: $x_padding;       // this should be redundant
+    padding-right: $x_padding;      // this should be redundant
+  }
+
+  h5 {
+    display: inline;
+  }
+
+  li {
+    margin: 10px 0;
+  }
+
+  .entry-id {
+    display: block;
+  }
+
+  .chunk {
+    padding: 0 $x_padding;
+    border-bottom: none;  // reset
+  }
+
+  .explanation {
+    color: inherit;  // reset
+    margin: 0;
+  }
+}
