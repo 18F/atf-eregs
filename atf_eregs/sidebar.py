@@ -9,7 +9,7 @@ class Rulings(SidebarBase):
         """Fetch the rulings layer data from the API, find any relating to
         this section (including its sub paragraphs); pass them to the
         template"""
-        data = http_client.layer('atf-resources', 'cfr', self.label_id,
+        data = http_client.layer('atf-rulings', 'cfr', self.label_id,
                                  self.version)
         data = data or {}
         rulings = {}
