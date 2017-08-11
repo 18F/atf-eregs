@@ -27,6 +27,7 @@ gunicorn==19.7.1
 httpretty==0.8.14
 idna==2.5
 jsonschema==2.6.0
+marshmallow==2.13.5
 mccabe==0.6.1             # via flake8
 mock==2.0.0
 newrelic==2.88.1.73
@@ -47,4 +48,5 @@ six==1.10.0
 smmap2==2.0.3             # via gitdb2
 stevedore==1.25.0         # via bandit
 urllib3==1.22
+webargs==1.8.1
 whitenoise==3.3.0

@@ -88,6 +88,11 @@ services:
     working_dir: /usr/src/app/frontend_build/
     entrypoint: ../devops/deps_ok_then ./node_modules/.bin/grunt
 
+  psql:
+    image: postgres:9.4
+    entrypoint: 'psql -h persistent_db -U postgres'
+    depends_on: ['persistent_db']
+
 volumes:
   database_data:
   prod_libs:

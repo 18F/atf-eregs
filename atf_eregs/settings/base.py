@@ -3,8 +3,8 @@ import os
 import dj_database_url
 from cfenv import AppEnv
 
-from regcore.settings.base import *  # noqa
-from regcore.settings.base import (  # explicitly referenced below
+from regcore.settings.pgsql import *  # noqa
+from regcore.settings.pgsql import (  # explicitly referenced below
     INSTALLED_APPS, DATABASES)
 REGCORE_APPS = tuple(INSTALLED_APPS)
 REGCORE_DATABASES = dict(DATABASES)
@@ -14,7 +14,10 @@ REGSITE_APPS = tuple(INSTALLED_APPS)
 
 env = AppEnv()
 
-INSTALLED_APPS = ('overextends', 'atf_eregs',) + REGCORE_APPS + REGSITE_APPS
+# dedupe apps:
+INSTALLED_APPS = ['overextends', 'atf_eregs']
+INSTALLED_APPS.extend(a for a in REGCORE_APPS if a not in INSTALLED_APPS)
+INSTALLED_APPS.extend(a for a in REGSITE_APPS if a not in INSTALLED_APPS)
 
 DEBUG = os.environ.get('DEBUG', 'FALSE').upper() == 'TRUE'
 
