@@ -10,6 +10,5 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         env = AppEnv()
         if env.index is None or env.index == 0:
-            management.call_command('migrate', fake_initial=True)
-            management.call_command('rebuild_index',
-                                    interactive=False, remove=True)
+            management.call_command('migrate')
+            management.call_command('rebuild_pgsql_index')
