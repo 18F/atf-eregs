@@ -1,0 +1,42 @@
+{% load macros %}
+<section id="atf-resources" class="regs-meta">
+  {% if count %}
+    <header class="group has-content">
+      <h4><strong>{{ count }}</strong> Related document{{ count|pluralize }}</h4>
+    </header>
+    <div class="list-container">
+      {% for group in groups %}
+        <header class="expandable open{% if forloop.first %} first{% endif %}">
+          <h5 tabindex="0">
+            <strong>{{ group.count }}</strong> {{ group.name }}{{ group.count|pluralize }}
+          </h5>
+          <a href="#" tabindex="0">
+            <span class="icon-text">Show/Hide Contents</span>
+          </a>
+        </header>
+        <div class="chunk expand-drawer">
+          {% if group.name == "Ruling" %}
+            <p class="explanation">
+              These rulings help to interpret this section of the regulation.
+            </p>
+          {% endif %}
+          <ul>
+            {% for entry in group.entries %}
+              <li>
+                {% if entry.id %}
+                  <span class="entry-id">{{ entry.id }}</span>
+                {% endif %}
+                {% external_link url=entry.url text=entry.title %}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <header class="group">
+      <h4>No related documents</h4>
+    </header>
+  {% endif %}
+</section>
+
