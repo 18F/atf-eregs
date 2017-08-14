@@ -1,0 +1,51 @@
+# Python CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-python/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+        - image: circleci/python:3.6.2
+      
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/postgres:9.4
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - setup_remote_docker
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "requirements.txt" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-dependencies-{{ checksum "requirements.txt" }}
+        
+      # setup
+      - run:
+          name: circleci-setup
+          command: |
+            docker create -v /usr/src/app -v /usr/src/app/.venv --name holder python:3.6.2
+            docker cp . holder:/usr/src/app
+            docker start holder
+      # run tests!
+      - run:
+          name: run tests
+          command: |
+            docker-compose -f docker-compose-circle.yml run flake8 atf_eregs
+            docker-compose -f docker-compose-circle.yml run py.test atf_eregs/tests
+
+      - store_artifacts:
+          path: test-reports
+          destination: test-reports
+          

@@ -1,0 +1,90 @@
+version: '2'
+services:
+  persistent_db:
+    image: postgres:9.4
+    volumes_from:
+        - container:holder
+  prod: &PROD
+    image: python:3.6.2
+    command: ./devops/activate_then ./devops/run_webserver.sh
+    ports:
+      - 9000:9000
+    environment: &PROD_ENV
+      PORT: 9000
+      DJANGO_SETTINGS_MODULE: atf_eregs.settings.base
+      TMPDIR: /tmp
+      STATIC_ROOT: frontend_build
+      VCAP_APPLICATION: >
+        {"uris": ["localhost", "0.0.0.0", "127.0.0.1"]}
+    volumes_from:
+      - container:holder
+    working_dir: /usr/src/app
+    stdin_open: true
+    tty: true
+  dev: &DEV
+    <<: *PROD
+    ports:
+      - 8000:8000
+    environment: &DEV_ENV
+      <<: *PROD_ENV
+      DEBUG: "true"
+      PORT: 8000
+  dev-with-db:
+    <<: *DEV
+    ports:
+      - 8001:8001
+    command: ./devops/wait_for_db_then ./devops/activate_then ./devops/run_webserver.sh
+    environment:
+      <<: *DEV_ENV
+      DATABASE_URL: postgres://postgres@persistent_db/postgres
+      PORT: 8001
+      VCAP_APPLICATION: >
+        {"uris": ["localhost", "0.0.0.0", "127.0.0.1", "dev-with-db"]}
+    depends_on:
+      - persistent_db
+
+
+  #---- Commands ----
+  manage.py:
+    <<: *DEV
+    entrypoint: ./devops/activate_then ./manage.py
+    command: ''
+    ports: []
+
+  py.test:
+    <<: *DEV
+    entrypoint: ./devops/activate_then py.test
+    command: ''
+    ports: []
+
+  flake8:
+    <<: *DEV
+    entrypoint: ./devops/activate_then flake8
+    command: ''
+    ports: []
+
+  pip-compile:
+    <<: *DEV
+    entrypoint: ./devops/activate_then pip-compile
+    command: ''
+    ports: []
+
+  bandit:
+    <<: *DEV
+    entrypoint: ./devops/activate_then bandit
+    command: ''
+    ports: []
+
+  grunt:
+    image: node:6
+    volumes:
+      - $PWD:/usr/src/app
+      - npm_libs:/usr/src/app/frontend_build/node_modules/
+    working_dir: /usr/src/app/frontend_build/
+    entrypoint: ../devops/deps_ok_then ./node_modules/.bin/grunt
+
+volumes:
+  database_data:
+  prod_libs:
+  dev_libs:
+  npm_libs:
