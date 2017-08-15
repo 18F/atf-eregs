@@ -17,5 +17,6 @@ if [ -n "$CF_USERNAME" ] && [ -n "$CF_PASSWORD" ]; then
 fi
 cf target -o $ORG -s $SPACE
 
+cf scale -i 1 atf-eregs
 cf zero-downtime-push atf-eregs -f $MANIFEST
 cf zero-downtime-push atf-resources-worker -f $MANIFEST
