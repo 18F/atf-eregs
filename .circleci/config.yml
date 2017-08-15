@@ -56,3 +56,11 @@ jobs:
           path: test-reports
           destination: test-reports
           
+      - deploy:
+          command: |
+            docker cp holder:/usr/src/app/compiled/. ./compiled
+            if [ "${CIRCLE_BRANCH}" == "481-demo-deploy" ]; then
+              export CF_USERNAME=$CF_USERNAME_DEV
+              export CF_PASSWORD=$CF_PASSWORD_DEV
+              ./devops/circle-deploy.sh dev
+            fi
