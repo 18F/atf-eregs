@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -e
 
 if [ -z "$1" ]; then
@@ -7,14 +6,7 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-# We don't want to use --clear as we don't want to delete node_modules
-rm -rf frontend_build/config frontend_build/regulations
-rm -rf compiled/regulations
-docker-compose run --rm manage.py collectstatic --no-default-ignore --noinput > /dev/null
-# Copy config values
-cp frontend_build/config/.babelrc frontend_build/
-cp frontend_build/config/Gruntfile.js frontend_build/
-cp frontend_build/config/package.json frontend_build/
+docker-compose run --rm dev ./devops/combine_frontend_sources.sh
 # Build
 docker-compose run --rm grunt $1
-cp -r frontend_build/regulations compiled/regulations
+docker-compose run --rm dev cp -r frontend_build/regulations compiled/regulations
