@@ -92,14 +92,12 @@ organization's memory limit, try modifying the number of instances in
 Services
 ========
 
-This application uses the ``aws-rds`` and ``elasticsearch17`` services on
-cloud.gov. Services are bound to applications in the manifest files. To create
-services:
+This application uses the ``aws-rds`` service on cloud.gov. Services are bound
+to applications in the manifest files. To create services:
 
 .. code-block:: bash
 
   cf create-service aws-rds medium-psql atf-eregs-db
-  cf create-service elasticsearch17 1x atf-eregs-search-1.7.1
 
 Our cloud.gov stack should have a user-provided service named
 ``atf-eregs-creds`` including the following credentials:
@@ -189,12 +187,6 @@ to; the current ``prod`` settings file pulls these from the cloud.gov
 environment. See Django's
 `documentation <https://docs.djangoproject.com/en/1.9/ref/settings/#allowed-hosts>`_
 on the topic for more details.
-
-Finally, we use `django-haystack <http://haystacksearch.org/>`_ for search
-integration, so we must define the ``HAYSTACK_CONNECTIONS`` setting. Our
-default settings use a noop (i.e. non-functional) version to limit
-requirements for developers. To build a fully-functioning search, the
-``HAYSTACK_CONNECTIONS`` attribute will need to be configured.
 
 Gotchas
 =======

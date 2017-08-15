@@ -2,7 +2,6 @@
 services:
   - atf-eregs-creds # user-provided: HTTP_AUTH_USER, HTTP_AUTH_PASSWORD,
                     #                NEW_RELIC_LICENSE_KEY, NEW_RELIC_APP_NAME
-  - atf-eregs-search-1.7.1 # elasticsearch17@1x
   - atf-eregs-db # aws-rds@medium-psql
 env:
   DJANGO_SETTINGS_MODULE: atf_eregs.settings.prod
