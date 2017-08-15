@@ -35,7 +35,7 @@ jobs:
       - run:
           name: circleci-setup
           command: |
-            docker create -v /usr/src/app -v /usr/src/app/.venv --name holder python:3.6.2
+            docker create -v /usr/src/app -v /usr/src/app/.venv -v /usr/src/app/frontend_build/node_modules --name holder python:3.6.2
             docker cp . holder:/usr/src/app
             docker start holder
       # run tests!
