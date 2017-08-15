@@ -75,19 +75,13 @@ install:
   tar xzvf cf.tgz -C .
   ./cf install-plugin autopilot -f -r CF-Community
 
-To deploy, you can either set up these environmental variables to match your
-cloud.gov info: ``API``, ``CF_USERNAME``, ``CF_PASSWORD``, ``ORG``, ``SPACE``
-or you can use ``cf login`` yourself and comment out the second to last line
-in ``deploy.sh`` in either case, deploy via:
+To deploy, log in to cloud.gov (or set the ``CF_USERNAME`` and ``CF_PASSWORD``
+env variables, then:
 
 .. code-block:: bash
 
-  ./deploy.sh dev   # staging
-  ./deploy.sh prod  # production
-
-One word of caution here: if you receive an error about exceeding the
-organization's memory limit, try modifying the number of instances in
-``manifest_prod.yml`` to 1, retry deployment, then run ``cf scale atf-eregs -i 3``.
+  ./devops/deploy.sh dev   # staging
+  ./devops/deploy.sh prod  # production
 
 Services
 ========
