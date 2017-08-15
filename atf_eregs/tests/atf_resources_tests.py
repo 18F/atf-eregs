@@ -1,91 +1,83 @@
-import json
-import re
 from unittest.mock import call, Mock
 
-import httpretty
 import pytest
 from regcore.layer import LayerParams
 
 from atf_eregs import atf_resources
 
 
-def test_load_config():
-    """We shouldn't get an explosion when loading the ruling config."""
-    results = atf_resources.load_config()
-    assert results
-
-
-@httpretty.activate
-def test_doc_metadata():
-    data = {'nodes': [
-        {'node': {'Title': '1111-22 - A Title Here',
-                  'Document Type': 'Ruling',
-                  'URL': 'http://example.com/1111-22'}},
-        {'node': {'Title': 'Bad Title',
-                  'Document Type': 'Ruling',
-                  'URL': 'http://example.com/bad'}},
-        {'node': {'Title': '1111-33 - Not a Ruling',
-                  'Document Type': 'Open Letter',
-                  'URL': 'http://example.com/open'}},
-        {'node': {'Title': '1111-44 - Last Ruling',
-                  'Document Type': 'Ruling',
-                  'URL': 'http://example.com/1111-44'}},
-    ]}
-    httpretty.register_uri(httpretty.GET, re.compile('.*'), json.dumps(data),
-                           content_type='application/json')
-    assert atf_resources.doc_metadata() == {
-        '1111-22': atf_resources.ResourceMeta(
-            'http://example.com/1111-22', '1111-22', 'A Title Here'),
-        '1111-44': atf_resources.ResourceMeta(
-            'http://example.com/1111-44', '1111-44', 'Last Ruling'),
-    }
+@pytest.mark.parametrize('mapping, expected', [
+    (atf_resources.Mapping('123', '456'), '123-456'),
+    (atf_resources.Mapping('123', '456', ''), '123-456'),
+    (atf_resources.Mapping('1', '2', '(a)'), '1-2-a'),
+    (atf_resources.Mapping('222', '33', '(z)(2)(A)(ii)'), '222-33-z-2-A-ii'),
+])
+def test_mapping_label(mapping, expected):
+    assert mapping.label() == expected
 
 
 def test_create_layer():
-    config = {'2222-33': ['123-45', '123-46'],
-              '1111-22': ['123-47', '123-48-h']}
-    meta = {'1111-22': atf_resources.ResourceMeta(
-                'http://example.com/1111-22', '1111-22', 'A Title Here'),
-            '1111-44': atf_resources.ResourceMeta(
-                'http://example.com/1111-44', '1111-44', 'Last Ruling')}
-    results = atf_resources.create_layer(config, meta, '123')
-    assert {'123-47', '123-48-h'} == results.keys()
-    for data in results.values():
-        assert data == {'1111-22': {
-            'url': 'http://example.com/1111-22', 'id': '1111-22',
-            'title': 'A Title Here'
-        }}
+    """Layer should be keyed by label and correctly sorted."""
+    data = [
+        atf_resources.ResourceData(
+            short_title='First', group='Ruling', identifier='111-22',
+            published='2001-01-01', url='http://example.com/111-22',
+            mappings=[atf_resources.Mapping('123', '45'),
+                      atf_resources.Mapping('123', '48'),
+                      atf_resources.Mapping('123', '51', '(h)'),
+                      atf_resources.Mapping('other-part', 'xx')]),
+        atf_resources.ResourceData(
+            short_title='Second', group='Form', published='2001-01-01',
+            url='http://example.com/Form',
+            mappings=[atf_resources.Mapping('123', '48')]),
+        atf_resources.ResourceData(
+            short_title='Third', group='Ruling', identifier='111-11',
+            published='2002-02-02', url='http://example.com/111-11',
+            mappings=[atf_resources.Mapping('123', '48')]),
+    ]
+    resource1 = atf_resources.Entry(
+        'First', 'http://example.com/111-22', '111-22')._asdict()
+    resource2 = atf_resources.Entry(
+        'Second', 'http://example.com/Form')._asdict()
+    resource3 = atf_resources.Entry(
+        'Third', 'http://example.com/111-11', '111-11')._asdict()
+
+    assert atf_resources.create_layer('123', data) == {
+        '123-45': {'Ruling': [resource1]},
+        '123-48': {'Ruling': [resource3, resource1], 'Form': [resource2]},
+        '123-51-h': {'Ruling': [resource1]},
+    }
 
 
 @pytest.mark.django_db
+def test_save_layer(monkeypatch):
+    monkeypatch.setattr(atf_resources, 'storage', Mock())
+    monkeypatch.setattr(atf_resources, 'child_layers', Mock())
+
+    atf_resources.save_layer('partpart', {'some': 'data'}, 'verver')
+
+    assert atf_resources.storage.for_layers.bulk_delete.call_args == call(
+        'atf-resources', 'cfr', 'verver/partpart')
+    assert atf_resources.child_layers.call_args == call(
+        LayerParams('cfr', 'verver/partpart', 'partpart'), {'some': 'data'})
+    assert atf_resources.storage.for_layers.bulk_insert.call_args == call(
+        atf_resources.child_layers.return_value, 'atf-resources', 'cfr')
+
+
 def test_fetch_and_save_resources(monkeypatch):
     """Verify that the correct calls are being made to the storage backend."""
     monkeypatch.setattr(atf_resources, 'storage', Mock())
-    monkeypatch.setattr(atf_resources, 'load_config', Mock())
-    monkeypatch.setattr(atf_resources, 'doc_metadata', Mock())
+    monkeypatch.setattr(atf_resources, 'fetch_resource_data', Mock())
     monkeypatch.setattr(atf_resources, 'create_layer', Mock())
-    monkeypatch.setattr(atf_resources, 'child_layers', Mock())
-    storage = atf_resources.storage
-    storage.for_documents.listing.return_value = [
+    monkeypatch.setattr(atf_resources, 'save_layer', Mock())
+    atf_resources.storage.for_documents.listing.return_value = [
         ('v1', 'cfrpart1'), ('v2', 'cfrpart1'), ('va', 'cfrpart2'),
     ]
 
     atf_resources.fetch_and_save_resources()
 
-    assert storage.for_documents.listing.call_args == call('cfr')
-    assert storage.for_layers.bulk_delete.call_args_list == [
-        call('atf-resources', 'cfr', 'v1/cfrpart1'),
-        call('atf-resources', 'cfr', 'v2/cfrpart1'),
-        call('atf-resources', 'cfr', 'va/cfrpart2'),
+    assert atf_resources.save_layer.call_args_list == [
+        call('cfrpart1', atf_resources.create_layer.return_value, 'v1'),
+        call('cfrpart1', atf_resources.create_layer.return_value, 'v2'),
+        call('cfrpart2', atf_resources.create_layer.return_value, 'va'),
     ]
-    assert atf_resources.child_layers.call_args_list == [
-        call(LayerParams('cfr', 'v1/cfrpart1', 'cfrpart1'),
-             atf_resources.create_layer.return_value),
-        call(LayerParams('cfr', 'v2/cfrpart1', 'cfrpart1'),
-             atf_resources.create_layer.return_value),
-        call(LayerParams('cfr', 'va/cfrpart2', 'cfrpart2'),
-             atf_resources.create_layer.return_value),
-    ]
-    assert storage.for_layers.bulk_insert.call_args_list == [
-        call(atf_resources.child_layers.return_value, 'atf-resources', 'cfr')
-    ]*3
