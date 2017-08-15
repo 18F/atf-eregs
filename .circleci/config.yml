@@ -35,15 +35,22 @@ jobs:
       - run:
           name: circleci-setup
           command: |
-            docker create -v /usr/src/app -v /usr/src/app/.venv --name holder python:3.6.2
+            docker create -v /usr/src/app -v /usr/src/app/.venv -v /usr/src/app/frontend_build/node_modules --name holder python:3.6.2
             docker cp . holder:/usr/src/app
             docker start holder
       # run tests!
       - run:
           name: run tests
+          environment:
+            COMPOSE_FILE: docker-compose-circle.yml
           command: |
-            docker-compose -f docker-compose-circle.yml run flake8 atf_eregs
-            docker-compose -f docker-compose-circle.yml run py.test atf_eregs/tests
+            docker-compose run flake8 atf_eregs
+            docker-compose run py.test atf_eregs/tests
+      - run:
+          name: smoke test for building the frontend
+          environment:
+            COMPOSE_FILE: docker-compose-circle.yml
+          command: ./devops/compile_frontend.sh build-dist
 
       - store_artifacts:
           path: test-reports

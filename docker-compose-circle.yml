@@ -77,9 +77,8 @@ services:
 
   grunt:
     image: node:6
-    volumes:
-      - $PWD:/usr/src/app
-      - npm_libs:/usr/src/app/frontend_build/node_modules/
+    volumes_from:
+        - container:holder
     working_dir: /usr/src/app/frontend_build/
     entrypoint: ../devops/deps_ok_then ./node_modules/.bin/grunt
 
