@@ -6,7 +6,7 @@
     </header>
     <div class="list-container">
       {% for group in groups %}
-        <header class="expandable open{% if forloop.first %} first{% endif %}">
+        <header class="expandable{% if forloop.first %} first{% endif %}">
           <h5 tabindex="0">
             <strong>{{ group.count }}</strong> {{ group.name }}{{ group.count|pluralize }}
           </h5>
@@ -14,7 +14,7 @@
             <span class="icon-text">Show/Hide Contents</span>
           </a>
         </header>
-        <div class="chunk expand-drawer">
+        <div class="chunk expand-drawer start-collapsed">
           {% if group.name == "Ruling" %}
             <p class="explanation">
               These rulings help to interpret this section of the regulation.
