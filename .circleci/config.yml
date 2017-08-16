@@ -56,3 +56,15 @@ jobs:
           path: test-reports
           destination: test-reports
           
+      - deploy:
+          command: |
+            docker cp holder:/usr/src/app/compiled/. ./compiled
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              export CF_USERNAME=$CF_USERNAME_DEV
+              export CF_PASSWORD=$CF_PASSWORD_DEV
+              ./devops/circle-deploy.sh dev
+            elif [ "${CIRCLE_BRANCH}" == "release" ]; then
+              export CF_USERNAME=$CF_USERNAME_PROD
+              export CF_PASSWORD=$CF_PASSWORD_PROD
+              ./devops/circle-deploy.sh prod
+            fi

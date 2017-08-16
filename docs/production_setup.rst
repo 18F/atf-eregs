@@ -75,31 +75,23 @@ install:
   tar xzvf cf.tgz -C .
   ./cf install-plugin autopilot -f -r CF-Community
 
-To deploy, you can either set up these environmental variables to match your
-cloud.gov info: ``API``, ``CF_USERNAME``, ``CF_PASSWORD``, ``ORG``, ``SPACE``
-or you can use ``cf login`` yourself and comment out the second to last line
-in ``deploy.sh`` in either case, deploy via:
+To deploy, log in to cloud.gov (or set the ``CF_USERNAME`` and ``CF_PASSWORD``
+env variables, then:
 
 .. code-block:: bash
 
-  ./deploy.sh dev   # staging
-  ./deploy.sh prod  # production
-
-One word of caution here: if you receive an error about exceeding the
-organization's memory limit, try modifying the number of instances in
-``manifest_prod.yml`` to 1, retry deployment, then run ``cf scale atf-eregs -i 3``.
+  ./devops/deploy.sh dev   # staging
+  ./devops/deploy.sh prod  # production
 
 Services
 ========
 
-This application uses the ``aws-rds`` and ``elasticsearch17`` services on
-cloud.gov. Services are bound to applications in the manifest files. To create
-services:
+This application uses the ``aws-rds`` service on cloud.gov. Services are bound
+to applications in the manifest files. To create services:
 
 .. code-block:: bash
 
   cf create-service aws-rds medium-psql atf-eregs-db
-  cf create-service elasticsearch17 1x atf-eregs-search-1.7.1
 
 Our cloud.gov stack should have a user-provided service named
 ``atf-eregs-creds`` including the following credentials:
@@ -189,12 +181,6 @@ to; the current ``prod`` settings file pulls these from the cloud.gov
 environment. See Django's
 `documentation <https://docs.djangoproject.com/en/1.9/ref/settings/#allowed-hosts>`_
 on the topic for more details.
-
-Finally, we use `django-haystack <http://haystacksearch.org/>`_ for search
-integration, so we must define the ``HAYSTACK_CONNECTIONS`` setting. Our
-default settings use a noop (i.e. non-functional) version to limit
-requirements for developers. To build a fully-functioning search, the
-``HAYSTACK_CONNECTIONS`` attribute will need to be configured.
 
 Gotchas
 =======
