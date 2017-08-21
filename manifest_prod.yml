@@ -3,4 +3,5 @@ inherit: manifest_base.yml
 routes:
   - route: atf-eregs.18f.gov
   - route: atf-eregs.app.cloud.gov
+  - route: regulations.atf.gov
 instances: 5
