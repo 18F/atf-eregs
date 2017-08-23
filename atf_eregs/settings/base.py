@@ -99,7 +99,11 @@ LOGGING = {
     }
 }
 
-PG_SEARCH_RANK_CUTOFF = 0.0     # Show all matches
+# https://github.com/postgres/postgres/blob/c7b8998ebbf310a156aa38022555a24d98fdbfb4/src/backend/utils/adt/tsrank.c#L374
+# seems to indicate that 1e-20 is a magic number; I'm not positive when it'd
+# pop up, but in testing, the 1e-20 matches are bad (while 1e-19 can be
+# "good"). Set the cutoff to 1e-20 so that we only return better results.
+PG_SEARCH_RANK_CUTOFF = 1e-20
 
 
 if DEBUG:
