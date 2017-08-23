@@ -99,6 +99,8 @@ LOGGING = {
     }
 }
 
+PG_SEARCH_RANK_CUTOFF = 0.0     # Show all matches
+
 
 if DEBUG:
     CACHES['default']['BACKEND'] = 'django.core.cache.backends.dummy.DummyCache'
