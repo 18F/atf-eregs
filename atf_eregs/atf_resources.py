@@ -1,12 +1,15 @@
 from collections import defaultdict
+from datetime import date, datetime
 from typing import List, NamedTuple, Optional
 import logging
-import os.path
+import re
+
+import requests
+from django.conf import settings
 
 from regcore.db import storage
 from regcore.layer import LayerParams
 from regcore_write.views.layer import child_layers
-import yaml
 
 
 logger = logging.getLogger(__name__)
@@ -31,32 +34,50 @@ class Mapping(NamedTuple):
 class ResourceData(NamedTuple):
     short_title: str
     group: str
-    published: str  # this should encode a date, but we don't need to verify
+    published: date
     mappings: List[Mapping]
     url: str
     identifier: Optional[str] = None
 
 
+def extract_sections(headings):
+    for part_section in headings.split(','):
+        part_section = part_section.strip()
+        part, section_with_tail = re.split(r'[^\d]', part_section, maxsplit=1)
+        if '(' in section_with_tail:
+            idx = section_with_tail.index('(')
+            section = section_with_tail[:idx].strip()
+            subsections = section_with_tail[idx:].strip()
+            yield Mapping(part, section, subsections)
+        else:
+            yield Mapping(part, section_with_tail)
+
+
+def extract_publish_date(date_str):
+    try:
+        return datetime.strptime(date_str, '%m/%d/%y').date()
+    except ValueError:
+        logger.warning("Can't parse date %s", date_str)
+        return date(1970, 1, 1)
+
+
 def fetch_resource_data(cfr_part: str) -> List[ResourceData]:
     """Read data from ATF. Currently, this is stubbed by a local yaml file."""
-    this_file = os.path.abspath(__file__)
-    app_dir = os.path.dirname(this_file)
-    data_path = os.path.join(app_dir, 'related-docs.yml')
-    with open(data_path, 'r') as f:
-        data = yaml.safe_load(f.read())
-        return [
-            ResourceData(
-                entry['short_title'],
-                entry['group'],
-                entry['published'],
-                [Mapping(str(m['part']), str(m['section']),
-                         m.get('subsection'))
-                 for m in entry['mappings']],
-                entry['url'],
-                entry.get('identifier'),
-            )
-            for entry in data
-        ]
+    data = requests.get(settings.ATF_API.format(cfr_part=cfr_part),
+                        cfr_part, verify=False).json()
+    entries = [e['entity'] for e in data['entities']]
+
+    return [
+        ResourceData(
+            entry['Title'],
+            entry['Document Type'],
+            extract_publish_date(entry['Created/Revision date']),
+            [mapping for mapping in extract_sections(entry['CFR'])],
+            entry['URL'],
+            entry.get('Document Number'),
+        )
+        for entry in entries
+    ]
 
 
 class Entry(NamedTuple):
