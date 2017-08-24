@@ -46,7 +46,6 @@
   h4, h5 {
     height: $header_height;
     font-size: 0.875em;
-    letter-spacing: 1px;
     text-transform: none;   // reset
     @include sans-font-regular;   // reset
   }
