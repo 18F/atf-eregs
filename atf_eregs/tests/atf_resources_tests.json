@@ -1,0 +1,46 @@
+{
+    "entities": [
+        {
+            "entity": {
+                "Title": "2013-1 - Electronic Form 6 and 6A",
+                "Description": "Approved alternate method or procedure for individuals, Federal firearms licensees, and registered importers of articles enumerated on the U.S. Munitions Import List (USMIL) to file ATF Form 6 - Part I and Form 6A electronically using ATF eForms, provided all of the conditions set forth in this ruling are met.\u00a0 Supersedes ATF Rulings 2003-6 and 2010-9.",
+                "Category": "Firearms",
+                "Document Type": "Ruling",
+                "Mime type": "application\/pdf",
+                "URL": "https:\/\/www.atf.gov\/file\/5021\/download",
+                "File size": "90KB",
+                "Document Number": "2013-01",
+                "CFR": "447.42, 447.45, 478.111, 478.112, 478.113, 478.113a, 478.116, 478.119, 479.111, 479.112, 479.113",
+                "Created\/Revision date": "07\/10\/13"
+            }
+        },
+        {
+            "entity": {
+                "Title": "2016-4 \u2013 Electronic Transmission of Form 6A Information to CBP",
+                "Description": "ATF Ruling 2016-4 - The Bureau of Alcohol, Tobacco, Firearms and Explosives (ATF) authorizes an alternate method or procedure in lieu of the method or procedure prescribed in the regulations that currently require an importer to submit to U.S. Customs and Border Protection (CBP) an original, paper copy of ATF Form 6A, Release and Receipt of Imported Firearms, Ammunition and Implements of War (Form 6A), to import firearms, ammunition, and other defense articles.",
+                "Category": "Firearms",
+                "Document Type": "Ruling",
+                "Mime type": "application\/pdf",
+                "URL": "https:\/\/www.atf.gov\/file\/107686\/download",
+                "File size": "55KB",
+                "Document Number": "2016-04",
+                "CFR": "447.42, 447.45, 478.112, 478.113, 478.113a, 478.116, 478.119, 479.111, 479.112, 479.113",
+                "Created\/Revision date": "07\/14\/16"
+            }
+        },
+        {
+            "entity": {
+                "Title": "Federal Firearms Licensees Newsletter - 1992, Volume 2",
+                "Description": "What's in this issue: Manufacturer's Annual Report Form 4483-A; Change of Address; Extension of Terms on Import Permits; Firearms and Ammunition Excise Tax; Firearms Sales to Canadian Citizens; Renewal of Your License; List of Armor Piercing Ammunition",
+                "Category": "Firearms",
+                "Document Type": "Newsletter",
+                "Mime type": "application\/pdf",
+                "URL": "https:\/\/www.atf.gov\/file\/56381\/download",
+                "File size": "352KB",
+                "Document Number": "",
+                "CFR": "447.43, 447.52, 478.123, 478.124, 478.148, 478.171, 478.38, 478.52, 478.99, 479.103, 479.111",
+                "Created\/Revision date": "01\/01\/92"
+            }
+        }
+    ]
+}
