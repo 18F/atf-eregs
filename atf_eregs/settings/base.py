@@ -64,7 +64,6 @@ DATA_LAYERS = (
 
 SIDEBARS = (
     'atf_eregs.sidebar.ATFResources',
-    'atf_eregs.sidebar.Rulings',
     'regulations.generator.sidebar.help.Help',
 )
 
@@ -104,6 +103,8 @@ LOGGING = {
 # pop up, but in testing, the 1e-20 matches are bad (while 1e-19 can be
 # "good"). Set the cutoff to 1e-20 so that we only return better results.
 PG_SEARCH_RANK_CUTOFF = 1e-20
+
+ATF_API = 'https://www.atf.gov/api/v1.0/ereg/{cfr_part}'
 
 
 if DEBUG:
