@@ -63,8 +63,7 @@ def extract_publish_date(date_str):
 
 def fetch_resource_data(cfr_part: str) -> List[ResourceData]:
     """Read data from ATF. Currently, this is stubbed by a local yaml file."""
-    data = requests.get(settings.ATF_API.format(cfr_part=cfr_part),
-                        cfr_part).json()
+    data = requests.get(settings.ATF_API.format(cfr_part=cfr_part)).json()
     entries = [e['entity'] for e in data['entities']]
 
     return [

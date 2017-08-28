@@ -3,9 +3,9 @@ import json
 import pathlib
 from unittest.mock import call, Mock
 
+import httpretty
 import pytest
 from regcore.layer import LayerParams
-import requests
 
 from atf_eregs import atf_resources
 
@@ -103,31 +103,28 @@ def test_extract_sections(headings, expected_labels):
     ("07/01/00", date(2000, 7, 1)),
     ("7/01/00", date(2000, 7, 1)),
     ("7/1/00", date(2000, 7, 1)),
-    ("7-1-00", date(1970, 1, 1)),
-    ("", date(1970, 1, 1)),
+    ("7-1-00", date(1970, 1, 1)),  # Unparseable dates return 1970-01-01.
+    ("", date(1970, 1, 1)),  # Missing dates return 1970-01-01.
 ], ids=repr)
 def test_extract_publish_date(date_string, date_object):
     assert atf_resources.extract_publish_date(date_string) == date_object
 
 
-def test_fetch_resource_data(monkeypatch):
+def test_fetch_resource_data():
     api_data_filepath = pathlib.Path(pathlib.Path(__file__).parent,
                                      "atf_resources_tests.json")
     with api_data_filepath.open() as f:
         fake_api_response = f.read()
 
     fake_api_json = json.loads(fake_api_response)
-
-    class FakeResponse(object):
-        def json(self):
-            return fake_api_json
-
-    def fake_get(*args, **kwds):
-        return FakeResponse()
-
-    monkeypatch.setattr(requests, "get", fake_get)
-    fetched = atf_resources.fetch_resource_data("478")
     entries = [e["entity"] for e in fake_api_json["entities"]]
+
+    httpretty.enable()
+    test_url = atf_resources.settings.ATF_API.format(cfr_part="478")
+    httpretty.register_uri(httpretty.GET, test_url, body=fake_api_response)
+    fetched = atf_resources.fetch_resource_data("478")
+    httpretty.disable()
+
     for raw_entry, parsed_entry in zip(entries, fetched):
         assert raw_entry["Title"] == parsed_entry.short_title
         assert raw_entry["Document Type"] == parsed_entry.group
@@ -140,4 +137,3 @@ def test_fetch_resource_data(monkeypatch):
         mappings = [m for m in
                     atf_resources.extract_sections(raw_entry["CFR"])]
         assert mappings == parsed_entry.mappings
-    pass
