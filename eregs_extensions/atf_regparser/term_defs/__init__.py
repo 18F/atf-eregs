@@ -8,6 +8,9 @@ term_defs = {
 }
 
 ignores = {
+    "478": [
+        "United States",  # exclude "states"
+    ],
     "479": [
         u"make such return",  # exclude "make"
         u"make returns",  # exclude "make"
