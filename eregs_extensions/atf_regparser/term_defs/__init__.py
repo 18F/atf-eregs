@@ -24,8 +24,14 @@ ignores = {
         "include",
         "including"
     ],
-    "555": [u"See definition of “blasting agent.”",
-            (u'which meets the definition of “consumer fireworks” or '
-             u'“display fireworks” as defined by this section'),
-            u'for classification as “consumer fireworks.”']
+    "555": [
+        u"See definition of “blasting agent.”",
+        (u'which meets the definition of “consumer fireworks” or '
+         u'“display fireworks” as defined by this section'),
+        u'for classification as “consumer fireworks.”',
+        'United States',  # exclude "states"
+    ],
+    "646": [
+        "United States",  # exclude "states"
+    ],
 }
