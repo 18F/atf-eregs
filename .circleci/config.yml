@@ -19,18 +19,6 @@ jobs:
       - checkout
       - setup_remote_docker
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "requirements.txt" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - save_cache:
-          paths:
-            - ./venv
-          key: v1-dependencies-{{ checksum "requirements.txt" }}
-        
       # setup
       - run:
           name: circleci-setup
@@ -38,6 +26,7 @@ jobs:
             docker create -v /usr/src/app -v /usr/src/app/.venv -v /usr/src/app/frontend_build/node_modules --name holder python:3.6.2
             docker cp . holder:/usr/src/app
             docker start holder
+
       # run tests!
       - run:
           name: run tests
@@ -51,10 +40,6 @@ jobs:
           environment:
             COMPOSE_FILE: docker-compose-circle.yml
           command: ./devops/compile_frontend.sh build-dist
-
-      - store_artifacts:
-          path: test-reports
-          destination: test-reports
           
       - deploy:
           command: |
