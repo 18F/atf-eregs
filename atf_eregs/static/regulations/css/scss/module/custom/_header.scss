@@ -30,9 +30,18 @@
     color: $atf_main_head_hover_color;
 }
 .sub-head {
-    background: $atf_sub_head_background;
+    background-color: $atf_sub_head_background;
     color: $atf_sub_head_text_color;
     line-height: 34px;
+
+    &.non-current {
+      background-color: $alert_color;
+      color: $atf_sub_head_background;
+    }
+
+    .return-to-current {
+      color: $atf_sub_head_background;
+    }
 }
 .app-nav {
     a:link,
