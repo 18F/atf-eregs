@@ -27,7 +27,7 @@ psycopg2==2.7.3
 pyelasticsearch==1.4
 pytz==2017.2              # via django
 regcore==4.2.0
-regulations==8.2.0
+regulations==8.3.0
 requests==2.18.2          # via regulations
 simplejson==3.10.0        # via pyelasticsearch
 six==1.10.0               # via furl, orderedmultidict, pyelasticsearch, regcore, regulations
