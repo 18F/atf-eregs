@@ -1,7 +1,7 @@
 [submodule "eregs_libs/regulations-site"]
 	path = eregs_libs/regulations-site
 	url = https://github.com/eregs/regulations-site.git
-	branch = 8.2.0
+	branch = 8.3.0
 [submodule "eregs_libs/regulations-core"]
 	path = eregs_libs/regulations-core
 	url = https://github.com/eregs/regulations-core.git
