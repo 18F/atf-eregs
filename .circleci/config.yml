@@ -27,23 +27,31 @@ jobs:
             docker cp . holder:/usr/src/app
             docker start holder
 
-      # run tests!
       - run:
-          name: run tests
+          name: Webapp bandit
+          environment:
+            COMPOSE_FILE: docker-compose-circle.yml
+          command: docker-compose run bandit -r atf_eregs -x tests
+      - run:
+          name: Webapp flake8
+          environment:
+            COMPOSE_FILE: docker-compose-circle.yml
+          command: docker-compose run flake8
+      - run:
+          name: Webapp py.test
+          environment:
+            COMPOSE_FILE: docker-compose-circle.yml
+          command: docker-compose run py.test
+      - run:
+          name: Build frontend
           environment:
             COMPOSE_FILE: docker-compose-circle.yml
           command: |
-            docker-compose run flake8 atf_eregs
-            docker-compose run py.test atf_eregs/tests
-      - run:
-          name: smoke test for building the frontend
-          environment:
-            COMPOSE_FILE: docker-compose-circle.yml
-          command: ./devops/compile_frontend.sh build-dist
+            ./devops/compile_frontend.sh build-dist
+            docker cp holder:/usr/src/app/compiled/. ./compiled
           
       - deploy:
           command: |
-            docker cp holder:/usr/src/app/compiled/. ./compiled
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               export CF_USERNAME=$CF_USERNAME_DEV
               export CF_PASSWORD=$CF_PASSWORD_DEV
