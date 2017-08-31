@@ -30,6 +30,7 @@ jobs:
           command: |
             docker exec holder pip install pyyaml
             docker exec holder python ./devops/transform_circle.py docker-compose.yml holder > docker-compose-circle.yml
+            docker exec holder python ./devops/transform_circle.py eregs_extensions/docker-compose.yml holder > eregs_extensions/docker-compose-circle.yml
 
       - run:
           name: Webapp bandit
@@ -53,9 +54,32 @@ jobs:
           command: |
             ./devops/compile_frontend.sh build-dist
             docker cp holder:/usr/src/app/compiled/. ./compiled
+
+      - run:
+          name: Setup for parser tests
+          command: |
+            cd eregs_extensions
+            docker exec holder bash -c "rm -r /usr/src/app/*"   # bash for glob
+            docker cp . holder:/usr/src/app/
+      - run:
+          name: Parser bandit
+          environment:
+            COMPOSE_FILE: docker-compose-circle.yml
+          command: docker-compose run bandit -r atf_regparser -x tests
+      - run:
+          name: Parser flake8
+          environment:
+            COMPOSE_FILE: docker-compose-circle.yml
+          command: docker-compose run flake8
+      - run:
+          name: Parser py.test
+          environment:
+            COMPOSE_FILE: docker-compose-circle.yml
+          command: docker-compose run py.test
           
       - deploy:
           command: |
+            cd ..
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               export CF_USERNAME=$CF_USERNAME_DEV
               export CF_PASSWORD=$CF_PASSWORD_DEV
