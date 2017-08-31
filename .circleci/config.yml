@@ -19,13 +19,17 @@ jobs:
       - checkout
       - setup_remote_docker
 
-      # setup
       - run:
-          name: circleci-setup
+          name: Setup "holder" container for file storage
           command: |
-            docker create -v /usr/src/app -v /usr/src/app/.venv -v /usr/src/app/frontend_build/node_modules --name holder python:3.6.2
+            docker create -v /usr/src/app -w /usr/src/app/ --name holder python:3.6.2 sleep 100d
             docker cp . holder:/usr/src/app
             docker start holder
+      - run:
+          name: Generate circle-specific docker configs
+          command: |
+            docker exec holder pip install pyyaml
+            docker exec holder python ./devops/transform_circle.py docker-compose.yml holder > docker-compose-circle.yml
 
       - run:
           name: Webapp bandit
