@@ -65,6 +65,7 @@ DATA_LAYERS = (
 SIDEBARS = (
     'atf_eregs.sidebar.ATFResources',
     'regulations.generator.sidebar.help.Help',
+    'regulations.generator.sidebar.print_part.PrintPart',
 )
 
 
