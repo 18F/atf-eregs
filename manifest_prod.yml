@@ -1,6 +1,9 @@
 ---
 inherit: manifest_base.yml
+env:
+  CIRCLE_BRANCH: release
 routes:
   - route: atf-eregs.18f.gov
   - route: atf-eregs.app.cloud.gov
+  - route: regulations.atf.gov
 instances: 5

@@ -2,13 +2,18 @@
 
 if [ ! -x node_modules/.bin/deps-ok ]; then
   npm install deps-ok --quiet
-  # should this be part of -site?
-  npm install grunt-cli --quiet
 fi
 
 ./node_modules/.bin/deps-ok &> /dev/null
 if [ $? -ne 0 ]; then
   npm install --quiet
 fi
+
+# work around for eregs/regulations-site#508
+if [ ! -x node_modules/.bin/grunt ]; then
+  npm install grunt-cli --quiet
+fi
+
+
 
 exec "$@"

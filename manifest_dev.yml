@@ -1,4 +1,6 @@
 ---
 inherit: manifest_base.yml
+env:
+  CIRCLE_BRANCH: master
 routes:
   - route: atf-eregs-demo.app.cloud.gov

@@ -1,5 +1,9 @@
+from datetime import date
+import json
+import pathlib
 from unittest.mock import call, Mock
 
+import httpretty
 import pytest
 from regcore.layer import LayerParams
 
@@ -81,3 +85,55 @@ def test_fetch_and_save_resources(monkeypatch):
         call('cfrpart1', atf_resources.create_layer.return_value, 'v2'),
         call('cfrpart2', atf_resources.create_layer.return_value, 'va'),
     ]
+
+
+@pytest.mark.parametrize("headings,expected_labels", [
+    ("111.22, 333.44, 555.66", ["111-22", "333-44", "555-66"]),
+    ("111.22a, 333.44, 555.66", ["111-22a", "333-44", "555-66"]),
+    ("111.22(a)(b), 333.44 (a), 555›66", ["111-22-a-b", "333-44-a", "555-66"]),
+
+], ids=repr)
+def test_extract_sections(headings, expected_labels):
+    labels = [mapping.label() for mapping in
+              atf_resources.extract_sections(headings)]
+    assert labels == expected_labels
+
+
+@pytest.mark.parametrize("date_string, date_object", [
+    ("07/01/00", date(2000, 7, 1)),
+    ("7/01/00", date(2000, 7, 1)),
+    ("7/1/00", date(2000, 7, 1)),
+    ("7-1-00", date(1970, 1, 1)),  # Unparseable dates return 1970-01-01.
+    ("", date(1970, 1, 1)),  # Missing dates return 1970-01-01.
+], ids=repr)
+def test_extract_publish_date(date_string, date_object):
+    assert atf_resources.extract_publish_date(date_string) == date_object
+
+
+def test_fetch_resource_data():
+    api_data_filepath = pathlib.Path(pathlib.Path(__file__).parent,
+                                     "atf_resources_tests.json")
+    with api_data_filepath.open() as f:
+        fake_api_response = f.read()
+
+    fake_api_json = json.loads(fake_api_response)
+    entries = [e["entity"] for e in fake_api_json["entities"]]
+
+    httpretty.enable()
+    test_url = atf_resources.settings.ATF_API.format(cfr_part="478")
+    httpretty.register_uri(httpretty.GET, test_url, body=fake_api_response)
+    fetched = atf_resources.fetch_resource_data("478")
+    httpretty.disable()
+
+    for raw_entry, parsed_entry in zip(entries, fetched):
+        assert raw_entry["Title"] == parsed_entry.short_title
+        assert raw_entry["Document Type"] == parsed_entry.group
+        assert raw_entry["URL"] == parsed_entry.url
+        if "Document Number" in raw_entry:
+            assert raw_entry["Document Number"] == parsed_entry.identifier
+        pub_date = atf_resources.extract_publish_date(
+            raw_entry["Created/Revision date"])
+        assert pub_date == parsed_entry.published
+        mappings = [m for m in
+                    atf_resources.extract_sections(raw_entry["CFR"])]
+        assert mappings == parsed_entry.mappings

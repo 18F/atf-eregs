@@ -1,12 +1,9 @@
 cfenv
 dj-database-url
-django-haystack
 django-overextends
 gunicorn
 newrelic
 psycopg2
-pyelasticsearch
-pyyaml
 regcore
 regulations
 whitenoise

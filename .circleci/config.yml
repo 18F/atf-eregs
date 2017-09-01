@@ -19,46 +19,69 @@ jobs:
       - checkout
       - setup_remote_docker
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "requirements.txt" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - save_cache:
-          paths:
-            - ./venv
-          key: v1-dependencies-{{ checksum "requirements.txt" }}
-        
-      # setup
       - run:
-          name: circleci-setup
+          name: Setup "holder" container for file storage
           command: |
-            docker create -v /usr/src/app -v /usr/src/app/.venv -v /usr/src/app/frontend_build/node_modules --name holder python:3.6.2
+            docker create -v /usr/src/app -w /usr/src/app/ --name holder python:3.6.2 sleep 100d
             docker cp . holder:/usr/src/app
             docker start holder
-      # run tests!
       - run:
-          name: run tests
+          name: Generate circle-specific docker configs
+          command: |
+            docker exec holder pip install pyyaml
+            docker exec holder python ./devops/transform_circle.py docker-compose.yml holder > docker-compose-circle.yml
+            docker exec holder python ./devops/transform_circle.py eregs_extensions/docker-compose.yml holder > eregs_extensions/docker-compose-circle.yml
+
+      - run:
+          name: Webapp bandit
+          environment:
+            COMPOSE_FILE: docker-compose-circle.yml
+          command: docker-compose run bandit -r atf_eregs -x tests
+      - run:
+          name: Webapp flake8
+          environment:
+            COMPOSE_FILE: docker-compose-circle.yml
+          command: docker-compose run flake8
+      - run:
+          name: Webapp py.test
+          environment:
+            COMPOSE_FILE: docker-compose-circle.yml
+          command: docker-compose run py.test
+      - run:
+          name: Build frontend
           environment:
             COMPOSE_FILE: docker-compose-circle.yml
           command: |
-            docker-compose run flake8 atf_eregs
-            docker-compose run py.test atf_eregs/tests
+            ./devops/compile_frontend.sh build-dist
+            docker cp holder:/usr/src/app/compiled/. ./compiled
+
       - run:
-          name: smoke test for building the frontend
+          name: Setup for parser tests
+          working_directory: ~/repo/eregs_extensions
+          command: |
+            docker exec holder bash -c "rm -r /usr/src/app/*"   # bash for glob
+            docker cp . holder:/usr/src/app/
+      - run:
+          name: Parser bandit
+          working_directory: ~/repo/eregs_extensions
           environment:
             COMPOSE_FILE: docker-compose-circle.yml
-          command: ./devops/compile_frontend.sh build-dist
-
-      - store_artifacts:
-          path: test-reports
-          destination: test-reports
+          command: docker-compose run bandit -r atf_regparser -x tests
+      - run:
+          name: Parser flake8
+          working_directory: ~/repo/eregs_extensions
+          environment:
+            COMPOSE_FILE: docker-compose-circle.yml
+          command: docker-compose run flake8
+      - run:
+          name: Parser py.test
+          working_directory: ~/repo/eregs_extensions
+          environment:
+            COMPOSE_FILE: docker-compose-circle.yml
+          command: docker-compose run py.test
           
       - deploy:
           command: |
-            docker cp holder:/usr/src/app/compiled/. ./compiled
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               export CF_USERNAME=$CF_USERNAME_DEV
               export CF_PASSWORD=$CF_PASSWORD_DEV

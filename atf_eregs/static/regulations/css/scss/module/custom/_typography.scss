@@ -1,11 +1,27 @@
+/* Font size tweaks to account for Lato */
 h2, h3.section-title {
-    font-size: 1.75em;  /* 28px  */
-    line-height: 36px;
+  font-size: 28px;
+  line-height: 36px;
 }
 
 h3 {
-    font-size: 1.375em; /* 22px  */
-    line-height: 31px;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+h4 {
+  font-size: 19px;
+  line-height: 24px;
+}
+
+h5 {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+h6 {
+  font-size: 12px;
+  line-height: 14px;
 }
 
 .small-header {

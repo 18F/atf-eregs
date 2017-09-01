@@ -1,0 +1,38 @@
+{% extends "regulations/generic_universal.html" %}
+
+{% block title %} ATF eRegulations {% endblock %}
+
+
+{% block hero %}
+<div class="hero">
+    <div class="inner-wrap group">
+      <div class="primary">
+        <h2 class="hero-header">ATF Title 27 Regulations</h2>
+        <p class="hero-text">Find, read, and understand ATF regulations</p>
+
+        <p class="read-more-link"><a href="{% url 'about' %}" class="go">How to use this site</a></p>
+      </div>
+    </div> <!-- /.inner-wrap -->
+</div> <!-- /.hero -->
+{% endblock %}
+
+{% block about-eregs %}
+  <section class="about bump group">
+    <h2 class="light-header">About ATF eRegulations</h2>
+    <div class="content-primary column-l">
+
+      <p>
+        Use this site to find, read, and understand ATF regulations.
+        Features include inline definition of terms, views for comparing
+        revisions, and curated links to related documents.
+      </p>
+
+      <p><a href="{% url 'about' %}" class="go">Learn more about these features</a></p>
+    </div> <!-- /.primart -->
+
+    {% block orgcontact %}
+    {% endblock %}
+    {% block legal %}
+    {% endblock %}
+  </section> <!-- /.about -->
+{% endblock %}

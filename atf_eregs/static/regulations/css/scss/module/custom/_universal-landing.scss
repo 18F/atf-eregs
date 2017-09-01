@@ -3,13 +3,36 @@
 }
 
 .hero {
-    background-color: $atf_hero_background;
+    background:
+      linear-gradient(
+        rgba(27, 27, 27, 0.45),
+        rgba(0, 0, 0, 0.45)
+      ),
+      url('../img/hero@2x.png') no-repeat;
+    background-size: 100%;
+    background-position: center;
     color: $atf_hero_text_color;
+
+    .primary {
+      text-shadow: 1px 1px 0px #000;
+    }
 
     a:link,
     a:visited {
       color: $atf_hero_link;
     }
+
+    .inner-wrap {
+      background: none;   // override
+
+    }
+
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .hero .inner-wrap {
+    background: none;   // override
+  }
 }
 
 .hero-header {
