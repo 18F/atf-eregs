@@ -34,6 +34,7 @@ services:
       <<: *PROD_ENV
       DEBUG: "true"
       PORT: 8000
+      DJANGO_SETTINGS_MODULE: atf_eregs.settings.dev
     volumes:
       - $PWD:/usr/src/app
       - dev_libs:/usr/src/app/.venv/
