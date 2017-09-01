@@ -11,7 +11,7 @@ services:
       - 9000:9000
     environment: &PROD_ENV
       PORT: 9000
-      DJANGO_SETTINGS_MODULE: atf_eregs.settings.base
+      DJANGO_SETTINGS_MODULE: atf_eregs.settings.prod
       DATABASE_URL: postgres://postgres@persistent_db/postgres
       USE_LIVE_DATA: "true"
       TMPDIR: /tmp
