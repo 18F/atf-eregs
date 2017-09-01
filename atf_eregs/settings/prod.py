@@ -3,7 +3,17 @@ import re
 from cfenv import AppEnv
 
 from .base import *  # noqa
-from .base import HAYSTACK_CONNECTIONS  # explicitly referenced below
+from .base import CACHES, HAYSTACK_CONNECTIONS  # explicitly referenced below
+
+def _limit_caches(max_timeout):
+    """While the regulation content doesn't change often, we want to allow ATF
+    to update their "Related Documents" relatively quickly."""
+    for cache in CACHES.values():
+        current_timeout = cache.get('TIMEOUT', 300)     # Django's default
+        cache['TIMEOUT'] = min(current_timeout, max_timeout)
+
+_limit_caches(60*60)    # 1 hour
+
 
 DEBUG = False
 TEMPLATE_DEBUG = False
@@ -25,15 +35,6 @@ HTTP_AUTH_PASSWORD = env.get_credential('HTTP_AUTH_PASSWORD')
 
 ALLOWED_HOSTS = ['localhost'] + env.uris
 
-# Service name may well change in the future. Fuzzy match
-elastic_service = env.get_service(name=re.compile('search'))
-if elastic_service:
-    HAYSTACK_CONNECTIONS['default'] = {
-        'ENGINE': ('haystack.backends.elasticsearch_backend.'
-                   'ElasticsearchSearchEngine'),
-        'URL': elastic_service.credentials['uri'],
-        'INDEX_NAME': 'eregs',
-    }
 
 try:
     from local_settings import *    # noqa
