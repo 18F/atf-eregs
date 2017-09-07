@@ -14,7 +14,7 @@ chardet==3.0.4
 dj-database-url==0.4.2
 django-mptt==0.8.7
 django-overextends==0.4.3
-django==1.11.3
+django==1.11.5
 enum34==1.1.6
 flake8==3.3.0
 furl==1.0.0
