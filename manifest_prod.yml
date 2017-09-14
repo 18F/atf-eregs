@@ -2,6 +2,7 @@
 inherit: manifest_base.yml
 env:
   CIRCLE_BRANCH: release
+  DEPLOY_TIME: 03:45
 routes:
   - route: atf-eregs.18f.gov
   - route: atf-eregs.app.cloud.gov
