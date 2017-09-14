@@ -105,7 +105,8 @@ LOGGING = {
 # "good"). Set the cutoff to 1e-20 so that we only return better results.
 PG_SEARCH_RANK_CUTOFF = 1e-20
 
-ATF_API = 'https://atfstg.prod.acquia-sites.com/api/v1.1/ereg/{cfr_part}'
+
+ATF_API = 'https://www.atf.gov/api/v1.1/ereg/{cfr_part}'
 
 
 if DEBUG:
