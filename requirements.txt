@@ -24,7 +24,7 @@ orderedmultidict==0.7.11  # via furl
 psycopg2==2.7.3
 pytz==2017.2              # via django
 regcore==4.2.0
-regulations==8.4.0
+regulations==8.4.1
 requests==2.18.2          # via regulations
 six==1.10.0               # via furl, orderedmultidict, regcore, regulations
 urllib3==1.22             # via requests
