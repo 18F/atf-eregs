@@ -5,7 +5,7 @@ services:
     volumes:
       - database_data:/var/lib/postgresql/data
   prod: &PROD
-    image: python:3.6.2
+    image: python:3.6.4
     command: ./devops/wait_for_db_then ./devops/activate_then ./devops/run_webserver.sh
     ports:
       - 9000:9000
