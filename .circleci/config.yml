@@ -22,7 +22,7 @@ jobs:
       - run:
           name: Setup "holder" container for file storage
           command: |
-            docker create -v /usr/src/app -w /usr/src/app/ --name holder python:3.6.4 sleep 100d
+            docker create -v /usr/src/app -w /usr/src/app/ --name holder python:3.6.5 sleep 100d
             docker cp . holder:/usr/src/app
             docker start holder
       - run:
