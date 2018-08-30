@@ -2,7 +2,7 @@ version: '2'
 services:
   #---- Commands ----
   eregs: &EREGS
-    image: python:3.6.4
+    image: python:3.6.5
     entrypoint: ./devops/activate_then eregs
     volumes:
       - $PWD:/usr/src/app
